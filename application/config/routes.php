@@ -2,8 +2,10 @@
     exit('No direct script access allowed');
 }
 
-$route['default_controller']        = "Controller_home";
+$route['default_controller']        = "Controller_web/index_web";
 $route['404_override']              = '';
+
+/***********************************Admin**********************************************/
 $route['orden']                     = 'Controller_menu/vista_orden';
 $route['pantallas']                 = 'Controller_pantalla/vista_pantalla';
 $route['options_menu']              = 'Controller_menu_opciones/vista_menu_opciones';
@@ -16,3 +18,11 @@ $route['sistema']                   = 'Controller_home/principal';
 $route['login']                     = 'Controller_home/c_login';
 $route['close_session']             = 'Controller_home/cerrar';
 $route['tema']                      = 'Controller_tema/vista_tema';
+
+/***********************************Web**********************************************/
+$route['inicio'] = 'Controller_web/index_web';
+$route['noticias'] = 'Controller_web/listaNoticias';
+$route['noticia'] = 'Controller_web/noticias';
+$route['editorial'] = 'Controller_web/editorial';
+$route['personas'] = 'Controller_web/personas';
+$route['persona'] = 'Controller_web/personasInd';
