@@ -109,15 +109,9 @@
                     </div>
                    </a>
                 </div>
-
-                <iframe width="100%" height="500" src="https://www.youtube.com/embed/Hcci-gtYtco?rel=0&amp;autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
 
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/js_p_bodega.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/js_p_oferta.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/js_p_admin.js"></script>
-
-<script type="text/javascript">
-    alert("Hola prrs, listo para hacerte la exitacion :v")
-</script>

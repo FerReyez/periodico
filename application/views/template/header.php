@@ -157,7 +157,7 @@ $menu_rol = $this->Usuarios->menu_principal($idrol);
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>"><img class="img img-thumbnail" src="<?php echo base_url(); ?>assets/img/logo.jpg" width="100" height="20" alt=" " /></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>sistema"><img class="img img-thumbnail" src="<?php echo base_url(); ?>assets/img/logo.jpg" width="100" height="20" alt=" " /></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -283,7 +283,7 @@ $menu_rol = $this->Usuarios->menu_principal($idrol);
                             }
                             ?>
                         <li class="<?php echo $c; ?>">
-                            <a href="<?php echo base_url(); ?>">
+                            <a href="<?php echo base_url(); ?>sistema">
                                 <i class="material-icons">home</i>
                                 <span>INICIO</span>
                             </a>
