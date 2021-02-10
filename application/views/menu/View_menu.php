@@ -636,8 +636,8 @@
                 $.each(response.menu, function (key, item) {
                     i++;
                     filas += "<tr><td>" + i + "</td><td>" + item.menu + "</td><td><i class='" + item.icono + "'></i>" + item.icono + "</td>";
-                    filas += "<td><button type='button' class='btn btn-xs' id='delteBtnId' data-delteBtnId=" + item.id_menu + "><i style='color:#D91F1F;' class='fa fa-trash'></i></button>";
-                    filas += "<button type='button' class='btn btn-xs' id='editBtnId' data-editBtnId=" + item.id_menu + "><i style='color:#2B77A8;' class='fa fa-edit'></button></td></tr>";
+                    filas += "<td><button type='button' class='btn btn-circle' id='delteBtnId' data-delteBtnId=" + item.id_menu + "><i style='color:#D91F1F;' class='fa fa-trash'></i></button>";
+                    filas += "<button type='button' class='btn btn-circle' id='editBtnId' data-editBtnId=" + item.id_menu + "><i style='color:#2B77A8;' class='fa fa-edit'></button></td></tr>";
                 });
                 $("#tbmenu tbody").html(filas);
                 linkseleccionado = Number(pagina);
