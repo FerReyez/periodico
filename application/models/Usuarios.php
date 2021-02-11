@@ -84,16 +84,75 @@ class Usuarios extends CI_Model {
 
 #------------------------------------------------------------
 
-    public function listar_user($buscar, $inicio = FALSE, $cantidadregistro = FALSE) {
-        $this->db->like("nombre", $buscar);
-        $this->db->or_like("nombre_completo", $buscar);
-        $this->db->order_by('id_usuario', 'desc');
-        if ($inicio !== FALSE && $cantidadregistro !== FALSE) {
-            $this->db->limit($cantidadregistro, $inicio);
+    public $column = array(
+        'id_usuario',
+        'nombre',
+        'nombre_completo',
+    );
+
+    public $order = array('id_usuario' => 'desc');
+
+    private function _get_usuario($term = '')
+    {
+        $column = array(
+            'id_usuario',
+            'nombre',
+            'nombre_completo',
+        );
+
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        $this->db->group_start();
+        $this->db->like('nombre', $term);
+        $this->db->or_like('nombre_completo', $term);
+        $this->db->group_end();
+        if (isset($_REQUEST['order'])) // here order processing
+        {
+            $this->db->order_by($column[$_REQUEST['order']['0']['column']], $_REQUEST['order']['0']['dir']);
+        } else if (isset($this->order)) {
+            $order = $this->order;
+            $this->db->order_by(key($order), $order[key($order)]);
         }
-        $consulta = $this->db->get("usuarios");
-        return $consulta->result();
+
     }
+
+    public function lista_usuario()
+    {
+        $term = $_REQUEST['search']['value'];
+        $this->_get_usuario($term);
+        if ($_REQUEST['length'] != -1) {
+            $this->db->limit($_REQUEST['length'], $_REQUEST['start']);
+        }
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_filtered()
+    {
+        $term = $_REQUEST['search']['value'];
+        $this->_get_usuario($term);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all()
+    {   
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        return $this->db->count_all_results();
+    }
+
+    // public function listar_user($buscar, $inicio = FALSE, $cantidadregistro = FALSE) {
+    //     $this->db->like("nombre", $buscar);
+    //     $this->db->or_like("nombre_completo", $buscar);
+    //     $this->db->order_by('id_usuario', 'desc');
+    //     if ($inicio !== FALSE && $cantidadregistro !== FALSE) {
+    //         $this->db->limit($cantidadregistro, $inicio);
+    //     }
+    //     $consulta = $this->db->get("usuarios");
+    //     return $consulta->result();
+    // }
 
     public function eliminar_user($table, $delteBtnId) {
         $this->db->where('id_usuario', $delteBtnId);

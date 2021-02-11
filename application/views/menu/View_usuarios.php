@@ -8,8 +8,17 @@
                                 Usuarios
                                 <small>Aqui podras editar toda la información de los usuarios del sistema</small>
                             </h2>
+                            <ul class="header-dropdown m-r--5" >
+                                    <li class="dropdown ">
+                                        <a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+                                            <i class="material-icons waves-effect bg-<?php echo $tema; ?>" style="font-size: 30px" id="add">
+                                                add_circle
+                                            </i>
+                                        </a>
+                                    </li>
+                                </ul>
                         </div>
-                        <br>
+                        <!-- <br>
                         <p>
                          <div class="col-md-1">
                            
@@ -17,37 +26,7 @@
                                     <i class="material-icons" >add_box</i>
                                 </button>
                             
-                        </div>   
-                        </p>
-                        
-                        <p><div class="col-md-2 " >
-                            
-                               <select name="cantidad" id="cantidad" class="form-control show-tick">
-                                <option value="20">Mostrar por:</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="60">60</option>
-                                <option value="70">70</option>
-                                <option value="80">80</option>
-                                <option value="90">90</option>
-                                <option value="100">100</option>
-                            </select> 
-
-                            
-                    </div></p>
-                        <p>
-                         <div class="col-md-8">
-                        
-                           <div class="input-group">
-                                        <div class="form-line">
-                                             <input class="btn-block form-control" placeholder="Buscar" type="text" id="busqueda" name="busqueda">
-                                        </div>
-                                    </div>  
-                    </div>   
-                        </p>
+                        </div>    -->
                     
 <div class="container-fluid">
     <div class="col-xs-12">

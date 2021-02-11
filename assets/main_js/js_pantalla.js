@@ -17,6 +17,7 @@ function main() {
         }, ],
     });
 }
+
 $(document).on("click", "#add", function() {
     $("#carga").fadeOut("slow");
     $("#action").val("crear");

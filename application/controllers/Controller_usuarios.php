@@ -100,18 +100,48 @@ class Controller_usuarios extends CI_Controller {
     }
 
     public function listar_usuario() {
-        //valor a Buscar
-        $buscar = $this->input->post("buscar");
-        $numeropagina = $this->input->post("nropagina");
-        $cantidad = $this->input->post("cantidad");
 
-        $inicio = ($numeropagina - 1) * $cantidad;
-        $data = array(
-            "usuario" => $this->Usuarios->listar_user($buscar, $inicio, $cantidad),
-            "totalregistros" => count($this->Usuarios->listar_user($buscar)),
-            "cantidad" => $cantidad
+        $list = $this->Usuarios->lista_usuario();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $person) {
+            $no++;
+            $row = array();
+            $row[] = $person->id_usuario;
+            $row[] = $person->nombre;
+            $row[] = $person->nombre_completo;
+            $row[] = "<center>
+            <b class='tool'>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editar' data-permiso='" . $person->id_usuario . "'>build</i></b></button>
+              <span class='tooltip-css3'>EDITAR</span>
+            </b>
+            <b class='tool'>
+              <button id='eliminar' class='btn bg-blue-grey waves-effect btn-xs' data-permiso='" . $person->id_usuario . "'><b><i class='material-icons'>delete_forever</i></b></button>
+              <span class='tooltip-css3' >ELIMINAR</span>
+            </b>
+            </center>";
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Usuarios->count_all(),
+            "recordsFiltered" => $this->Usuarios->count_filtered(),
+            "data" => $data,
         );
-        echo json_encode($data);
+        echo json_encode($output);
+        //valor a Buscar
+        // $buscar = $this->input->post("buscar");
+        // $numeropagina = $this->input->post("nropagina");
+        // $cantidad = $this->input->post("cantidad");
+
+        // $inicio = ($numeropagina - 1) * $cantidad;
+        // $data = array(
+        //     "usuario" => $this->Usuarios->listar_user($buscar, $inicio, $cantidad),
+        //     "totalregistros" => count($this->Usuarios->listar_user($buscar)),
+        //     "cantidad" => $cantidad
+        // );
+        // echo json_encode($data);
     }
 
     public function eliminar_usuario() {
