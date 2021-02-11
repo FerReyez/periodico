@@ -27,7 +27,7 @@ class Controller_home extends CI_Controller
     public function c_login()
     {
         if (isset($_SESSION['usuario'])) {
-            redirect('Controller_home/index');
+            redirect('Controller_home/View_login');
         }
 
         $data['titulo'] = "Inicio";
