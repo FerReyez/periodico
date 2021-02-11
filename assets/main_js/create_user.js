@@ -165,6 +165,7 @@ $(document).on("click", "#add", function () {
 //      $("#action").val('create');
 //      $("#nombreb").html('Crear');
 //  });
+
  $(document).on("click", "#editBtnId", function(e) {
      e.preventDefault();
      var editBtnId = $(this).attr('data-editBtnId');

@@ -112,11 +112,11 @@ class Controller_usuarios extends CI_Controller {
             $row[] = $person->nombre_completo;
             $row[] = "<center>
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editar' data-permiso='" . $person->id_usuario . "'>build</i></b></button>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_usuario . "'>build</i></b></button>
               <span class='tooltip-css3'>EDITAR</span>
             </b>
             <b class='tool'>
-              <button id='eliminar' class='btn bg-blue-grey waves-effect btn-xs' data-permiso='" . $person->id_usuario . "'><b><i class='material-icons'>delete_forever</i></b></button>
+              <button id='delteBtnId' class='btn bg-blue-grey waves-effect btn-xs' data-delteBtnId='" . $person->id_usuario . "'><b><i class='material-icons'>delete_forever</i></b></button>
               <span class='tooltip-css3' >ELIMINAR</span>
             </b>
             </center>";
@@ -130,6 +130,7 @@ class Controller_usuarios extends CI_Controller {
             "data" => $data,
         );
         echo json_encode($output);
+
         //valor a Buscar
         // $buscar = $this->input->post("buscar");
         // $numeropagina = $this->input->post("nropagina");
