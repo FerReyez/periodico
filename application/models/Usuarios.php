@@ -143,17 +143,6 @@ class Usuarios extends CI_Model {
         return $this->db->count_all_results();
     }
 
-    // public function listar_user($buscar, $inicio = FALSE, $cantidadregistro = FALSE) {
-    //     $this->db->like("nombre", $buscar);
-    //     $this->db->or_like("nombre_completo", $buscar);
-    //     $this->db->order_by('id_usuario', 'desc');
-    //     if ($inicio !== FALSE && $cantidadregistro !== FALSE) {
-    //         $this->db->limit($cantidadregistro, $inicio);
-    //     }
-    //     $consulta = $this->db->get("usuarios");
-    //     return $consulta->result();
-    // }
-
     public function eliminar_user($table, $delteBtnId) {
         $this->db->where('id_usuario', $delteBtnId);
         $result = $this->db->delete($table);

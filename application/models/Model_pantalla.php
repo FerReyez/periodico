@@ -2,12 +2,11 @@
 
 class Model_pantalla extends CI_Model
 {
-       public $column = array(
-            'id_permiso',
-            'url_permiso',
-            'nombre_permiso',
-        );
-
+    public $column = array(
+        'id_permiso',
+        'url_permiso',
+        'nombre_permiso',
+    );
 
     public $order = array('id_permiso' => 'desc');
 

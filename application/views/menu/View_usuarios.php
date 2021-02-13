@@ -18,44 +18,35 @@
                                     </li>
                                 </ul>
                         </div>
-                        <!-- <br>
-                        <p>
-                         <div class="col-md-1">
-                           
-                                <button type="button" id="create_acc_btn" data-toggle="modal" data-target="#create_form_modal" onclick="$('#carga').css('display','none')" class="btn bg-<?php echo $tema; ?> waves-effect btn-block">
-                                    <i class="material-icons" >add_box</i>
-                                </button>
-                            
-                        </div>    -->
                     
-<div class="container-fluid">
-    <div class="col-xs-12">
-         <div class="body table-responsive">
-                           <table id="tbuser"class="table table-bordered table-striped table-condensed">
-                            <thead class="">
-                                <tr>
-                                    <th>
-                                        CORRELATIVO
-                                    </th>
-                                    <th>
-                                        USUARIO
-                                    </th>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        ACCIONES
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                        </div>
-                        <div class="form-actions">
-                            <div class="text-center paginacion">
-                        </div>
-    </div>
+                        <div class="container-fluid">
+                            <div class="col-xs-12">
+                                <div class="body table-responsive">
+                                                <table id="tbuser"class="table table-bordered table-striped table-condensed">
+                                                    <thead class="">
+                                                        <tr>
+                                                            <th>
+                                                                CORRELATIVO
+                                                            </th>
+                                                            <th>
+                                                                USUARIO
+                                                            </th>
+                                                            <th>
+                                                                Nombre
+                                                            </th>
+                                                            <th>
+                                                                ACCIONES
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <div class="text-center paginacion">
+                                                </div>
+                            </div>
                        
                         </div>
                     </div>

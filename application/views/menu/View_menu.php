@@ -8,8 +8,17 @@
                                 Menu
                                 <small>Aqui podras administrar los diferentes menú del sistema</small>
                             </h2>
+                            <ul class="header-dropdown m-r--5" >
+                                    <li class="dropdown ">
+                                        <a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+                                            <i class="material-icons waves-effect bg-<?php echo $tema; ?>" style="font-size: 30px" id="add">
+                                                add_circle
+                                            </i>
+                                        </a>
+                                    </li>
+                                </ul>
                         </div>
-                        <br>
+                        <!-- <br>
                         <p>
                          <div class="col-md-1">
                            
@@ -18,86 +27,44 @@
                                 </button>
                             
                         </div>   
-                        </p>
+                        </p> -->
                         
-                        <p><div class="col-md-2 " >
-                            
-                               <select name="cantidad" id="cantidad" class="form-control show-tick">
-                                <option value="20">Mostrar por:</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="60">60</option>
-                                <option value="70">70</option>
-                                <option value="80">80</option>
-                                <option value="90">90</option>
-                                <option value="100">100</option>
-                            </select> 
-
-                            
-                    </div></p>
-                        <p>
-                         <div class="col-md-8">
-                        
-                           <div class="input-group">
-                                        <div class="form-line">
-                                             <input class="btn-block form-control" placeholder="Buscar" type="text" id="busqueda" name="busqueda">
-                                        </div>
-                                    </div>  
-                    </div>   
-                        </p>
                     
-<div class="container-fluid">
-    <div class="col-xs-12">
-         <div class="body table-responsive">
-                           <table id="tbmenu" class="table table-bordered table-striped table-condensed">
-                            <thead class="flip-content bordered-palegreen">
-                                <tr>
-                                    <th>
-                                        CORRELATIVO
-                                    </th>
-                                    <th>
-                                        MENÚ
-                                    </th>
-                                    <th>
-                                        ICONO
-                                    </th>
-                                    <th>
-                                        ACCIONES
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                        </div>
-                        <div class="form-actions">
-                            <div class="text-center paginacion">
-                        </div>
-    </div>
-                       
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <div class="container-fluid">
+                            <div class="col-xs-12">
+                                <div class="body table-responsive">
+                                                <table id="tbmenu" class="table table-bordered table-striped table-condensed">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            <th>
+                                                                CORRELATIVO
+                                                            </th>
+                                                            <th>
+                                                                MENÚ
+                                                            </th>
+                                                            <th>
+                                                                ICONO
+                                                            </th>
+                                                            <th>
+                                                                ACCIONES
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <div class="text-center paginacion">
+                                                </div>
+                                                </div>
+                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
 
 <div class="modal" id="create_form_modal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm">
@@ -594,104 +561,25 @@
     $(document).on("ready", main);
 
     function main() {
-        menu("", 1, 20);
-        $("input[name=busqueda]").keyup(function () {
-            textobuscar = $(this).val();
-            valoroption = $("#cantidad").val();
-            menu(textobuscar, 1, valoroption);
-        });
-        $("body").on("click", ".paginacion li a", function (e) {
-            e.preventDefault();
-            valorhref = $(this).attr("href");
-            valorBuscar = $("input[name=busqueda]").val();
-            valoroption = $("#cantidad").val();
-            menu(valorBuscar, valorhref, valoroption);
-        });
-        $("#cantidad").change(function () {
-            valoroption = $(this).val();
-            valorBuscar = $("input[name=busqueda]").val();
-            menu(valorBuscar, 1, valoroption);
+        var table = $('#tbmenu').DataTable()
+        table.destroy();
+        table = $('#tbmenu').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "order": [],
+            "ajax": {
+                "url": host + "Controller_menu/lista_menu",
+                "type": "POST"
+            },
+            "columnDefs": [{
+                "targets": [-1],
+                "orderable": false,
+            }, ],
         });
     }
 
-    function menu(valorBuscar, pagina, cantidad) {
-        $.ajax({
-            url: "<?php echo base_url(); ?>Controller_menu/listar_menu",
-            type: "POST",
-            data: {
-                buscar: valorBuscar,
-                nropagina: pagina,
-                cantidad: cantidad
-            },
-            dataType: "json",
-            beforeSend: function () {
-                $('#buscando').css('display', 'block');
-                $('#busque').css('display', 'none');
-            },
-            success: function (response) {
-                $('#buscando').css('display', 'none');
-                $('#busque').css('display', 'block');
-                filas = "";
-                var i = 0;
-                $.each(response.menu, function (key, item) {
-                    i++;
-                    filas += "<tr><td>" + i + "</td><td>" + item.menu + "</td><td><i class='" + item.icono + "'></i>" + item.icono + "</td>";
-                    filas += "<td><button type='button' class='btn btn-circle' id='delteBtnId' data-delteBtnId=" + item.id_menu + "><i style='color:#D91F1F;' class='fa fa-trash'></i></button>";
-                    filas += "<button type='button' class='btn btn-circle' id='editBtnId' data-editBtnId=" + item.id_menu + "><i style='color:#2B77A8;' class='fa fa-edit'></button></td></tr>";
-                });
-                $("#tbmenu tbody").html(filas);
-                linkseleccionado = Number(pagina);
-                //total registros
-                totalregistros = response.totalregistros;
-                //cantidad de registros por pagina
-                cantidadregistros = response.cantidad;
-                numerolinks = Math.ceil(totalregistros / cantidadregistros);
-                paginador = "<ul class='pagination'>";
-                if (linkseleccionado > 1) {
-                    paginador += "<li><a href='1'>&laquo;</a></li>";
-                    paginador += "<li><a href='" + (linkseleccionado - 1) + "' '>&lsaquo;</a></li>";
-                } else {
-                    paginador += "<li class='disabled'><a href='#'>&laquo;</a></li>";
-                    paginador += "<li class='disabled'><a href='#'>&lsaquo;</a></li>";
-                }
-                //muestro de los enlaces 
-                //cantidad de link hacia atras y adelante
-                cant = 2;
-                //inicio de donde se va a mostrar los links
-                pagInicio = (linkseleccionado > cant) ? (linkseleccionado - cant) : 1;
-                //condicion en la cual establecemos el fin de los links
-                if (numerolinks > cant) {
-                    //conocer los links que hay entre el seleccionado y el final
-                    pagRestantes = numerolinks - linkseleccionado;
-                    //defino el fin de los links
-                    pagFin = (pagRestantes > cant) ? (linkseleccionado + cant) : numerolinks;
-                } else {
-                    pagFin = numerolinks;
-                }
-                for (var i = pagInicio; i <= pagFin; i++) {
-                    if (i == linkseleccionado)
-                        paginador += "<li class='active'><a href='javascript:void(0)'>" + i + "</a></li>";
-                    else
-                        paginador += "<li><a href='" + i + "'>" + i + "</a></li>";
-                }
-                //condicion para mostrar el boton sigueinte y ultimo
-                if (linkseleccionado < numerolinks) {
-                    paginador += "<li><a href='" + (linkseleccionado + 1) + "' >&rsaquo;</a></li>";
-                    paginador += "<li><a href='" + numerolinks + "'>&raquo;</a></li>";
-                } else {
-                    paginador += "<li class='disabled'><a href='#'>&rsaquo;</a></li>";
-                    paginador += "<li class='disabled'><a href='#'>&raquo;</a></li>";
-                }
-                paginador += "</ul>";
-                $(".paginacion").html(paginador);
-            },
-            error: function () {
-                $('#buscando').css('display', 'none');
-                $('#busque').css('display', 'block');
-            }
-        });
-    }
-    $(document).on("click", "#delteBtnId", function (e) {
+
+    $(document).x("click", "#delteBtnId", function (e) {
         e.preventDefault();
         var delteBtnId = $(this).attr('data-delteBtnId');
         swal({
@@ -735,13 +623,17 @@
             }
         });
     });
-    $(document).on("click", "#create_acc_btn", function (e) {
-        e.preventDefault();
+
+    $(document).on("click", "#add", function() {
+        $("#carga").fadeOut("slow");
+        $("#action").val("create");
+        $(".form-line").removeClass("focused");
         $("#developer_cu_form")[0].reset();
-        $("#form-title").text('Crear menu');
-        $("#action").val('create');
-        $("#nombreb").html('Crear');
-    });
+        $("#form-title").text("Agregar menu");
+        $("#nombreb").text("Agregar");
+        $("#create_form_modal").modal("show");
+    })
+
     $(document).on("click", "#editBtnId", function (e) {
         e.preventDefault();
         var editBtnId = $(this).attr('data-editBtnId');

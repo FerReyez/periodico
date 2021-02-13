@@ -107,7 +107,7 @@ class Controller_usuarios extends CI_Controller {
         foreach ($list as $person) {
             $no++;
             $row = array();
-            $row[] = $person->id_usuario;
+            $row[] = $no;
             $row[] = $person->nombre;
             $row[] = $person->nombre_completo;
             $row[] = "<center>
@@ -130,19 +130,6 @@ class Controller_usuarios extends CI_Controller {
             "data" => $data,
         );
         echo json_encode($output);
-
-        //valor a Buscar
-        // $buscar = $this->input->post("buscar");
-        // $numeropagina = $this->input->post("nropagina");
-        // $cantidad = $this->input->post("cantidad");
-
-        // $inicio = ($numeropagina - 1) * $cantidad;
-        // $data = array(
-        //     "usuario" => $this->Usuarios->listar_user($buscar, $inicio, $cantidad),
-        //     "totalregistros" => count($this->Usuarios->listar_user($buscar)),
-        //     "cantidad" => $cantidad
-        // );
-        // echo json_encode($data);
     }
 
     public function eliminar_usuario() {

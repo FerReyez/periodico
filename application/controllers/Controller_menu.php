@@ -119,19 +119,37 @@ class Controller_menu extends CI_Controller {
         }
     }
 
-    public function listar_menu() {
-        //valor a Buscar
-        $buscar = $this->input->post("buscar");
-        $numeropagina = $this->input->post("nropagina");
-        $cantidad = $this->input->post("cantidad");
+    public function lista_menu()
+    {
+        $list = $this->Model_menu->lista_menu();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $person) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $person->menu;
+            $row[] = $person->icono;
+            $row[] = "<center>
+            <b class='tool'>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_menu . "'>build</i></b></button>
+              <span class='tooltip-css3'>EDITAR</span>
+            </b>
+            <b class='tool'>
+              <button id='delteBtnId' class='btn bg-blue-grey waves-effect btn-xs' data-delteBtnId='" . $person->id_menu . "'><b><i class='material-icons'>delete_forever</i></b></button>
+              <span class='tooltip-css3' >ELIMINAR</span>
+            </b>
+            </center>";
+            $data[] = $row;
+        }
 
-        $inicio = ($numeropagina - 1) * $cantidad;
-        $data = array(
-            "menu" => $this->Usuarios->listar_menum($buscar, $inicio, $cantidad),
-            "totalregistros" => count($this->Usuarios->listar_menum($buscar)),
-            "cantidad" => $cantidad
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Model_menu->count_all(),
+            "recordsFiltered" => $this->Model_menu->count_filtered(),
+            "data" => $data,
         );
-        echo json_encode($data);
+        echo json_encode($output);
     }
 
     public function eliminar_menu() {

@@ -39,7 +39,7 @@ class Controller_pantalla extends CI_Controller
         foreach ($list as $person) {
             $no++;
             $row = array();
-            $row[] = $person->id_permiso;
+            $row[] = $no;
             $row[] = $person->url_permiso;
             $row[] = $person->nombre_permiso;
             $row[] = "<center>
