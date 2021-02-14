@@ -75,7 +75,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content modal-changue ">
             <div class="modal-header">
-                <h2 align="center" class="pmd-cart-title-text" id="form-title"></h2>
+                <h2 align="center" class="pmd-cart-title-text" id="form-title1"></h2>
             </div>
             <div class="modal-body modal-slim">
                 <div id="carga"></div>
@@ -100,7 +100,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 align="center" class="pmd-cart-title-text" id="form-title">Editar rol</h2>
+                <h2 align="center" class="pmd-cart-title-text" id="form-title2"></h2>
             </div>
             <div class="modal-body">
                 <div id="carga2"></div>
@@ -313,7 +313,7 @@
         $("#action").val("create");
         $(".form-line").removeClass("focused");
         $("#developer_cu_form")[0].reset();
-        $("#form-title").text('Crear rol');
+        $("#form-title2").text('Crear rol');
         $("#nombreb").html('Agregar');
         $("#modal-update-rol").modal("show");
     });
@@ -342,7 +342,7 @@
                 $("#rol").val(data.rol);
                 $("#id_permiso").val(data.id_permiso);
                 $("#id_permiso").change();
-                $("#form-title").text('Editar rol');
+                $("#form-title2").text('Editar rol');
                 $("#action").val('update');
                 $("#nombreb").html('Actualizar');
                 $("#updateId").val(editBtnId);
@@ -464,7 +464,7 @@
                 $("#developer_cu_form").css('display', 'none');
                 $("#tbper, #form-per").css('display', 'block');
                 $("#create_form_modal").modal('show');
-                $("#form-title").html('<div>Rol ' + data.xd2 + '</div>');
+                $("#form-title1").html('<div>Rol ' + data.xd2 + '</div>');
                 $("#tbper").html(data.xd);
             }
         });
