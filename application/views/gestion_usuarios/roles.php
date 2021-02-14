@@ -309,14 +309,14 @@
     // });
 
     $(document).on("click", "#add", function () {
-    $("#carga").fadeOut("slow");
-    $("#action").val("create");
-    $(".form-line").removeClass("focused");
-    $("#developer_cu_form")[0].reset();
-    $("#form-title").text('Crear rol');
-    $("#nombreb").html('Agregar');
-    $("#create_form_modal").modal("show");
-})
+        $("#carga2").fadeOut("slow");
+        $("#action").val("create");
+        $(".form-line").removeClass("focused");
+        $("#developer_cu_form")[0].reset();
+        $("#form-title").text('Crear rol');
+        $("#nombreb").html('Agregar');
+        $("#modal-update-rol").modal("show");
+    });
 
     $(document).on("click", "#editBtnId", function(e) {
         e.preventDefault();
