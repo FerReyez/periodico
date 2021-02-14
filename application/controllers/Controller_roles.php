@@ -164,14 +164,14 @@ class Controller_roles extends CI_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $person->rol;
-            $row[] = "<td><button type='button' class='btn btn-xs btn-circle' id='permisos' data-permisos=" + $person->id_rol + "><i style='color:#73B5B6;' class='fa fa-plus-square'></i></button>";
+            $row[] = "<td><button type='button' class='btn btn-xs btn-circle' id='permisos' data-permisos=" . $person->id_rol . "><i style='color:#73B5B6;' class='fa fa-plus-square'></i></button>";
             $row[] = "<center>
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editar' data-permiso='" . $person->id_rol . "'>build</i></b></button>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_rol . "'>build</i></b></button>
               <span class='tooltip-css3'>EDITAR</span>
             </b>
             <b class='tool'>
-              <button id='eliminar' class='btn bg-blue-grey waves-effect btn-xs' data-permiso='" . $person->id_rol . "'><b><i class='material-icons'>delete_forever</i></b></button>
+              <button id='delteBtnId' class='btn bg-blue-grey waves-effect btn-xs' data-delteBtnId='" . $person->id_rol . "'><b><i class='material-icons'>delete_forever</i></b></button>
               <span class='tooltip-css3' >ELIMINAR</span>
             </b>
             </center>";

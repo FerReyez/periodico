@@ -8,9 +8,18 @@
                             Roles & permisos
                             <small>Aqui podras administrar los permisos y accesos del sistema junto con sus roles</small>
                         </h2>
+                        <ul class="header-dropdown m-r--5" >
+                                    <li class="dropdown ">
+                                        <a aria-expanded="true" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+                                            <i class="material-icons waves-effect bg-<?php echo $tema; ?>" style="font-size: 30px" id="add">
+                                                add_circle
+                                            </i>
+                                        </a>
+                                    </li>
+                                </ul>
                     </div>
                     <br>
-                    <p>
+                    <!-- <p>
                     <div class="col-md-1">
 
                         <button type="button" id="create_acc_btn" data-toggle="modal" data-target="#modal-update-rol" onclick="$('#carga2').css('display','none')" class="btn bg-<?php echo $tema; ?> waves-effect btn-block">
@@ -18,38 +27,7 @@
                         </button>
 
                     </div>
-                    </p>
-
-                    <p>
-                    <div class="col-md-2 ">
-
-                        <select name="cantidad" id="cantidad" class="form-control show-tick">
-                            <option value="20">Mostrar por:</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                            <option value="60">60</option>
-                            <option value="70">70</option>
-                            <option value="80">80</option>
-                            <option value="90">90</option>
-                            <option value="100">100</option>
-                        </select>
-
-
-                    </div>
-                    </p>
-                    <p>
-                    <div class="col-md-8">
-
-                        <div class="input-group">
-                            <div class="form-line">
-                                <input class="btn-block form-control" placeholder="Buscar" type="text" id="busqueda" name="busqueda">
-                            </div>
-                        </div>
-                    </div>
-                    </p>
+                    </p> -->
 
                     <div class="container-fluid">
                         <div class="col-xs-12">
@@ -322,13 +300,24 @@
             }
         });
     });
-    $(document).on("click", "#create_acc_btn", function(e) {
-        e.preventDefault();
-        $("#developer_cu_form")[0].reset();
-        $("#form-title").text('Crear rol');
-        $("#action").val('create');
-        $("#nombreb").html('Crear');
-    });
+    // $(document).on("click", "#create_acc_btn", function(e) {
+    //     e.preventDefault();
+    //     $("#developer_cu_form")[0].reset();
+    //     $("#form-title").text('Crear rol');
+    //     $("#action").val('create');
+    //     $("#nombreb").html('Crear');
+    // });
+
+    $(document).on("click", "#add", function () {
+    $("#carga").fadeOut("slow");
+    $("#action").val("create");
+    $(".form-line").removeClass("focused");
+    $("#developer_cu_form")[0].reset();
+    $("#form-title").text('Crear rol');
+    $("#nombreb").html('Agregar');
+    $("#create_form_modal").modal("show");
+})
+
     $(document).on("click", "#editBtnId", function(e) {
         e.preventDefault();
         var editBtnId = $(this).attr('data-editBtnId');
