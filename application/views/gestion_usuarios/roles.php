@@ -19,15 +19,6 @@
                                 </ul>
                     </div>
                     <br>
-                    <!-- <p>
-                    <div class="col-md-1">
-
-                        <button type="button" id="create_acc_btn" data-toggle="modal" data-target="#modal-update-rol" onclick="$('#carga2').css('display','none')" class="btn bg-<?php echo $tema; ?> waves-effect btn-block">
-                            <i class="material-icons">add_box</i>
-                        </button>
-
-                    </div>
-                    </p> -->
 
                     <div class="container-fluid">
                         <div class="col-xs-12">
@@ -166,96 +157,6 @@
         });
     }
 
-    // function main() {
-    //     rol("", 1, 20);
-    //     $("input[name=busqueda]").keyup(function () {
-    //         textobuscar = $(this).val();
-    //         valoroption = $("#cantidad").val();
-    //         rol(textobuscar, 1, valoroption);
-    //     });
-    //     $("body").on("click", ".paginacion li a", function (e) {
-    //         e.preventDefault();
-    //         valorhref = $(this).attr("href");
-    //         valorBuscar = $("input[name=busqueda]").val();
-    //         valoroption = $("#cantidad").val();
-    //         rol(valorBuscar, valorhref, valoroption);
-    //     });
-    //     $("#cantidad").change(function () {
-    //         valoroption = $(this).val();
-    //         valorBuscar = $("input[name=busqueda]").val();
-    //         rol(valorBuscar, 1, valoroption);
-    //     });
-    // }
-
-    // function rol(valorBuscar, pagina, cantidad) {
-    //     $.ajax({
-    //         url: "<?php echo base_url(); ?>Controller_roles/listar_rol",
-    //         type: "POST",
-    //         data: {
-    //             buscar: valorBuscar,
-    //             nropagina: pagina,
-    //             cantidad: cantidad
-    //         },
-    //         dataType: "json",
-    //         success: function (response) {
-    //             filas = "";
-    //             var i = 0;
-    //             $.each(response.rol, function (key, item) {
-    //                 i++;
-    //                 filas += "<tr><td>" + i + "</td>"
-    //                 filas += "<td>" + item.rol + "</td>"
-    //                 filas += "<td><button type='button' class='btn btn-xs btn-circle' id='permisos' data-permisos=" + item.id_rol + "><i style='color:#73B5B6;' class='fa fa-plus-square'></i></button>";
-    //                 filas += "<td><button type='button' class='btn btn-xs' id='delteBtnId' data-delteBtnId=" + item.id_rol + "><i style='color:#D91F1F;' class='fa  fa-trash'></i></button>";
-    //                 filas += "<button type='button' class='btn btn-xs' id='editBtnId' data-editBtnId=" + item.id_rol + "><i style='color:#2B77A8;' class='fa fa-edit'></button></td></tr>";
-    //             });
-    //             $("#tbrol tbody").html(filas);
-    //             linkseleccionado = Number(pagina);
-    //             //total registros
-    //             totalregistros = response.totalregistros;
-    //             //cantidad de registros por pagina
-    //             cantidadregistros = response.cantidad;
-    //             numerolinks = Math.ceil(totalregistros / cantidadregistros);
-    //             paginador = "<ul class='pagination'>";
-    //             if (linkseleccionado > 1) {
-    //                 paginador += "<li><a href='1'>&laquo;</a></li>";
-    //                 paginador += "<li><a href='" + (linkseleccionado - 1) + "' '>&lsaquo;</a></li>";
-    //             } else {
-    //                 paginador += "<li class='disabled'><a href='#'>&laquo;</a></li>";
-    //                 paginador += "<li class='disabled'><a href='#'>&lsaquo;</a></li>";
-    //             }
-    //             //muestro de los enlaces 
-    //             //cantidad de link hacia atras y adelante
-    //             cant = 2;
-    //             //inicio de donde se va a mostrar los links
-    //             pagInicio = (linkseleccionado > cant) ? (linkseleccionado - cant) : 1;
-    //             //condicion en la cual establecemos el fin de los links
-    //             if (numerolinks > cant) {
-    //                 //conocer los links que hay entre el seleccionado y el final
-    //                 pagRestantes = numerolinks - linkseleccionado;
-    //                 //defino el fin de los links
-    //                 pagFin = (pagRestantes > cant) ? (linkseleccionado + cant) : numerolinks;
-    //             } else {
-    //                 pagFin = numerolinks;
-    //             }
-    //             for (var i = pagInicio; i <= pagFin; i++) {
-    //                 if (i == linkseleccionado)
-    //                     paginador += "<li class='active'><a href='javascript:void(0)'>" + i + "</a></li>";
-    //                 else
-    //                     paginador += "<li><a href='" + i + "'>" + i + "</a></li>";
-    //             }
-    //             //condicion para mostrar el boton sigueinte y ultimo
-    //             if (linkseleccionado < numerolinks) {
-    //                 paginador += "<li><a href='" + (linkseleccionado + 1) + "' >&rsaquo;</a></li>";
-    //                 paginador += "<li><a href='" + numerolinks + "'>&raquo;</a></li>";
-    //             } else {
-    //                 paginador += "<li class='disabled'><a href='#'>&rsaquo;</a></li>";
-    //                 paginador += "<li class='disabled'><a href='#'>&raquo;</a></li>";
-    //             }
-    //             paginador += "</ul>";
-    //             $(".paginacion").html(paginador);
-    //         }
-    //     });
-    // }
     $(document).on("click", "#delteBtnId", function(e) {
         e.preventDefault();
         var delteBtnId = $(this).attr('data-delteBtnId');
@@ -300,13 +201,6 @@
             }
         });
     });
-    // $(document).on("click", "#create_acc_btn", function(e) {
-    //     e.preventDefault();
-    //     $("#developer_cu_form")[0].reset();
-    //     $("#form-title").text('Crear rol');
-    //     $("#action").val('create');
-    //     $("#nombreb").html('Crear');
-    // });
 
     $(document).on("click", "#add", function () {
         $("#carga2").fadeOut("slow");

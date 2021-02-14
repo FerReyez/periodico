@@ -144,18 +144,6 @@ class Controller_roles extends CI_Controller {
     }
 
     public function listar_rol() {
-        //valor a Buscar
-        // $buscar = $this->input->post("buscar");
-        // $numeropagina = $this->input->post("nropagina");
-        // $cantidad = $this->input->post("cantidad");
-
-        // $inicio = ($numeropagina - 1) * $cantidad;
-        // $data = array(
-        //     "rol" => $this->Model_roles->listar_rol($buscar, $inicio, $cantidad),
-        //     "totalregistros" => count($this->Model_roles->listar_rol($buscar)),
-        //     "cantidad" => $cantidad
-        // );
-        // echo json_encode($data);
         $list = $this->Model_roles->lista_rol();
         $data = array();
         $no = $_POST['start'];
