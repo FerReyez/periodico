@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `template` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `template` ;
 USE `template`;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
@@ -35,8 +35,7 @@ CREATE TABLE `bitacora` (
   PRIMARY KEY (`id_bitacora`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `bitacora_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=1760 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `bitacora`
@@ -61,17 +60,14 @@ CREATE TABLE `gu_menu` (
   `movil` int(11) DEFAULT '0',
   `orden` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_menu`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `gu_menu`
 --
 
 LOCK TABLES `gu_menu` WRITE;
-/*!40000 ALTER TABLE `gu_menu` DISABLE KEYS */;
 INSERT INTO `gu_menu` VALUES (1,'Sistema','fa fa-cogs',0,1),(3,'Bitacora','fa fa-database',0,6),(20,'Catalogo','fa fa-book',0,7),(21,'Items','fa fa-clipboard',0,8),(22,'Ofertas','fa fa-coffee',0,9),(23,'Cotizaciones','fa fa-clone',0,10),(25,'Bodega','fa fa-bold',0,3),(26,'Reportes','fa fa-bell',0,5),(27,'Informes','fa fa-archive',0,4),(28,'Proyectos','fa fa-clipboard',0,2);
-/*!40000 ALTER TABLE `gu_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,17 +85,16 @@ CREATE TABLE `gu_opcion` (
   PRIMARY KEY (`id_opcion`),
   KEY `id_menu` (`id_menu`),
   CONSTRAINT `gu_opcion_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `gu_menu` (`id_menu`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=439 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `gu_opcion`
 --
 
 LOCK TABLES `gu_opcion` WRITE;
-/*!40000 ALTER TABLE `gu_opcion` DISABLE KEYS */;
+
 INSERT INTO `gu_opcion` VALUES (2,'Permisos','permissions_roles',1),(318,'Usuarios','users',1),(321,'Sesiones','log_of_session',3),(322,'Acciones','log_of_actions',3),(334,'Menu','menu',1),(336,'Opciones','options_menu',1),(397,'Tema','tema',1),(409,'Ordenar Modulos','orden',1),(422,'Pantallas','pantallas',1);
-/*!40000 ALTER TABLE `gu_opcion` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -116,17 +111,16 @@ CREATE TABLE `gu_rol` (
   PRIMARY KEY (`id_rol`),
   KEY `id_permiso` (`id_permiso`),
   CONSTRAINT `gu_rol_ibfk_1` FOREIGN KEY (`id_permiso`) REFERENCES `permiso_url` (`id_permiso`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `gu_rol`
 --
 
 LOCK TABLES `gu_rol` WRITE;
-/*!40000 ALTER TABLE `gu_rol` DISABLE KEYS */;
+
 INSERT INTO `gu_rol` VALUES (1,'admin',1),(2,'Comun',NULL),(3,'admin2',NULL),(4,'lector',NULL),(5,'Roni',NULL),(6,'Liliana',2);
-/*!40000 ALTER TABLE `gu_rol` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -147,17 +141,16 @@ CREATE TABLE `gu_rol_menu` (
   KEY `id_opcion` (`id_opcion`),
   CONSTRAINT `gu_rol_menu_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `gu_rol` (`id_rol`),
   CONSTRAINT `gu_rol_menu_ibfk_2` FOREIGN KEY (`id_opcion`) REFERENCES `gu_opcion` (`id_opcion`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `gu_rol_menu`
 --
 
 LOCK TABLES `gu_rol_menu` WRITE;
-/*!40000 ALTER TABLE `gu_rol_menu` DISABLE KEYS */;
+
 INSERT INTO `gu_rol_menu` VALUES (1,2,NULL,NULL,NULL,NULL),(1,318,NULL,NULL,NULL,NULL),(1,321,NULL,NULL,NULL,NULL),(1,322,NULL,NULL,NULL,NULL),(1,334,NULL,NULL,NULL,NULL),(1,336,NULL,NULL,NULL,NULL),(1,397,NULL,NULL,NULL,NULL),(1,409,NULL,NULL,NULL,NULL),(1,422,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `gu_rol_menu` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -172,17 +165,16 @@ CREATE TABLE `permiso_url` (
   `url_permiso` varchar(200) DEFAULT NULL,
   `nombre_permiso` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_permiso`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `permiso_url`
 --
 
 LOCK TABLES `permiso_url` WRITE;
-/*!40000 ALTER TABLE `permiso_url` DISABLE KEYS */;
+
 INSERT INTO `permiso_url` VALUES (1,'View_administrador','Administradores'),(2,'View_oferta','Cobros'),(3,'View_bodega','Bodega'),(4,'View_stock','bodega stock');
-/*!40000 ALTER TABLE `permiso_url` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -203,17 +195,14 @@ CREATE TABLE `sesiones` (
   PRIMARY KEY (`id_sesion`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `sesiones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=1591 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `sesiones`
 --
 
 LOCK TABLES `sesiones` WRITE;
-/*!40000 ALTER TABLE `sesiones` DISABLE KEYS */;
 INSERT INTO `sesiones` VALUES (1590,'SISTEMAS',371,'ADMINISTRADOR','2021-02-08 11:11:22','2021-02-08 11:13:53',1);
-/*!40000 ALTER TABLE `sesiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -241,17 +230,15 @@ CREATE TABLE `tbl_tema` (
   `texto_tabla` varchar(45) COLLATE utf8_unicode_ci DEFAULT '#fff',
   PRIMARY KEY (`id_tema`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+);
 
 --
 -- Dumping data for table `tbl_tema`
 --
 
 LOCK TABLES `tbl_tema` WRITE;
-/*!40000 ALTER TABLE `tbl_tema` DISABLE KEYS */;
 INSERT INTO `tbl_tema` VALUES (1,'#000000','#103c63','1156648641.png','','#153b69','#000000','#324b6c','#000000','indigo',371,'#fff','#fff','#fff','#ffffff'),(2,'black','#0C1D3A','1334876789.jpg','','#0E4AA5','#0C1D3A','#003c6c','#040a1a','indigo',381,'#fff','#fff','#bdcbff','#fff'),(3,'#574eba','#288f8f','966183780.jpg','1836537042.png','#7a4b82','#46517a','#00BCD4','#00BCD4','light-blue',382,'#fff','#fff','#fff','#fff'),(4,'black','#0C1D3A',NULL,NULL,'#0E4AA5','#0C1D3A','#00BCD4','#00BCD4','teal',383,'#fff','#fff','#fff','#fff'),(5,'black','#0C1D3A','1852596369.jpg','','#0E4AA5','#0C1D3A','#00BCD4','#00BCD4','teal',384,'#fff','#fff','#fff','#fff'),(6,'black','#0C1D3A',NULL,NULL,'#0E4AA5','#0C1D3A','#00BCD4','#00BCD4','teal',385,'#fff','#fff','#fff','#fff'),(7,'rgba(0,0,0,0.99)','#0f1414','1218226549.jpeg','1755447378.png','#191b1f','#0C1D3A','#00BCD4','#00BCD4','teal',386,'#0930ea','#fff','#fff','#fff'),(8,'#0097ff','#224f9b','2098585117.jpeg','','#0E4AA5','#0C1D3A','#00BCD4','#00BCD4','teal',387,'#ffffff','#fff','#fff','#fff'),(9,'black','#0c3a16','1432891507.jpg','','#113921','#000000','#032c0a','#11331f','teal',858,'#fff','#fff','#fff','#fff');
-/*!40000 ALTER TABLE `tbl_tema` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -272,17 +259,16 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_gu_rol1` (`id_rol`),
   CONSTRAINT `fk_usuarios_gu_rol1` FOREIGN KEY (`id_rol`) REFERENCES `gu_rol` (`id_rol`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) /*!50100 TABLESPACE intesal1977_n11 */ ENGINE=InnoDB AUTO_INCREMENT=859 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+
 INSERT INTO `usuarios` VALUES (371,'admin@admin.com','827ccb0eea8a706c4c34a16891f84e7b',1,'2019-06-10 16:26:55','ADMINISTRADOR',1);
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 --
@@ -291,15 +277,6 @@ UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'template'
---
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-02-08 11:15:58
