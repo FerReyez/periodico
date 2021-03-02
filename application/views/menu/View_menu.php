@@ -18,18 +18,6 @@
                                     </li>
                                 </ul>
                         </div>
-                        <!-- <br>
-                        <p>
-                         <div class="col-md-1">
-                           
-                                <button type="button" id="create_acc_btn" data-toggle="modal" data-target="#create_form_modal" onclick="$('#carga').css('display','none')" class="btn bg-<?php echo $tema; ?> waves-effect btn-block">
-                                    <i class="material-icons" >add_box</i>
-                                </button>
-                            
-                        </div>   
-                        </p> -->
-                        
-                    
                         <div class="container-fluid">
                             <div class="col-xs-12">
                                 <div class="body table-responsive">

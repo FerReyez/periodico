@@ -19,6 +19,9 @@ $route['login']                     = 'Controller_home/c_login';
 $route['close_session']             = 'Controller_home/cerrar';
 $route['tema']                      = 'Controller_tema/vista_tema';
 
+/***********************************Periodico**********************************************/
+$route['noticia']                      = 'Controller_noticia/vista_noticia';
+
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
 $route['noticias'] = 'Controller_web/listaNoticias';
