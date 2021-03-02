@@ -572,8 +572,18 @@
         });
     }
 
+    $(document).on("click", "#add", function() {
+        $("#carga").fadeOut("slow");
+        $("#action").val("create");
+        $(".form-line").removeClass("focused");
+        $("#developer_cu_form")[0].reset();
+        $("#form-title").text("Agregar menu");
+        $("#nombreb").text("Agregar");
+        $("#create_form_modal").modal("show");
+    });
 
-    $(document).x("click", "#delteBtnId", function (e) {
+
+    $(document).on("click", "#delteBtnId", function (e) {
         e.preventDefault();
         var delteBtnId = $(this).attr('data-delteBtnId');
         swal({
@@ -616,17 +626,7 @@
                 swal("Cancelado", "La acción se a completado exitosamente.", "error");
             }
         });
-    });
-
-    $(document).on("click", "#add", function() {
-        $("#carga").fadeOut("slow");
-        $("#action").val("create");
-        $(".form-line").removeClass("focused");
-        $("#developer_cu_form")[0].reset();
-        $("#form-title").text("Agregar menu");
-        $("#nombreb").text("Agregar");
-        $("#create_form_modal").modal("show");
-    });
+    });    
 
     $(document).on("click", "#editBtnId", function (e) {
         e.preventDefault();
@@ -657,7 +657,7 @@
             }
         });
     });
-    
+
     $(document).on("submit", "#developer_cu_form", function (e) {
         e.preventDefault();
         var menu = $("#menu2").val();
