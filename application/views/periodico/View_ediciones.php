@@ -21,7 +21,7 @@
                     <div class="container-fluid">
                         <div class="col-xs-12">
                             <div class="body table-responsive">
-                                <table id="tbuser"class="table table-bordered table-striped table-condensed">
+                                <table id="tb-edicion"class="table table-bordered table-striped table-condensed">
                                     <thead class="">
                                         <tr>
                                             <th>CORRELATIVO</th>
