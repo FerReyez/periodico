@@ -5,8 +5,8 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Noticias
-                            <small>Aqui podras editar toda la información de las noticias del periodicos Patria Masferreriana</small>
+                            Edciones
+                            <small>Aqui podras editar toda la información de las ediciones del periodico Patria Masferreriana</small>
                         </h2>
                         <ul class="header-dropdown m-r--5" >
                                 <li class="dropdown ">
@@ -25,9 +25,9 @@
                                     <thead class="">
                                         <tr>
                                             <th>CORRELATIVO</th>
-                                            <th>TITULO</th>
-                                            <th>CATEGORIA</th>
+                                            <th>EDICION</th>
                                             <th>FECHA</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -61,26 +61,10 @@
                         <div class="row clearfix">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">receipt</i>
+                                    <i class="material-icons">bookmark</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="text" class="form-control date" placeholder="Titulo" id="titulo" name="titulo">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">receipt</i>
-                                </span>
-                                <div class="form-line">
-                                    <input type="text" class="form-control date" placeholder="Subtitulo" name="subtitulo" id="subtitulo">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">add_a_photo</i>
-                                </span>
-                                <div class="form-line">
-                                    <input type="file" class="form-control date" placeholder="Portada" name="img" id="img">
+                                    <input type="text" class="form-control date" placeholder="Edicion" id="edicion" name="edicion">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -93,32 +77,16 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">person</i>
+                                    <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                <div class="form-line">
-                                    <input type="text" class="form-control date" placeholder="Editor" name="editor" id="editor">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">person</i>
-                                </span>
-                                <div class="form-line">
-                                    <input type="text" class="form-control date" placeholder="Reportero" name="reportero" id="reportero">
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">create</i>
-                                </span>
-                                <div class="form-line">
-                                    <select name="edicion" id="edicion"  class="form-control date se" data-live-search="true" style="width: 100%;">
-                                        <option selected="selected">Edicion</option>
-                                        <option value="xd">Edicion Nro 69</option>
-                                        <option value="xd">Edicion Nro 670</option>
+                                <div >
+                                    <select  id="estado" name="estado"  data-live-search="true">
+                                        <option value="ns">Estado</option>
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                     <input type="hidden" id="updateId" name="updateId">
@@ -135,6 +103,6 @@
         </div>
 
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/ediciones.js"></script>
 
 

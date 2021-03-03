@@ -20,7 +20,8 @@ $route['close_session']             = 'Controller_home/cerrar';
 $route['tema']                      = 'Controller_tema/vista_tema';
 
 /***********************************Periodico**********************************************/
-$route['noticia_admin']                      = 'Controller_noticia/vista_noticia';
+$route['noticia_admin']                      = 'periodico/Controller_noticia/vista_noticia';
+$route['edicion_admin']                      = 'periodico/Controller_edicion/vista_edicion';
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
