@@ -49,71 +49,71 @@
 
 
 <div class="modal fade" id="create_form_modal" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="form-title"></h4>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="form-title"></h4>
+            </div>
+            <div class="modal-body"> 
+            <div id="carga"></div>
+                <form  id="developer_cu_form">
+                    <div class="modal-body users-cont">
+                        <div class="row clearfix">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">@</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Correo" id="nombre" name="nombre">
+                                </div>
                             </div>
-                            <div class="modal-body"> 
-                            <div id="carga"></div>
-                                <form  id="developer_cu_form">
-                                    <div class="modal-body users-cont">
-                                        <div class="row clearfix">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">@</i>
-                                                </span>
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control date" placeholder="Correo" id="nombre" name="nombre">
-                                                </div>
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">person</i>
-                                                </span>
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control date" placeholder="Nombre completo" name="nombre_completo" id="nombre_completo">
-                                                </div>
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">vpn_key</i>
-                                                </span>
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control date" placeholder="Clave" name="clave" id="clave">
-                                                </div>
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">insert_emoticon</i>
-                                                </span>
-                                                <div >
-                                                    <select  id="estado" name="estado"  data-live-search="true">
-                                                        <option value="ns">Estado</option>
-                                                        <option value="1">Activo</option>
-                                                        <option value="0">Inactivo</option>
-                                                    </select>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="updateId" name="updateId">
-                                    <input type="hidden"  name="action" id="action" value="create">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit"  name="submit" id="submit"  ><b id="nombreb"></b>
-                                        </button>
-                                        </form>
-                                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
-                                    Cancelar
-                                </button>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Nombre completo" name="nombre_completo" id="nombre_completo">
+                                </div>
                             </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">vpn_key</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Clave" name="clave" id="clave">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">insert_emoticon</i>
+                                </span>
+                                <div >
+                                    <select  id="estado" name="estado"  data-live-search="true">
+                                        <option value="ns">Estado</option>
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div> 
                         </div>
+                    </div>
+                    <input type="hidden" id="updateId" name="updateId">
+                    <input type="hidden"  name="action" id="action" value="create">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit"  name="submit" id="submit"  ><b id="nombreb"></b>
+                        </button>
+                        </form>
+                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                    Cancelar
+                </button>
+            </div>
+        </div>
                     
 
 
 
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/"></script> -->
 
 
