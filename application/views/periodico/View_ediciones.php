@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Edciones
+                            Ediciones
                             <small>Aqui podras editar toda la información de las ediciones del periodico Patria Masferreriana</small>
                         </h2>
                         <ul class="header-dropdown m-r--5" >
@@ -82,8 +82,8 @@
                                 <div >
                                     <select  id="estado" name="estado"  data-live-search="true">
                                         <option value="ns">Estado</option>
-                                        <option value="1">Activo</option>
-                                        <option value="0">Inactivo</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
                                     </select>
                                 </div>
                             </div> 

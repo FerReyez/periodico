@@ -110,6 +110,7 @@ $(document).on("click", "#add", function () {
          }
      });
  });
+ 
  $(document).on("submit", "#developer_cu_form", function(e) {
      e.preventDefault();
      var nombre = $("#nombre").val();

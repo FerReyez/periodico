@@ -61,4 +61,109 @@ class Controller_edicion extends CI_Controller {
         );
         echo json_encode($output);
     }
+
+    public function actualizar_crear_edicion() {
+        if (isset($_POST['action'])) {
+            if ($_POST['action'] == 'create') {
+
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "CREAR",
+                    'tabla' => "EDICION",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+
+                $table = 'edicion';
+
+                $data = array(
+                    'fecha_publicacion' => $_POST['fecha'],
+                    'num_edicion' => $_POST['edicion'],
+                    'estado' => $_POST['estado'],
+                );
+                $result = $this->Model_edicion->crear_edicion($table, $data);
+                if ($result) {
+                    echo 'created';
+                }
+            }
+
+            if ($_POST['action'] == 'update') {
+
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "ACTUALIZAR",
+                    'tabla' => "EDICION",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+                $table = 'edicion';
+                $updateId = $_POST['updateId'];
+
+                $data = array(
+                    'fecha_publicacion' => $_POST['fecha'],
+                    'num_edicion' => $_POST['edicion'],
+                    'estado' => $_POST['estado'],
+                );
+                $result = $this->Model_edicion->actualizar_edicion($table, $data, $updateId);
+                if ($result) {
+                    echo 'update';
+                }
+            }
+        }
+    }
+
+    public function eliminar_edicion() {
+        if ($_POST['action'] == 'delete') {
+
+            date_default_timezone_set('America/El_Salvador');
+            $fecha_hora = date("Y-m-d H:i:s");
+            $id_u = $_SESSION['idusuario'];
+            $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+            $acciones = array(
+                'fecha_hora' => $fecha_hora,
+                'ip' => $ip,
+                'accion' => "ELIMINAR",
+                'tabla' => "EDICION",
+                'nombre' => $_SESSION['nombre_completo'],
+                'id_usuario' => $id_u,
+            );
+            $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+            $table = "edicion";
+            $delteBtnId = $_POST['delteBtnId'];
+            $result = $this->Model_edicion->eliminar_edicion($table, $delteBtnId);
+            if ($result) {
+                echo 'deleted';
+            }
+        }
+    }
+
+    public function linea_actualizar() {
+        if ($_POST['action'] == 'fetchSingleRow') {
+            $output[] = '';
+            $table = 'edicion';
+            $editBtnId = $_POST['editBtnId'];
+            $result = $this->Model_edicion->linea_actualizar($table, $editBtnId);
+            foreach ($result as $value) {
+                $output['fecha_publicacion'] = $value->fecha_publicacion;
+                $output['num_edicion'] = $value->num_edicion;
+                $output['estado'] = $value->estado;
+            }
+            echo json_encode($output);
+        }
+    }
 }

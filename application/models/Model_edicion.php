@@ -1,7 +1,7 @@
 <?php
 
 class Model_edicion extends CI_Model {
-    
+
     public $column = array(
         'id_edicion',
         'fecha_publicacion',
@@ -61,5 +61,28 @@ class Model_edicion extends CI_Model {
         $this->db->select('*');
         $this->db->from('edicion');
         return $this->db->count_all_results();
+    }
+
+     public function crear_edicion($table, $data) {
+        $result = $this->db->insert($table, $data);
+        return $result;
+    }
+
+    public function eliminar_edicion($table, $delteBtnId) {
+        $this->db->where('id_edicion', $delteBtnId);
+        $result = $this->db->delete($table);
+        return $result;
+    }
+
+    public function linea_actualizar($table, $editBtnId) {
+        $this->db->where('id_edicion', $editBtnId);
+        $result = $this->db->get($table);
+        return $result->result();
+    }
+
+    public function actualizar_edicion($table, $data, $updateId) {
+        $this->db->where('id_edicion', $updateId);
+        $result = $this->db->update($table, $data);
+        return $result;
     }
 }
