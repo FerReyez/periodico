@@ -22,6 +22,7 @@ $route['tema']                      = 'Controller_tema/vista_tema';
 /***********************************Periodico**********************************************/
 $route['noticia_admin']                      = 'periodico/Controller_noticia/vista_noticia';
 $route['edicion_admin']                      = 'periodico/Controller_edicion/vista_edicion';
+$route['categoria_admin']                    = 'periodico/Controller_categoria/vista_categoria';
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
