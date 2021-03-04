@@ -85,7 +85,7 @@
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
                                 <div >
-                                    <select  id="categoria" name="categoria"  data-live-search="true">
+                                    <select  id="cat_s" name="cat_s"  data-live-search="true">
                                         <option value="ns">Categoria</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
