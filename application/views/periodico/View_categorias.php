@@ -505,7 +505,7 @@
                                         <option value="fa fa-square"data-icon="fa fa-square"> fa-square</option>
                                         <option value="fa fa-square-o"data-icon="fa fa-square-o"> fa-square-o</option>
                                         <option value="fa fa-star"data-icon="fa fa-star"> fa-star</option>
-                                        <option value="fa fa-star-half"data-icon="fa fa-star-half"> fa-star-half</option>
+                                        <option value="fa fa-star-half" data-icon="fa fa-star-half"> fa-star-half</option>
                                         <option value="fa fa-stop"data-icon="fa fa-stop"> fa-stop</option>
                                         <option value="fa fa-subscript"data-icon="fa fa-subscript"> fa-subscript</option>
                                         <option value="fa fa-tablet"data-icon="fa fa-tablet"> fa-tablet</option>
@@ -523,8 +523,8 @@
                                     <select class="form-control" id="cat_s" name="cat_s"  data-live-search="true">
                                         <option value="ns">*Seleccione Categoria*</option>
                                         <?php foreach ($categorias as $c) { ?>
-                                            <option value="<?php echo $c["id_cat_noticia"]; ?>">
-                                            <?php echo $c["nc_noticia"]; ?>
+                                            <option value="<?php echo $c["id_cat_noticia"]; ?>" data-icon="<?php echo $c["nc_icono"]; ?>">
+                                                <?php echo $c["nc_noticia"]; ?>
                                             </option>
                                         <?php } ?>
                                     </select>
