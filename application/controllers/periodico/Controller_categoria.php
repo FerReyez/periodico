@@ -127,4 +127,30 @@ class Controller_categoria extends CI_Controller {
         }
     }
 
+    public function eliminar_categoria() {
+        if ($_POST['action'] == 'delete') {
+
+            date_default_timezone_set('America/El_Salvador');
+            $fecha_hora = date("Y-m-d H:i:s");
+            $id_u = $_SESSION['idusuario'];
+            $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+            $acciones = array(
+                'fecha_hora' => $fecha_hora,
+                'ip' => $ip,
+                'accion' => "ELIMINAR",
+                'tabla' => "CATEGORIA",
+                'nombre' => $_SESSION['nombre_completo'],
+                'id_usuario' => $id_u,
+            );
+            $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+            $table = "cat_noticia";
+            $delteBtnId = $_POST['delteBtnId'];
+            $result = $this->Model_categoria->eliminar_categoria($table, $delteBtnId);
+            if ($result) {
+                echo 'deleted';
+            }
+        }
+    }
+
 }

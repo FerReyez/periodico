@@ -80,3 +80,46 @@ $(document).on("submit", "#developer_cu_form", function (e) {
         });
     }
 });
+
+$(document).on("click", "#delteBtnId", function (e) {
+    e.preventDefault();
+    var delteBtnId = $(this).attr('data-delteBtnId');
+    swal({
+        title: "Estas seguro?",
+        text: "Si completas la acción ya no podras recuperar tus datos! ",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Si, Continuar!",
+        cancelButtonText: "No, Cancelar!",
+        closeOnConfirm: false,
+        closeOnCancel: false,
+        type: "info",
+        showLoaderOnConfirm: true,
+        animation: "slide-from-top",
+        html: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            var action = 'delete';
+            $.ajax({
+                url: "periodico/Controller_categoria/eliminar_categoria",
+                method: "POST",
+                data: {
+                    delteBtnId: delteBtnId,
+                    action: action
+                },
+                beforeSend: function () { },
+                success: function (data) {
+                    if (data.trim() == 'deleted') {
+                        swal("Eliminado!", "La acción se a completado exitosamente.", "success");
+                        main();
+                    }
+                },
+                error: function () {
+                    swal("Error", "Intenta de nuevo, si el error persiste contacta a tu administrador.", "error");
+                }
+            });
+        } else {
+            swal("Cancelado", "La acción se a completado exitosamente.", "error");
+        }
+    });
+});

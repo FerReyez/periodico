@@ -74,4 +74,10 @@ class Model_categoria extends CI_Model {
         $result = $this->db->insert($table, $data);
         return $result;
     }
+
+    public function eliminar_categoria($table, $delteBtnId) {
+        $this->db->where('id_cat_noticia', $delteBtnId);
+        $result = $this->db->delete($table);
+        return $result;
+    }
 }
