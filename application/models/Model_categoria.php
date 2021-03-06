@@ -2,6 +2,13 @@
 
 class Model_categoria extends CI_Model {
 
+    public function obtener_categorias() {
+        $this->db->select('*');
+        $this->db->from('cat_noticia');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public $column = array(
         'id_cat_noticia',
         'nc_noticia',

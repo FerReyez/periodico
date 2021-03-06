@@ -13,7 +13,7 @@ class Controller_categoria extends CI_Controller {
     }
 
    
-    public function cargar_plantilla($vista)
+    public function cargar_plantilla($vista, $data)
     {
         $data['main_content'] = $vista;
         $this->load->view('template/template', $data);
@@ -24,8 +24,10 @@ class Controller_categoria extends CI_Controller {
         if (!isset($_SESSION['usuario'])) {
             redirect('Controller_home/index');
         }
+        $categoriass = $this->Model_categoria->obtener_categorias();
+        $data['categorias'] = $categoriass;
         $vista = "periodico/View_categorias";
-        $this->cargar_plantilla($vista);
+        $this->cargar_plantilla($vista,$data);
     }
 
     public function listar_categoria() {
@@ -38,8 +40,7 @@ class Controller_categoria extends CI_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $person->nc_noticia;
-            $row[] = $person->nc_icono;
-           
+            $row[] = "<i  class='".$person->nc_icono."'></i>  ".$person->nc_icono."";
             $row[] = "<center>
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_cat_noticia . "'>build</i></b></button>
