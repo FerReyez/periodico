@@ -62,4 +62,9 @@ class Model_categoria extends CI_Model {
         $this->db->from('cat_noticia');
         return $this->db->count_all_results();
     }
+
+    public function crear_categoria($table, $data) {
+        $result = $this->db->insert($table, $data);
+        return $result;
+    }
 }

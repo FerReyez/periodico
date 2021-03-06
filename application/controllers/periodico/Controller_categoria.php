@@ -62,4 +62,68 @@ class Controller_categoria extends CI_Controller {
         echo json_encode($output);
     }
 
+    public function actualizar_crear_categoria() {
+        if (isset($_POST['action'])) {
+            if ($_POST['action'] == 'create') {
+
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "CREAR",
+                    'tabla' => "CATEGORIA",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+
+                $table = 'cat_noticia';
+
+                $data = array(
+                    'nc_noticia' => $_POST['categoria'],
+                    'nc_icono' => $_POST['icono'],
+                    'nc_categoria' => $_POST['cat_s'],
+                );
+                $result = $this->Model_categoria->crear_categoria($table, $data);
+                if ($result) {
+                    echo 'created';
+                }
+            }
+
+            /*if ($_POST['action'] == 'update') {
+
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "ACTUALIZAR",
+                    'tabla' => "EDICION",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+                $table = 'edicion';
+                $updateId = $_POST['updateId'];
+
+                $data = array(
+                    'fecha_publicacion' => $_POST['fecha'],
+                    'num_edicion' => $_POST['edicion'],
+                    'estado' => $_POST['estado'],
+                );
+                $result = $this->Model_edicion->actualizar_edicion($table, $data, $updateId);
+                if ($result) {
+                    echo 'update';
+                }
+            }*/
+        }
+    }
+
 }
