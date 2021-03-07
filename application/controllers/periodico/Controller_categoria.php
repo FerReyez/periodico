@@ -95,7 +95,7 @@ class Controller_categoria extends CI_Controller {
                 }
             }
 
-            /*if ($_POST['action'] == 'update') {
+            if ($_POST['action'] == 'update') {
 
                 date_default_timezone_set('America/El_Salvador');
                 $fecha_hora = date("Y-m-d H:i:s");
@@ -105,25 +105,25 @@ class Controller_categoria extends CI_Controller {
                     'fecha_hora' => $fecha_hora,
                     'ip' => $ip,
                     'accion' => "ACTUALIZAR",
-                    'tabla' => "EDICION",
+                    'tabla' => "CATEGORIA",
                     'nombre' => $_SESSION['nombre_completo'],
                     'id_usuario' => $id_u,
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
 
-                $table = 'edicion';
+                $table = 'cat_noticia';
                 $updateId = $_POST['updateId'];
 
                 $data = array(
-                    'fecha_publicacion' => $_POST['fecha'],
-                    'num_edicion' => $_POST['edicion'],
-                    'estado' => $_POST['estado'],
+                    'nc_noticia' => $_POST['categoria'],
+                    'nc_icono' => $_POST['icono'],
+                    'nc_categoria' => $_POST['cat_s'],
                 );
-                $result = $this->Model_edicion->actualizar_edicion($table, $data, $updateId);
+                $result = $this->Model_categoria->actualizar_categoria($table, $data, $updateId);
                 if ($result) {
                     echo 'update';
                 }
-            }*/
+            }
         }
     }
 
@@ -150,6 +150,21 @@ class Controller_categoria extends CI_Controller {
             if ($result) {
                 echo 'deleted';
             }
+        }
+    }
+
+    public function linea_actualizar() {
+        if ($_POST['action'] == 'fetchSingleRow') {
+            $output[] = '';
+            $table = 'cat_noticia';
+            $editBtnId = $_POST['editBtnId'];
+            $result = $this->Model_categoria->linea_actualizar($table, $editBtnId);
+            foreach ($result as $value) {
+                $output['nc_noticia'] = $value->nc_noticia;
+                $output['nc_icono'] = $value->nc_icono;
+                $output['nc_categoria'] = $value->nc_categoria;
+            }
+            echo json_encode($output);
         }
     }
 

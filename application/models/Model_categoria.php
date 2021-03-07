@@ -80,4 +80,15 @@ class Model_categoria extends CI_Model {
         $result = $this->db->delete($table);
         return $result;
     }
+    public function linea_actualizar($table, $editBtnId) {
+        $this->db->where('id_cat_noticia', $editBtnId);
+        $result = $this->db->get($table);
+        return $result->result();
+    }
+
+    public function actualizar_categoria($table, $data, $updateId) {
+        $this->db->where('id_cat_noticia', $updateId);
+        $result = $this->db->update($table, $data);
+        return $result;
+    }
 }

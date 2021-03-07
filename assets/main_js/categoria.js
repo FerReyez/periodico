@@ -123,3 +123,35 @@ $(document).on("click", "#delteBtnId", function (e) {
         }
     });
 });
+
+$(document).on("click", "#editBtnId", function (e) {
+    e.preventDefault();
+    var editBtnId = $(this).attr('data-editBtnId');
+    var action = 'fetchSingleRow';
+    $.ajax({
+        url: "periodico/Controller_categoria/linea_actualizar",
+        method: "POST",
+        data: {
+            editBtnId: editBtnId,
+            action: action
+        },
+        dataType: "json",
+        beforeSend: function () {
+            $("#carga").css("display", "block");
+            $("#create_form_modal").modal('show');
+        },
+        success: function (data) {
+            $("#carga").fadeOut("slow");
+            $("#categoria").val(data.nc_noticia);
+            $("#categoria").change();
+            $("#icono").val(data.nc_icono);
+            $("#icono").change();
+            $("#cat_s").val(data.nc_categoria);
+            $("#cat_s").change();
+            $("#form-title").text('Editar categoria');
+            $("#action").val('update');
+            $("#nombreb").html('Actualizar');
+            $("#updateId").val(editBtnId);
+        }
+    });
+});
