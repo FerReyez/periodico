@@ -80,11 +80,18 @@ class Controller_perfiles extends CI_Controller
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
 
+                $img = '';
+                if ($_FILES['url_foto']['name'] != '') {
+                    $img = $this->upload_img($_FILES['url_foto']);
+                } else {
+                    $img = '';
+                }
 
                 $table = 'perfiles';
 
                 $data = array(
                     'nombre' => $_POST['nombre'],
+                    'url_foto' => $img,
                     'fecha_crea' => $_POST['fecha_crea'],
                     'estado' => $_POST['estado'],
                 );
@@ -140,5 +147,14 @@ class Controller_perfiles extends CI_Controller
             }
             echo json_encode($output);
         }
+    }
+
+    public function upload_img($file)
+    {
+        $extention = explode('.', $file['name']);
+        $newName = rand() . '.' . $extention[1];
+        $destination = './assets/upload/perfiles/' . $newName;
+        move_uploaded_file($file['tmp_name'], $destination);
+        return $newName;
     }
 }
