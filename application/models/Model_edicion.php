@@ -2,6 +2,14 @@
 
 class Model_edicion extends CI_Model {
 
+    public function obtener_ediciones() {
+        $this->db->order_by("fecha_publicacion desc");
+        $this->db->select('*');
+        $this->db->from('edicion');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public $column = array(
         'id_edicion',
         'fecha_publicacion',
