@@ -21,13 +21,16 @@
                     <div class="container-fluid">
                         <div class="col-xs-12">
                             <div class="body table-responsive">
-                                <table id="tbuser"class="table table-bordered table-striped table-condensed">
+                                <table id="tb-noticia"class="table table-bordered table-striped table-condensed">
                                     <thead class="">
                                         <tr>
-                                            <th>CORRELATIVO</th>
+                                            <th>#</th>
                                             <th>TITULO</th>
+                                            <th>EDITOR</th>
+                                            <th>REPORTERO</th>
                                             <th>CATEGORIA</th>
                                             <th>FECHA</th>
+                                            <th>EDICION</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -80,7 +83,15 @@
                                     <i class="material-icons">add_a_photo</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="file" class="form-control date" placeholder="Portada" name="img" id="img">
+                                    <input type="file" class="form-control date" placeholder="Portada" name="url_foto" id="url_foto">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Fotografo" name="fotografo" id="fotografo">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -109,13 +120,43 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">create</i>
+                                    <i class="material-icons">content_paste</i>
+                                </span>
+                                <div class="form-line">
+                                    <select name="categoria" id="categoria"  class="form-control date se" data-live-search="true" style="width: 100%;">
+                                        <option selected="selected" value="">*Seleccione una Categoria*</option>
+                                        <?php foreach ($categorias as $c) { ?>
+                                            <option value="<?php echo $c["id_cat_noticia"]; ?>" data-icon="<?php echo $c["nc_icono"]; ?>">
+                                                <?php echo $c["nc_noticia"]; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">attach_file</i>
                                 </span>
                                 <div class="form-line">
                                     <select name="edicion" id="edicion"  class="form-control date se" data-live-search="true" style="width: 100%;">
-                                        <option selected="selected">Edicion</option>
-                                        <option value="xd">Edicion Nro 69</option>
-                                        <option value="xd">Edicion Nro 670</option>
+                                        <option selected="selected" value="">*Seleccione una Edicion*</option>
+                                        <?php foreach ($ediciones as $e) { ?>
+                                            <option value="<?php echo $e["id_edicion"]; ?>">
+                                                Edicion Nro <?php echo $e["num_edicion"]; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">bookmark</i>
+                                </span>
+                                <div class="form-line">
+                                    <select name="nivel" id="nivel"  class="form-control date se" style="width: 100%;">
+                                        <option selected="selected" value="">*Seleccione Nivel*</option>
+                                        <option value="1" data-icon="fa fa-check-circle">Principal</option>
+                                        <option value="2" data-icon="fa fa-times-circle">Secundaria</option>
                                     </select>
                                 </div>
                             </div>
