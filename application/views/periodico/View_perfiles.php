@@ -110,5 +110,47 @@
             </div>
         </div>
 
-        <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/perfiles.js"></script>
+
+
+        <div class="modal fade" id="modal-nota" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="form-title1"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carga"></div>
+                        <form id="nota-form">
+                            <div class="modal-body users-cont">
+                                <div class="row clearfix">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">bookmark</i>
+                                        </span>
+                                        <div class="form-line">
+                                            <input type="text" class="form-control date" placeholder="Nombre" id="" name="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <input type="hidden" id="updateId" name="updateId">
+                    <input type="hidden" name="action" id="action" value="create">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="nombreb1"></b>
+                    </button>
+                    </form>
+                    <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+
+            <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/perfiles.js"></script>

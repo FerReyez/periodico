@@ -51,11 +51,11 @@ class Controller_noticia extends CI_Controller {
             $row[] = "N° -".$person->num_edicion;
             $row[] = "<center>
             <b class='tool'>
-            <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_noticia . "'>description</i></b></button>
+            <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->id_noticia . "'>description</i></b></button>
             <span class='tooltip-css3'>NOTA</span>
             </b>
             <b class='tool'>
-            <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_noticia . "'>add_to_photos</i></b></button>
+            <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='fotoBtnId' data-fotoBtnId='" . $person->id_noticia . "'>add_to_photos</i></b></button>
             <span class='tooltip-css3'>FOTOS</span>
             </b>
             <b class='tool'>
@@ -172,6 +172,28 @@ class Controller_noticia extends CI_Controller {
             //         echo 'update';
             //     }
             // }
+        }
+    }
+
+    public function linea_actualizar() {
+        if ($_POST['action'] == 'fetchSingleRow') {
+            $output[] = '';
+            $table = 'noticias';
+            $editBtnId = $_POST['editBtnId'];
+            $result = $this->Model_noticia->linea_actualizar($editBtnId);
+            foreach ($result as $value) {
+                $output['Titular'] = $value->Titular;
+                $output['Subtitulo'] = $value->Subtitulo;
+                $output['url'] = $value->url;
+                $output['Fotografo'] = $value->Fotografo;
+                $output['Fecha'] = $value->Fecha;
+                $output['Editor'] = $value->Editor;
+                $output['Reportero'] = $value->Reportero;
+                $output['id_cat_noticia'] = $value->id_cat_noticia;
+                $output['id_edicion'] = $value->id_edicion;
+                $output['id_cat_nivel'] = $value->id_cat_nivel;
+            }
+            echo json_encode($output);
         }
     }
 

@@ -84,6 +84,7 @@
                                 </span>
                                 <div class="form-line">
                                     <input type="file" class="form-control date" placeholder="Portada" name="url_foto" id="url_foto">
+                                    <input type="hidden" name="url" id="url">
                                 </div>
                             </div>
                             <div class="input-group">

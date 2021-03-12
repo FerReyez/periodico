@@ -83,4 +83,17 @@ class Model_noticia extends CI_Model {
         return $result;
     }
 
+    public function linea_actualizar($editBtnId) {
+        $this->db->where('noti.id_noticia', $editBtnId);
+        $this->db->select('*');
+        $this->db->from('noticias noti');
+        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia','left');
+        $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia','left');
+        $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion','left');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia','left');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto','left');
+        $result = $this->db->get();
+        return $result->result();
+    }
+
 }
