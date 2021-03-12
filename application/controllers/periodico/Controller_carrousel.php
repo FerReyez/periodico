@@ -126,15 +126,15 @@ class Controller_carrousel extends CI_Controller
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
                 $img = '';
-                if ($_POST['n_foto'] != '') {
+
+                if ($_FILES['foto']['name'] != '') {
+                    $img = $this->upload_img($_FILES['foto']);
+                } else if ($_POST['n_foto'] != '') {
                     $img = $_POST['n_foto'];
-                } else {
-                    if ($_FILES['foto']['name'] != '') {
-                        $img = $this->upload_img($_FILES['foto']);
-                    } else {
-                        $img = '';
-                    }
+                }else{
+                    $img = '';
                 }
+
                 $table = 'carrousel';
                 $updateId = $_POST['updateId'];
 
