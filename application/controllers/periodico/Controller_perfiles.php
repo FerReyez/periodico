@@ -37,12 +37,19 @@ class Controller_perfiles extends CI_Controller
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $person) {
+            $estado = $person->estado;
+            $xd = "";
+            if($estado == 'Activo'){
+                $xd = "<i class='material-icons' style='color:green;'>done</i> Activo";
+            } else {
+                $xd = "<i class='material-icons' style='color:clear;'>done</i> Inacctivo";
+            }
             $no++;
             $row = array();
             $row[] = $no;
             $row[] = $person->nombre;
             $row[] = $person->fecha_crea;
-            $row[] = $person->estado;
+            $row[] = $xd;
             $row[] = "<center>
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
