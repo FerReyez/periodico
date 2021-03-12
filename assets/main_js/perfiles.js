@@ -32,6 +32,16 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
+$(document).on("click", "#add", function () {
+    $("#carga").fadeOut("slow");
+    $("#action").val("create");
+    $(".form-line").removeClass("focused");
+    $("#developer_cu_form")[0].reset();
+    $("#form-title").text("Agregar Edicion");
+    $("#nombreb").text("Agregar");
+    $("#create_form_modal22").modal("show");
+});
+
 /////// Crear y actualizar ///////////
 
 $(document).on("submit", "#developer_cu_form", function (e) {
@@ -116,6 +126,37 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#action").val('update');
             $("#nombreb").html('Actualizar');
             $("#updateId").val(editBtnId);
+        }
+    });
+});
+
+$(document).on("click", "#editBtnIdp", function (e) {
+    e.preventDefault();
+    var editBtnIdp = $(this).attr('data-editBtnIdp');
+    var action = 'fetchSingleRow';
+    $.ajax({
+        url: "",
+        method: "POST",
+        data: {
+            editBtnIdp: editBtnIdp,
+            action: action
+        },
+        dataType: "json",
+        beforeSend: function () {
+            $("#carga").css("display", "block");
+            $("#create_form_modal22").modal('show');
+        },
+        success: function (data) {
+            $("#carga").fadeOut("slow");
+            $("#estado").val(data.estado);
+            $("#estado").change();
+            $("#nombre").val(data.nombre);
+            $("#fecha_crea").val(data.fecha_crea);
+            $("#fecha").change();
+            $("#form-title").text('Editar edicion');
+            $("#action").val('update');
+            $("#nombreb").html('Actualizar');
+            $("#updateId").val(editBtnIdp);
         }
     });
 });
