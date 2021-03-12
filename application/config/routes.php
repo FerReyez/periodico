@@ -24,7 +24,7 @@ $route['noticia_admin']                      = 'periodico/Controller_noticia/vis
 $route['edicion_admin']                      = 'periodico/Controller_edicion/vista_edicion';
 $route['categoria_admin']                    = 'periodico/Controller_categoria/vista_categoria';
 $route['perfiles']                           = 'periodico/Controller_perfiles/vista_perfiles';
-
+$route['carrousel']                           = 'periodico/Controller_carrousel/vista_carrousel';
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
 $route['noticias'] = 'Controller_web/listaNoticias';
