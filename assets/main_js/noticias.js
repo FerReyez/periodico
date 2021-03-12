@@ -28,6 +28,52 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
+$(document).on("click", "#editBtnId", function (e) {
+    e.preventDefault();
+    var editBtnId = $(this).attr('data-editBtnId');
+    var action = 'fetchSingleRow';
+    $.ajax({
+        url: "periodico/Controller_noticia/linea_actualizar",
+        method: "POST",
+        data: {
+            editBtnId: editBtnId,
+            action: action
+        },
+        dataType: "json",
+        beforeSend: function () {
+            $("#carga").css("display", "block");
+            $("#create_form_modal").modal('show');
+        },
+        success: function (data) {
+            $("#carga").fadeOut("slow");
+            $("#titulo").val(data.Titular);
+            $("#titulo").change();
+            $("#subtitulo").val(data.Subtitulo);
+            $("#subtitulo").change();
+            $("#url").val(data.url);
+            $("#url").change();
+            $("#fotografo").val(data.Fotografo);
+            $("#fotografo").change();
+            $("#fecha").val(data.Fecha);
+            $("#fecha").change();
+            $("#editor").val(data.Editor);
+            $("#editor").change();
+            $("#reportero").val(data.Reportero);
+            $("#reportero").change();
+            $("#categoria").val(data.id_cat_noticia);
+            $("#categoria").change();
+            $("#edicion").val(data.id_edicion);
+            $("#edicion").change();
+            $("#nivel").val(data.id_cat_nivel);
+            $("#nivel").change();
+            $("#form-title").text('Editar noticia');
+            $("#action").val('update');
+            $("#nombreb").html('Actualizar');
+            $("#updateId").val(editBtnId);
+        }
+    });
+});
+
 $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
     var titulo = $("#titulo").val();
