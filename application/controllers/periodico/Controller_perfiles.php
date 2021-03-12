@@ -56,7 +56,7 @@ class Controller_perfiles extends CI_Controller
               <span class='tooltip-css3'>EDITAR</span>
             </b>       
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnIdp' data-editBtnIdp='" . $person->idperfiles . "'>build</i></b></button>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notiBtnId' data-notiBtnId='" . $person->idperfiles . "'>build</i></b></button>
               <span class='tooltip-css3'>EDITAR</span>
             </b>      
             </center>";

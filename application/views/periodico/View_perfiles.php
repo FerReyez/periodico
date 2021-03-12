@@ -112,15 +112,15 @@
 
 
 
-        <div class="modal fade" id="create_form_modal22" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+        <div class="modal fade" id="modal-nota" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="form-title"></h4>
+                        <h4 class="modal-title" id="form-title1"></h4>
                     </div>
                     <div class="modal-body">
                         <div id="carga"></div>
-                        <form id="developer_cu_form">
+                        <form id="nota-form">
                             <div class="modal-body users-cont">
                                 <div class="row clearfix">
                                     <div class="input-group">
@@ -138,7 +138,7 @@
                     <input type="hidden" name="action" id="action" value="create">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="nombreb"></b>
+                    <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="nombreb1"></b>
                     </button>
                     </form>
                     <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">

@@ -32,14 +32,13 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
-$(document).on("click", "#add", function () {
-    $("#carga").fadeOut("slow");
+$(document).on("click", "#notiBtnId", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
-    $("#developer_cu_form")[0].reset();
-    $("#form-title").text("Agregar Edicion");
-    $("#nombreb").text("Agregar");
-    $("#create_form_modal22").modal("show");
+    $("#nota-form")[0].reset();
+    $("#form-title1").text("Agregar Edicion");
+    $("#nombreb1").text("Agregar");
+    $("#modal-nota").modal("show");
 });
 
 /////// Crear y actualizar ///////////
