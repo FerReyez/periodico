@@ -33,13 +33,13 @@ $(document).on("click", "#add", function () {
 });
 
 $(document).on("click", "#crea_perfil", function () {
-    $("#carga").fadeOut("slow");
+    $("#carga-comentario").fadeOut("slow");
     // $("#action").val("create");
     $(".form-line").removeClass("focused");
-    // $("#developer_cu_form")[0].reset();
-    $("#form-comen").text("Agregar comentario");    
+    $("#form-comentario")[0].reset();
+    $("#comentario-title").text("Agregar Comentario");    
     $("#nombreb").text("Agregar");
-    $("#create_form_modal_perfil").modal("show");
+    $("#modal-perfil").modal("show");
 });
 
 /////// Crear y actualizar ///////////
