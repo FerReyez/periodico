@@ -56,9 +56,9 @@ class Controller_perfiles extends CI_Controller
               <span class='tooltip-css3'>EDITAR</span>
             </b>       
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notiBtnId' data-notiBtnId='" . $person->idperfiles . "'>build</i></b></button>
-              <span class='tooltip-css3'>EDITAR</span>
-            </b>      
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_perfil' data-crea_perfil='" .  "'>build</i></b></button>
+              <span class='tooltip-css3'>COMENTARIOS</span>
+            </b>       
             </center>";
             $data[] = $row;
         }

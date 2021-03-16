@@ -32,13 +32,14 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
-$(document).on("click", "#notiBtnId", function () {
-    $("#action").val("create");
+$(document).on("click", "#crea_perfil", function () {
+    $("#carga").fadeOut("slow");
+    // $("#action").val("create");
     $(".form-line").removeClass("focused");
-    $("#nota-form")[0].reset();
-    $("#form-title1").text("Agregar Edicion");
-    $("#nombreb1").text("Agregar");
-    $("#modal-nota").modal("show");
+    // $("#developer_cu_form")[0].reset();
+    $("#form-comen").text("Agregar comentario");    
+    $("#nombreb").text("Agregar");
+    $("#create_form_modal_perfil").modal("show");
 });
 
 /////// Crear y actualizar ///////////
@@ -129,33 +130,32 @@ $(document).on("click", "#editBtnId", function (e) {
     });
 });
 
-$(document).on("click", "#editBtnIdp", function (e) {
-    e.preventDefault();
-    var editBtnIdp = $(this).attr('data-editBtnIdp');
-    var action = 'fetchSingleRow';
-    $.ajax({
-        url: "",
-        method: "POST",
-        data: {
-            editBtnIdp: editBtnIdp,
-            action: action
-        },
-        dataType: "json",
-        beforeSend: function () {
-            $("#carga").css("display", "block");
-            $("#create_form_modal22").modal('show');
-        },
-        success: function (data) {
-            $("#carga").fadeOut("slow");
-            $("#estado").val(data.estado);
-            $("#estado").change();
-            $("#nombre").val(data.nombre);
-            $("#fecha_crea").val(data.fecha_crea);
-            $("#fecha").change();
-            $("#form-title").text('Editar edicion');
-            $("#action").val('update');
-            $("#nombreb").html('Actualizar');
-            $("#updateId").val(editBtnIdp);
-        }
-    });
-});
+
+// $(document).on("click", "#crea_perfil", function (e) {
+//     e.preventDefault();
+//     var crea_perfil = $(this).attr('data-crea_perfil');
+//     var action = 'fetchSingleRow';
+//     $.ajax({
+//         url: "",
+//         method: "POST",
+//         data: {
+//             crea_perfil: crea_perfil,
+//             action: action
+//         },
+//         dataType: "json",
+//         beforeSend: function () {
+//             $("#carga").css("display", "block");
+//             $("#create_form_modal_perfil").modal('show');
+//         },
+//         success: function (data) {
+//             $("#carga").fadeOut("slow");
+//             $("#estado").val(data.estado);
+//             $("#estado").change();                
+//             $("#fecha").change();
+//             $("#form-title").text('Editar edicion');
+//             $("#action").val('update');
+//             $("#nombreb").html('Actualizar');
+//             $("#updateId").val(crea_perfil);
+//         }
+//     });
+// });
