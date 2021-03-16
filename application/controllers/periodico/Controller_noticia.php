@@ -122,7 +122,7 @@ class Controller_noticia extends CI_Controller {
                 $result_edi = $this->Model_noticia->crear_data('edicion_noticia', $data_edicion);
 
                 $data_foto = array(
-                    'titulo_foto' => $img,
+                    'titulo_foto' => $_FILES['url_foto']['name'],
                     'url' => $img,
                     'Fotografo' => $_POST['fotografo'],
                     'Fecha' => $fecha_hora,
@@ -136,42 +136,65 @@ class Controller_noticia extends CI_Controller {
                     'principal' => 1,
                 );
 
-                $result_foto = $this->Model_noticia->crear_data('edicion_noticia', $data_edicion);
+                $result_foto = $this->Model_noticia->crear_data('noticia_foto', $data_foto_noti);
 
                 if ($result_edi && $result_foto) {
                     echo 'created';
                 }
             }
 
-            // if ($_POST['action'] == 'update') {
+            if ($_POST['action'] == 'update') {
 
-            //     date_default_timezone_set('America/El_Salvador');
-            //     $fecha_hora = date("Y-m-d H:i:s");
-            //     $id_u = $_SESSION['idusuario'];
-            //     $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-            //     $acciones = array(
-            //         'fecha_hora' => $fecha_hora,
-            //         'ip' => $ip,
-            //         'accion' => "ACTUALIZAR",
-            //         'tabla' => "EDICION",
-            //         'nombre' => $_SESSION['nombre_completo'],
-            //         'id_usuario' => $id_u,
-            //     );
-            //     $this->Model_bitacora->guardar_bitacora($acciones) == true;
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "ACTUALIZAR",
+                    'tabla' => "NOTICIA",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
 
-            //     $table = 'edicion';
-            //     $updateId = $_POST['updateId'];
+                $img = '';
+                if ($_FILES['url_foto']['name'] != '') {
+                    $img = $this->upload_img($_FILES['url_foto']);
+                } else {
+                    $img = $_POST['url'];
+                }
 
-            //     $data = array(
-            //         'fecha_publicacion' => $_POST['fecha'],
-            //         'num_edicion' => $_POST['edicion'],
-            //         'estado' => $_POST['estado'],
-            //     );
-            //     $result = $this->Model_edicion->actualizar_edicion($table, $data, $updateId);
-            //     if ($result) {
-            //         echo 'update';
-            //     }
-            // }
+                $data_noti = array(
+                    'id_cat_noticia' => $_POST['categoria'],
+                    'id_cat_nivel' => $_POST['nivel'],
+                    'Titular' => $_POST['titulo'],
+                    'Subtitulo' => $_POST['subtitulo'],
+                    'Fecha' => $_POST['fecha'],
+                    'Editor' => $_POST['editor'],
+                    'Reportero' => $_POST['reportero'],
+                );
+
+                $notiId = 'id_noticia ='.$_POST['updateId'];
+
+                $resultNoti = $this->Model_noticia->actualizar_data('noticias', $data_noti, $notiId);
+
+                $fotoId = 'id_foto ='.$_POST['fotoId'];
+
+                $data_foto = array(
+                    'titulo_foto' => $_FILES['url_foto']['name'],
+                    'url' => $img,
+                    'Fotografo' => $_POST['fotografo'],
+                    'Fecha' => $fecha_hora,
+                );
+
+                $resultFoto = $this->Model_noticia->actualizar_data('fotografia', $data_foto, $fotoId);
+
+                if ($resultNoti && $resultFoto) {
+                    echo 'update';
+                }
+            }
         }
     }
 

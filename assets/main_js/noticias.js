@@ -28,6 +28,14 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
+$(document).on("click", "#notaBtnId", function () {
+    $("#carga-nota").fadeOut("slow");
+    $(".form-line").removeClass("focused");
+    $("#nota-title").text("Editor de la Nota");
+    $("#btn-nota").text("guardar");
+    $("#nota_modal").modal("show");
+});
+
 $(document).on("click", "#editBtnId", function (e) {
     e.preventDefault();
     var editBtnId = $(this).attr('data-editBtnId');
@@ -78,6 +86,7 @@ $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
     var titulo = $("#titulo").val();
     var url_foto = $("#url_foto").val();
+    var url = $("#url").val();
     var fotografo = $("#fotografo").val();
     var fecha = $("#fecha").val();
     var editor = $("#editor").val();
@@ -91,7 +100,7 @@ $(document).on("submit", "#developer_cu_form", function (e) {
             title: "Campo titulo requerido!",
             type: "warning"
         });
-    } else if (url_foto == '') {
+    } else if (url_foto == '' && url == '') {
         swal({
             title: "Imagen requerida!",
             type: "warning"

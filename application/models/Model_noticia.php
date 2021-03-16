@@ -87,13 +87,18 @@ class Model_noticia extends CI_Model {
         $this->db->where('noti.id_noticia', $editBtnId);
         $this->db->select('*');
         $this->db->from('noticias noti');
-        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia','left');
-        $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia','left');
-        $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion','left');
-        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia','left');
-        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto','left');
+        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia');
+        $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia');
+        $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
         $result = $this->db->get();
         return $result->result();
+    }
+
+    public function actualizar_data($table, $data, $updateId) {
+        $result = $this->db->update($table, $data, $updateId);
+        return $result;
     }
 
 }
