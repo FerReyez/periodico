@@ -164,6 +164,7 @@
                         </div>
                     </div>
                     <input type="hidden" id="updateId" name="updateId">
+                    <input type="hidden" id="fotoId" name="fotoId">
                     <input type="hidden"  name="action" id="action" value="create">
                     </div>
                     <div class="modal-footer">
@@ -175,6 +176,28 @@
                 </button>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="nota_modal" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="nota-title"></h4>
+            </div>
+            <div class="modal-body"> 
+                <div id="carga-nota"></div>
+                <form  id="nota-form">
+                    <div class="modal-body users-cont">
+                        <div class="row clearfix">
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
