@@ -42,6 +42,17 @@ $(document).on("click", "#crea_perfil", function () {
     $("#modal-perfil").modal("show");
 });
 
+$(document).on("click", "#crea_nota", function () {
+    $("#carga-nota").fadeOut("slow");
+    // $("#action").val("create");
+    $(".form-line").removeClass("focused");
+    $("#form-nota")[0].reset();
+    $("#nota-title").text("Agregar Nota");    
+    $("#nombreb").text("Agregar");
+    $("#modal-nota").modal("show");
+});
+
+
 /////// Crear y actualizar ///////////
 
 $(document).on("submit", "#developer_cu_form", function (e) {
