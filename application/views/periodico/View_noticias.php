@@ -195,7 +195,8 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                    <input type="hidden" id="updateIdNota" name="updateIdNota">
+                    <input type="hidden"  name="actionNota" id="actionNota">
             </div>
             <div class="modal-footer">
                 <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="btn-nota"></b></button>
@@ -203,6 +204,7 @@
                     Cancelar
                 </button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -214,7 +216,7 @@
     CKEDITOR.replace('nota', {
         customConfig: '<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor_nota.js'
     });
-    CKEDITOR.config.height = 650;
+    CKEDITOR.config.height = 500;
 
     $(document).on("click", "#notaBtnId", function (e) {
         e.preventDefault();
@@ -235,10 +237,10 @@
             success: function (data) {
                 $("#carga-nota").fadeOut("slow");
                 CKEDITOR.instances["nota"].setData(data.Nota)
+                $("#updateIdNota").val(editBtnId);
+                $("#actionNota").val('nota');
                 $("#nota-title").text("Editor de la Nota");
-                $("#action").val('update');
                 $("#btn-nota").text("Guardar");
-                $("#updateId").val(editBtnId);
             }
         });
     });

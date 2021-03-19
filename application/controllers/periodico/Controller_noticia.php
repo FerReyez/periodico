@@ -196,6 +196,35 @@ class Controller_noticia extends CI_Controller {
                 }
             }
         }
+        if (isset($_POST['actionNota'])) {
+            if($_POST['actionNota'] == 'nota'){
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "NOTA",
+                    'tabla' => "NOTICIA",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+    
+                $updateId = 'id_noticia ='.$_POST['updateIdNota'];
+    
+                $data = array(
+                    'Nota' => $_POST['nota'],
+                );
+    
+                $result = $this->Model_noticia->actualizar_data('noticias', $data, $updateId);
+    
+                if ($result) {
+                    echo 'nota';
+                }
+            }
+        }
     }
 
     public function linea_actualizar() {
