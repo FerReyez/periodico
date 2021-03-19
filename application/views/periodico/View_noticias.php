@@ -191,7 +191,7 @@
                     <div class="modal-body users-cont">
                         <div class="row clearfix">
                             <div class="body">
-                                <textarea id="ckeditor">
+                                <textarea name="ckeditor" id="ckeditor">
                                     <h2>WYSIWYG Editor</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper sapien non nisl facilisis bibendum in quis tellus. Duis in urna bibendum turpis pretium fringilla. Aenean neque velit, porta eget mattis ac, imperdiet quis nisi. Donec non dui et tortor vulputate luctus. Praesent consequat rhoncus velit, ut molestie arcu venenatis sodales.</p>
                                     <h3>Lacinia</h3>
@@ -209,6 +209,11 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                    Cancelar
+                </button>
             </div>
         </div>
     </div>
