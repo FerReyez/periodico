@@ -28,14 +28,6 @@ $(document).on("click", "#add", function () {
     $("#create_form_modal").modal("show");
 });
 
-$(document).on("click", "#notaBtnId", function () {
-    $("#carga-nota").fadeOut("slow");
-    $(".form-line").removeClass("focused");
-    $("#nota-title").text("Editor de la Nota");
-    $("#btn-nota").text("guardar");
-    $("#nota_modal").modal("show");
-});
-
 $(document).on("click", "#editBtnId", function (e) {
     e.preventDefault();
     var editBtnId = $(this).attr('data-editBtnId');

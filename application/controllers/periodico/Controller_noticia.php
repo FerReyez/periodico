@@ -48,7 +48,7 @@ class Controller_noticia extends CI_Controller {
             $row[] = $person->Reportero;
             $row[] = "<i  class='".$person->nc_icono."'></i>  ".$person->nc_noticia."";
             $row[] = $person->Fecha;
-            $row[] = "N° -".$person->num_edicion;
+            $row[] = "N° - ".$person->num_edicion;
             $row[] = "<center>
             <b class='tool'>
             <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->id_noticia . "'>description</i></b></button>
@@ -215,6 +215,7 @@ class Controller_noticia extends CI_Controller {
                 $output['id_cat_noticia'] = $value->id_cat_noticia;
                 $output['id_edicion'] = $value->id_edicion;
                 $output['id_cat_nivel'] = $value->id_cat_nivel;
+                $output['Nota'] = $value->Nota;
             }
             echo json_encode($output);
         }

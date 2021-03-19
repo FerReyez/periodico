@@ -191,26 +191,14 @@
                     <div class="modal-body users-cont">
                         <div class="row clearfix">
                             <div class="body">
-                                <textarea name="ckeditor" id="ckeditor">
-                                    <h2>WYSIWYG Editor</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper sapien non nisl facilisis bibendum in quis tellus. Duis in urna bibendum turpis pretium fringilla. Aenean neque velit, porta eget mattis ac, imperdiet quis nisi. Donec non dui et tortor vulputate luctus. Praesent consequat rhoncus velit, ut molestie arcu venenatis sodales.</p>
-                                    <h3>Lacinia</h3>
-                                    <ul>
-                                        <li>Suspendisse tincidunt urna ut velit ullamcorper fermentum.</li>
-                                        <li>Nullam mattis sodales lacus, in gravida sem auctor at.</li>
-                                        <li>Praesent non lacinia mi.</li>
-                                        <li>Mauris a ante neque.</li>
-                                        <li>Aenean ut magna lobortis nunc feugiat sagittis.</li>
-                                    </ul>
-                                    <h3>Pellentesque adipiscing</h3>
-                                    <p>Maecenas quis ante ante. Nunc adipiscing rhoncus rutrum. Pellentesque adipiscing urna mi, ut tempus lacus ultrices ac. Pellentesque sodales, libero et mollis interdum, dui odio vestibulum dolor, eu pellentesque nisl nibh quis nunc. Sed porttitor leo adipiscing venenatis vehicula. Aenean quis viverra enim. Praesent porttitor ut ipsum id ornare.</p>
-                                </textarea>
+                                <textarea name="nota" id="nota"></textarea>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
+                <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="btn-nota"></b></button>
                 <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
                     Cancelar
                 </button>
@@ -222,7 +210,36 @@
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/tinymce/tinymce.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/pages/forms/editors.js"></script>
+<script>
+    CKEDITOR.replace('nota', {
+        customConfig: '<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor_nota.js'
+    });
+    CKEDITOR.config.height = 650;
 
-
+    $(document).on("click", "#notaBtnId", function (e) {
+        e.preventDefault();
+        var editBtnId = $(this).attr('data-notaBtnId');
+        var action = 'fetchSingleRow';
+        $.ajax({
+            url: "periodico/Controller_noticia/linea_actualizar",
+            method: "POST",
+            data: {
+                editBtnId: editBtnId,
+                action: action
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("#carga-nota").css("display", "block");
+                $("#nota_modal").modal("show");
+            },
+            success: function (data) {
+                $("#carga-nota").fadeOut("slow");
+                CKEDITOR.instances["nota"].setData(data.Nota)
+                $("#nota-title").text("Editor de la Nota");
+                $("#action").val('update');
+                $("#btn-nota").text("Guardar");
+                $("#updateId").val(editBtnId);
+            }
+        });
+    });
+</script>
