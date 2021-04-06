@@ -15,7 +15,7 @@ class Controller_prueba extends CI_Controller {
     public function cargar_plantilla($vista)
     {
         $data['main_content'] = $vista;
-        $this->load->view('template/template');
+        $this->load->view('template/template',$data);
     }
 
     public function vista_image()
