@@ -29,3 +29,5 @@
             </div>
         </div>
 </section>
+
+<script src="<?php echo base_url(); ?>assets//plugins/dropzone/dropzone.js"></script>
