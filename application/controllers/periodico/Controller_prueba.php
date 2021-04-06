@@ -9,9 +9,6 @@ class Controller_prueba extends CI_Controller {
         parent::__construct();
         $this->load->model('Usuarios');
         $this->load->model('Model_bitacora');
-        $this->load->model('Model_categoria');
-        $this->load->model('Model_edicion');
-        $this->load->model('Model_noticia');
     }
 
    
