@@ -11,7 +11,7 @@
                     </div>
                     <div class="container-fluid">
                         <div class="col-xs-12">
-                            <form action="/<?php echo base_url(); ?>imagen_prueba" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
+                            <form action="/<?php echo base_url(); ?>Controller_noticia/upload_img" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
                                 <div class="dz-message">
                                     <div class="drag-icon-cph">
                                         <i class="material-icons">touch_app</i>
