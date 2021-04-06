@@ -26,4 +26,34 @@ class Controller_prueba extends CI_Controller {
         $vista = "periodico/View_image";
         $this->cargar_plantilla($vista);
     }
+
+    public function fileUpload(){
+
+        if(!empty($_FILES['file']['name'])){
+     
+          // Set preference
+          $config['upload_path'] = 'uploads/'; 
+          $config['allowed_types'] = 'jpg|jpeg|png|gif';
+          $config['max_size'] = '1024'; // max_size in kb
+          $config['file_name'] = $_FILES['file']['name'];
+     
+          //Load upload library
+          $this->load->library('upload',$config); 
+     
+          // File upload
+          if($this->upload->do_upload('file')){
+            // Get data about the file
+            $uploadData = $this->upload->data();
+          }
+        }
+    }
+
+    public function upload_img() {
+        $extention = explode('.', $_FILES['file']['name']);
+        $newName = rand() . '.' . $extention[1];
+        $destination = './assets/upload/noticias/' . $newName;
+        move_uploaded_file($_FILES['file']['name'], $destination);
+        return $newName;
+    }
+
 }

@@ -87,6 +87,8 @@ $menu_rol = $this->Usuarios->menu_principal($idrol);
 
         <script src="<?php echo base_url(); ?>assets/js/pages/forms/basic-form-elements.js"></script>
 
+        <script src="<?php echo base_url(); ?>assets/plugins/dropzone/dropzone.js"></script>
+
         <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/jquery.dataTables.js"></script>
 
         <script src="<?php echo base_url(); ?>assets/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>

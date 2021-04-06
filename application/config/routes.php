@@ -36,4 +36,4 @@ $route['personas'] = 'Controller_web/personas';
 $route['persona'] = 'Controller_web/personasInd';
 
 /***********************************Imagenes**********************************************/
-$route['imagen_prueba']                      = 'periodico/Controller_noticia/upload_img';
+$route['imagen_prueba']                      = 'periodico/Controller_prueba/upload_img';
