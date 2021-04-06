@@ -11,7 +11,7 @@
                     </div>
                     <div class="container-fluid">
                         <div class="col-xs-12">
-                            <form action="/" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
+                            <form action="/<?php echo base_url(); ?>imagen_prueba" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
                                 <div class="dz-message">
                                     <div class="drag-icon-cph">
                                         <i class="material-icons">touch_app</i>
@@ -30,4 +30,4 @@
         </div>
 </section>
 
-<script src="<?php echo base_url(); ?>assets//plugins/dropzone/dropzone.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/dropzone/dropzone.js"></script>
