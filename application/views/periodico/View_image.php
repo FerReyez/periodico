@@ -1,5 +1,5 @@
 <script>
-    Dropzone.options.fileupload = { acceptedFiles: 'image/*', maxFilesize: 1 };
+    Dropzone.options.fileupload = { acceptedFiles: 'image/*', maxFilesize: 1MB };
 </script>
 
 <section class="content">
