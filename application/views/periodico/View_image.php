@@ -1,3 +1,7 @@
+<script>
+    Dropzone.options.fileupload = { acceptedFiles: 'image/*', maxFilesize: 1 };
+</script>
+
 <section class="content">
     <div class="container-fluid">
         <div class="row clearfix">
@@ -29,8 +33,3 @@
             </div>
         </div>
 </section>
-
-
-<script>
-    Dropzone.options.fileupload = { acceptedFiles: 'image/*', maxFilesize: 1 };
-</script>

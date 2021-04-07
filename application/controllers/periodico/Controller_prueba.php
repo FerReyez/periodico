@@ -48,6 +48,20 @@ class Controller_prueba extends CI_Controller {
         }
     }
 
+    public function upload() {
+        if (!empty($_FILES)) {
+            $tempFile = $_FILES['file']['tmp_name'];
+            $fileName = $_FILES['file']['name'];
+            $targetPath = "./assets/upload/noticias/";
+            $targetFile = $targetPath . $fileName ;
+            move_uploaded_file($tempFile, $targetFile);
+        // if you want to save in db,where here
+        // with out model just for example
+        // $this->load->database(); // load database
+        // $this->db->insert('file_table',array('file_name' => $fileName));
+        }
+    }
+
     public function upload_img() {
         $extention = explode('.', $_FILES['file']['name']);
         $newName = rand() . '.' . $extention[1];
