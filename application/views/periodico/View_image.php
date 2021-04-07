@@ -1,7 +1,3 @@
-<script>
-    Dropzone.options.fileupload = { acceptedFiles: 'image/*', maxFilesize: 1MB };
-</script>
-
 <section class="content">
     <div class="container-fluid">
         <div class="row clearfix">
@@ -15,7 +11,7 @@
                     </div>
                     <div class="container-fluid">
                         <div class="col-xs-12">
-                            <form action="<?php echo base_url(); ?>imagen_prueba" id="frmFileUpload" class="dropzone">
+                            <form id="frmFileUpload" class="dropzone">
                                 <div class="dz-message">
                                     <div class="drag-icon-cph">
                                         <i class="material-icons">touch_app</i>
@@ -33,3 +29,32 @@
             </div>
         </div>
 </section>
+
+<script>
+    Dropzone.options.frmFileUpload = {
+        url: host+"imagen_prueba",
+        paramName: "file",
+        acceptedFiles: 'image/*',
+        maxFilesize: 20,
+        autoQueue: true,
+        addRemoveLinks: true,
+        dictCancelUpload: true,
+        dictFileTooBig:"El archivo es muy grande, limite de 20MB!",
+        dictInvalidFileType:"Solo se permite subir imagenes!",
+        dictRemoveFile:"Eliminar Imagen",
+        accept: function(file, done) {
+            if (file.name == "prueba.png") {
+                done("Naha, you don't.");
+            }
+            else {
+                done(); 
+            }
+        },
+        removedfile: function(file) {
+            swal({
+            title: "Gilberto se la come!",
+            type: "warning"
+        });
+        }
+    };
+</script>
