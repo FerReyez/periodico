@@ -11,18 +11,20 @@
                     </div>
                     <div class="container-fluid">
                         <div class="col-xs-12">
-                            <form id="frmFileUpload" class="dropzone">
-                                <div class="dz-message">
-                                    <div class="drag-icon-cph">
-                                        <i class="material-icons">touch_app</i>
+                            <div class="body">
+                                <form id="frmFileUpload" class="dropzone">
+                                    <div class="dz-message">
+                                        <div class="drag-icon-cph">
+                                            <i class="material-icons">add_a_photo</i>
+                                        </div>
+                                        <h3>Arrastra o has click para subir una o mas imagenes.</h3>
+                                        <em>(Solo se permite subir archivos de imagenes con un maximo <strong>20MB</strong> de espacio por imagen.)</em>
                                     </div>
-                                    <h3>Drop files here or click to upload.</h3>
-                                    <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
-                                </div>
-                                <div class="fallback">
-                                    <input name="file" type="file" multiple />
-                                </div>
-                            </form>
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple />
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,19 +44,31 @@
         dictFileTooBig:"El archivo es muy grande, limite de 20MB!",
         dictInvalidFileType:"Solo se permite subir imagenes!",
         dictRemoveFile:"Eliminar Imagen",
-        accept: function(file, done) {
-            if (file.name == "prueba.png") {
-                done("Naha, you don't.");
-            }
-            else {
-                done(); 
-            }
-        },
+        // accept: function(file, done) {
+        //     if (file.name == "prueba.png") {
+        //         done("Naha, you don't.");
+        //     } else {
+        //         done(); 
+        //     }
+        // },
         removedfile: function(file) {
-            swal({
-            title: "Gilberto se la come!",
-            type: "warning"
-        });
+            var name = file.name;
+            $.ajax({
+                type: 'POST',
+                url: host+"imagen_borrar",
+                data: {name: name},
+                sucess: function(data){
+                    console.log('success: ' + data);
+                }
+            });
+
+            var _ref;
+            if (file.previewElement) {
+                if ((_ref = file.previewElement) != null) {
+                    _ref.parentNode.removeChild(file.previewElement);
+                }
+            }
+            return this._updateMaxFilesReachedClass();
         }
     };
 </script>

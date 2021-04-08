@@ -37,6 +37,13 @@ class Controller_prueba extends CI_Controller {
         }
     }
 
+    public function delete(){
+        $targetPath = "./assets/upload/noticias/";
+        $filename = $targetPath.$_POST['name'];  
+        unlink($filename); 
+        exit;
+    }
+
     // public function upload_img() {
     //     $extention = explode('.', $_FILES['file']['name']);
     //     $newName = rand() . '.' . $extention[1];
