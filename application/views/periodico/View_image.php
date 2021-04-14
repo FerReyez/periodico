@@ -41,9 +41,27 @@
         autoQueue: true,
         addRemoveLinks: true,
         dictCancelUpload: true,
-        dictFileTooBig:"El archivo es muy grande, limite de 20MB!",
+        dictFileTooBig:"Archivo muy grande ({{filesize}}MB). Tamaño Maximo: {{maxFilesize}}MB.",
         dictInvalidFileType:"Solo se permite subir imagenes!",
         dictRemoveFile:"Eliminar Imagen",
+        // dictRemoveFileConfirmation: "Desea eliminar esta Imagen?",
+        // dictCancelUploadConfirmation:"Desea eliminar esta imagen?",
+        // dictCancelUpload:"Eliminar Imagen",
+        init: function(){
+            var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            this.files.push(mockFile);
+            this.emit('addedfile', mockFile);
+            this.createThumbnailFromUrl(mockFile, mockFile.url);
+            this.emit('complete', mockFile);
+            this._updateMaxFilesReachedClass();
+
+            var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            this.files.push(mockFile);
+            this.emit('addedfile', mockFile);
+            this.createThumbnailFromUrl(mockFile, mockFile.url);
+            this.emit('complete', mockFile);
+            this._updateMaxFilesReachedClass();
+        },
         // accept: function(file, done) {
         //     if (file.name == "prueba.png") {
         //         done("Naha, you don't.");
@@ -52,23 +70,43 @@
         //     }
         // },
         removedfile: function(file) {
-            var name = file.name;
-            $.ajax({
-                type: 'POST',
-                url: host+"imagen_borrar",
-                data: {name: name},
-                sucess: function(data){
-                    console.log('success: ' + data);
+            swal({
+                title: "Estas seguro?",
+                text: "Si eliminas la imagen, se borrara de forma permanente!",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, Continuar!",
+                cancelButtonText: "No, Cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                type: "info",
+                showLoaderOnConfirm: true,
+                animation: "slide-from-top",
+                html: true
+            },function (isConfirm) {
+                if (isConfirm) {
+                    var name = file.name;
+                    $.ajax({
+                        type: 'POST',
+                        url: host+"imagen_borrar",
+                        data: {name: name},
+                        sucess: function(data){
+                            console.log('success: ' + data);
+                        }
+                    });
+
+                    var _ref;
+                    if (file.previewElement) {
+                        if ((_ref = file.previewElement) != null) {
+                            _ref.parentNode.removeChild(file.previewElement);
+                            swal("Eliminado!", "La acción se a completado exitosamente.", "success");
+                        }
+                    }
+                    return this._updateMaxFilesReachedClass();
+                } else {
+                    swal("Cancelado", "La acción se a completado exitosamente.", "error");
                 }
             });
-
-            var _ref;
-            if (file.previewElement) {
-                if ((_ref = file.previewElement) != null) {
-                    _ref.parentNode.removeChild(file.previewElement);
-                }
-            }
-            return this._updateMaxFilesReachedClass();
         }
     };
 </script>

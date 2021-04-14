@@ -122,6 +122,7 @@ $(document).on("click", "#delteBtnId", function (e) {
             swal("Cancelado", "La acción se a completado exitosamente.", "error");
         }
     });
+    
 });
 
 $(document).on("click", "#editBtnId", function (e) {
