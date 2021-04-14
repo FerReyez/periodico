@@ -9,6 +9,7 @@ class Controller_prueba extends CI_Controller {
         parent::__construct();
         $this->load->model('Usuarios');
         $this->load->model('Model_bitacora');
+        $this->load->model('Model_noticia');
     }
 
    
@@ -42,6 +43,13 @@ class Controller_prueba extends CI_Controller {
         $filename = $targetPath.$_POST['name'];  
         unlink($filename); 
         exit;
+    }
+
+    public function obtener_img(){
+        $data = array(
+            "imagen" => $this->Model_noticia->obtener_imagenes()
+        );
+        echo json_encode($data);
     }
 
     // public function upload_img() {

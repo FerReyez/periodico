@@ -2,6 +2,12 @@
 
 class Model_noticia extends CI_Model {
 
+    public function obtener_imagenes() {
+        $query = $this->db->get('fotografia',10);
+        $result = $query->result_array();
+        return $result;
+    }
+
     public $column = array(
         'noti.id_noticia',
         'noti.Titular',

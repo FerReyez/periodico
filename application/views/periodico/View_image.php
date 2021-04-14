@@ -27,12 +27,51 @@
                             </div>
                         </div>
                     </div>
+                    <div class="container-fluid">
+                        <div class="col-xs-12">
+                        <div class="table table-responsive">
+                            <table id="tbprueba" class="table" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th><center>xD</center></th>
+                                        <th><center>Imagen</center></th>
+                                        <th><center>Url</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 </section>
 
-<script>
+
+<script type="text/javascript">
+    $(document).on("ready", main);
+
+    function main() {
+        $.ajax({
+            url: host+"imagen_obtener",
+            type: "POST",
+            dataType: "json",
+            success: function(response) {
+                var i = 0;
+                $.each(response.imagen, function(key, item) {
+                    i++;
+                    filas += '<tr>';
+                    filas += '<td>'+i+'</td>';
+                    filas += '<td>'+item.titulo_foto+'</td>';
+                    filas += '<td>'+item.url+'</td>';
+                    filas += '</tr>';
+                });
+                $("#tbprueba tbody").html(filas);
+            }
+        });
+    }
+
     Dropzone.options.frmFileUpload = {
         url: host+"imagen_prueba",
         paramName: "file",
@@ -48,19 +87,35 @@
         // dictCancelUploadConfirmation:"Desea eliminar esta imagen?",
         // dictCancelUpload:"Eliminar Imagen",
         init: function(){
-            var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
-            this.files.push(mockFile);
-            this.emit('addedfile', mockFile);
-            this.createThumbnailFromUrl(mockFile, mockFile.url);
-            this.emit('complete', mockFile);
-            this._updateMaxFilesReachedClass();
+            // $.ajax({
+            //     url: host+"imagen_obtener",
+            //     type: "POST",
+            //     dataType: "json",
+            //     success: function(response) {
+            //         $.each(response.imagen, function(key, item) {
+            //             var mockFile = { name: "xd", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            //             this.files.push(mockFile);
+            //             this.emit('addedfile', mockFile);
+            //             this.createThumbnailFromUrl(mockFile, mockFile.url);
+            //             this.emit('complete', mockFile);
+            //             this._updateMaxFilesReachedClass();         
+            //         });
+            //     }
+            // });
 
-            var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
-            this.files.push(mockFile);
-            this.emit('addedfile', mockFile);
-            this.createThumbnailFromUrl(mockFile, mockFile.url);
-            this.emit('complete', mockFile);
-            this._updateMaxFilesReachedClass();
+            // var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            // this.files.push(mockFile);
+            // this.emit('addedfile', mockFile);
+            // this.createThumbnailFromUrl(mockFile, mockFile.url);
+            // this.emit('complete', mockFile);
+            // this._updateMaxFilesReachedClass();
+
+            // var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            // this.files.push(mockFile);
+            // this.emit('addedfile', mockFile);
+            // this.createThumbnailFromUrl(mockFile, mockFile.url);
+            // this.emit('complete', mockFile);
+            // this._updateMaxFilesReachedClass();
         },
         // accept: function(file, done) {
         //     if (file.name == "prueba.png") {
