@@ -57,13 +57,31 @@ $(document).on("click", "#crea_nota", function () {
 
 $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
-    var edicion = $("#nombre").val();
+    var nombre = $("#nombre").val();
+    var cargo = $("cargo").val();
+    var url_foto = $("url_foto").val();
+    var banner = $("banner").val();
     var fecha = $("#fecha_crea").val();
     var estado = $("#estado").val();
 
     if (nombre == '') {
         swal({
             title: "Campo nombre requerido",
+            type: "warning"
+        });
+    } else if ( cargo == '') {
+        swal({
+            title: "Campo cargo requerido",
+            type: "warning"
+        });
+    } else if (url_foto == '') {
+        swal({
+            title: "Foto perfil requerido",
+            type: "warning"
+        });
+    } else if (banner == '') {
+        swal({
+            title: "Banner requerido",
             type: "warning"
         });
     } else if (fecha_crea == '') {
@@ -131,6 +149,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#estado").val(data.estado);
             $("#estado").change();
             $("#nombre").val(data.nombre);
+            $("#cargo").val(data.cargo);
             $("#fecha_crea").val(data.fecha_crea);
             $("#fecha").change();
             $("#form-title").text('Editar edicion');
@@ -140,33 +159,3 @@ $(document).on("click", "#editBtnId", function (e) {
         }
     });
 });
-
-
-// $(document).on("click", "#crea_perfil", function (e) {
-//     e.preventDefault();
-//     var crea_perfil = $(this).attr('data-crea_perfil');
-//     var action = 'fetchSingleRow';
-//     $.ajax({
-//         url: "",
-//         method: "POST",
-//         data: {
-//             crea_perfil: crea_perfil,
-//             action: action
-//         },
-//         dataType: "json",
-//         beforeSend: function () {
-//             $("#carga").css("display", "block");
-//             $("#create_form_modal_perfil").modal('show');
-//         },
-//         success: function (data) {
-//             $("#carga").fadeOut("slow");
-//             $("#estado").val(data.estado);
-//             $("#estado").change();                
-//             $("#fecha").change();
-//             $("#form-title").text('Editar edicion');
-//             $("#action").val('update');
-//             $("#nombreb").html('Actualizar');
-//             $("#updateId").val(crea_perfil);
-//         }
-//     });
-// });

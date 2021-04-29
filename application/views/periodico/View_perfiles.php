@@ -61,10 +61,18 @@
                         <div class="row clearfix">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">bookmark</i>
+                                    <i class="material-icons">person</i>
                                 </span>
                                 <div class="form-line">
                                     <input type="text" class="form-control date" placeholder="Nombre" id="nombre" name="nombre">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">bookmark</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Cargo" id="cargo" name="cargo">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -73,6 +81,14 @@
                                 </span>
                                 <div class="form-line">
                                     <input type="file" class="form-control date" placeholder="Portada" name="url_foto" id="url_foto">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">add_a_photo</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="file" class="form-control date" placeholder="Banner" name="banner" id="banner">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -120,45 +136,75 @@
             </div>
             <div class="modal-body">
                 <div id="carga-comentario"></div>
+                <div class="flip-scroll">
+                    <table id="tb-comentario" class="table table-bordered table-striped table-condensed flip-content">
+                        <tr>
+                            <thead class="flip-content bordered-palegreen">
+                                <th class="numeric">Nombre</th>
+                                <th class="numeric">Cargo</th>
+                                <th class="numeric">Comentario</th>
+                                <th class="numeric">Foto</th>
+                                <th class="numeric"></th>
+                            </thead>
+                            <tbody></tbody>
+                        </tr>
+                    </table>
+                </div>
                 <form id="form-comentario">
                     <div class="modal-body users-cont">
                         <div class="row clearfix">
-                            <div class="flip-scroll">
-                                <table class="table table-bordered table-striped table-condensed flip-content">
-                                    <tr>
-                                        <thead class="flip-content bordered-palegreen">
-                                            <th class="numeric">Imagen</th>
-                                            <th class="numeric">Comentario</th>                                            
-                                            <th class="numeric"></th>
-                                        </thead>
-                                        <tbody id="lista_comentarios"></tbody>
-                                    </tr>
-                                </table>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Nombre" id="nombreComen" name="nombreComen">
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="material-icons">bookmark</i>
-                                    </span>
-                                    <div class="form-line">
-                                        <input type="text" class="form-control date" placeholder="Comentario" id="" name="">
-                                    </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Cargo" id="titulo" name="titulo">
                                 </div>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="material-icons">add_a_photo</i>
-                                    </span>
-                                    <div class="form-line">
-                                        <input type="file" class="form-control date" placeholder="Portada" name="url_foto" id="url_foto">
-                                    </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Comentario" id="comentario" name="comentario">
                                 </div>
-                                <div class="form-group pmd-textfield pmd-text-field-floating-label col-md-2">
-                                    <label for="Developer Skill" class="control-label"></label>
-                                    <button type="submit" name="crea_act_comen" id="crea_act_comen" class="btn btn-link waves-effect" style="color:black;">Guardar</button>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">add_a_photo</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="file" class="form-control date" placeholder="Perfil" name="foto_comen" id="foto_comen">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">insert_emoticon</i>
+                                </span>
+                                <div>
+                                    <select id="estado" name="estado" data-live-search="true">
+                                        <option value="ns">Estado</option>
+                                        <option value="0">Activo</option>
+                                        <option value="1">Inactivo</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <input type="hidden" id="idperfiles" name="idperfiles">
+                        <input type="hidden" id="updateId" name="updateId">                        
+                        <input type="hidden" name="action" id="action" value="create">
+                        <div class="modal-footer">
+                            <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit">Guardar<b id="nombreb"></b>
+                            </button>
+                        </div>
                 </form>
                 <div class="modal-footer">
                     <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
@@ -183,7 +229,7 @@
                     <div class="modal-body users-cont">
                         <div class="row clearfix">
                             <div class="body">
-                                <textarea name="comentario" id="comentario"></textarea>
+                                <textarea name="editor" id="editor"></textarea>
                             </div>
                         </div>
                     </div>
@@ -204,7 +250,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/comentario.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('comentario', {
+    CKEDITOR.replace('editor', {
         customConfig: '<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor_nota.js'
     });
     CKEDITOR.config.height = 500;
