@@ -55,8 +55,6 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
 	var titulo = $("titulo").val();
 	var estado = $("estado").val();
 	var foto_comen = $("#foto_comen").val();
-    var idperfiles = $(this).attr("data-idperfiles");
-    $("#idperfiles").val(idperfiles);
 
     if (nombre == '') {
         swal({
@@ -116,36 +114,36 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
 });
 
 
-    $(document).on("click", "#editBtnId", function (e) {
-        e.preventDefault();
-        var editBtnId = $(this).attr('data-editBtnId');
-        var action = 'fetchSingleRow';
-        $.ajax({
-            url: "periodico/Controller_comentario/linea_actualizar",
-            method: "POST",
-            data: {
-                editBtnId: editBtnId,
-                action: action
-            },
-            dataType: "json",
-            beforeSend: function () {
-                $("#carga").css("display", "block");
-                $("#create_form_modal").modal('show');
-            },
-            success: function (data) {
-                $("#carga").fadeOut("slow");
-                $("#estado").val(data.estado);
-                $("#estado").change();
-                $("#nombre").val(data.nombre);
-                $("#comentario").val(data.comentario);
-                $("#titulo").val(data.titulo);
-                $("#idperfiles").val(data.idperfiles);
-                $("#fecha").change();
-                $("#form-title").text('Editar edicion');
-                $("#action").val('update');
-                $("#nombreb").html('Actualizar');
-                $("#updateId").val(editBtnId);
-            }
-        });
-    });
+    // $(document).on("click", "#editBtnId", function (e) {
+    //     e.preventDefault();
+    //     var editBtnId = $(this).attr('data-editBtnId');
+    //     var action = 'fetchSingleRow';
+    //     $.ajax({
+    //         url: "periodico/Controller_comentario/linea_actualizar",
+    //         method: "POST",
+    //         data: {
+    //             editBtnId: editBtnId,
+    //             action: action
+    //         },
+    //         dataType: "json",
+    //         beforeSend: function () {
+    //             $("#carga").css("display", "block");
+    //             $("#create_form_modal").modal('show');
+    //         },
+    //         success: function (data) {
+    //             $("#carga").fadeOut("slow");
+    //             $("#estado").val(data.estado);
+    //             $("#estado").change();
+    //             $("#nombre").val(data.nombre);
+    //             $("#comentario").val(data.comentario);
+    //             $("#titulo").val(data.titulo);
+    //             $("#idperfiles").val(data.idperfiles);
+    //             $("#fecha").change();
+    //             $("#form-title").text('Editar edicion');
+    //             $("#action").val('update');
+    //             $("#nombreb").html('Actualizar');
+    //             $("#updateId").val(editBtnId);
+    //         }
+    //     });
+    // });
     

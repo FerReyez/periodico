@@ -33,6 +33,8 @@ $(document).on("click", "#add", function () {
 });
 
 $(document).on("click", "#crea_perfil", function () {
+    var idperfiles = $(this).attr("data-crea_perfil");
+    $("#idperfiles").val(idperfiles);
     $("#carga-comentario").fadeOut("slow");
     // $("#action").val("create");
     $(".form-line").removeClass("focused");
