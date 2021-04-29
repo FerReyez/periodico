@@ -25,6 +25,7 @@ $route['edicion_admin']                      = 'periodico/Controller_edicion/vis
 $route['categoria_admin']                    = 'periodico/Controller_categoria/vista_categoria';
 $route['perfiles']                           = 'periodico/Controller_perfiles/vista_perfiles';
 $route['carrousel']                          = 'periodico/Controller_carrousel/vista_carrousel';
+$route['redes']                          = 'periodico/Controller_redes/vista_redes';
 $route['image']                              = 'periodico/Controller_prueba/vista_image';
 
 /***********************************Web**********************************************/
@@ -36,5 +37,6 @@ $route['personas'] = 'Controller_web/personas';
 $route['persona'] = 'Controller_web/personasInd';
 
 /***********************************Imagenes**********************************************/
-$route['imagen_prueba']                      = 'periodico/Controller_prueba/upload';
-$route['imagen_borrar']                      = 'periodico/Controller_prueba/delete';
+$route['imagen_subir']                      = 'periodico/Controller_noticia/upload';
+$route['imagen_borrar']                      = 'periodico/Controller_noticia/delete';
+$route['imagen_obtener']                     = 'periodico/Controller_noticia/obtener_img';
