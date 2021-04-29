@@ -1,34 +1,45 @@
 <?php
 
-class Model_perfiles extends CI_Model {
+class Model_comentario extends CI_Model
+{
 
     public $column = array(
-        'idperfiles',
+        'idComentario',
         'nombre',
-        'info',        
-        'url_foto',
-        'cargo',
-        'fecha_crea',    
-        'banner',
+        'comentario',
+        'titulo',
         'estado',
+        'foto_comen',
+        'idperfiles'
     );
 
-    public $order = array('idperfiles' => 'desc');
+    public $order = array('idComentario' => 'desc');
 
-    private function _get_perfiles($term = '')
+    public function obtener_perfiles()
+    {
+        $this->db->select('*');
+        $this->db->from('comentario');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    private function _get_comentario($term = '')
     {
         $column = array(
-            'id_edicion',
-            'fecha_publicacion',
-            'num_edicion',
+            'idComentario',
+            'nombre',
+            'comentario',
+            'titulo',
             'estado',
+            'foto_comen',
+            'idperfiles'
         );
 
         $this->db->select('*');
-        $this->db->from('perfiles');
+        $this->db->from('comentario');
         $this->db->group_start();
-        $this->db->like('nombre', $term);
-        $this->db->or_like('estado', $term);
+        $this->db->like('foto_comen', $term);
+
         $this->db->group_end();
         if (isset($_REQUEST['order'])) // here order processing
         {
@@ -37,13 +48,12 @@ class Model_perfiles extends CI_Model {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
-
     }
 
-    public function lista_perfiles()
+    public function lista_comentarios()
     {
         $term = $_REQUEST['search']['value'];
-        $this->_get_perfiles($term);
+        $this->_get_comentario($term);
         if ($_REQUEST['length'] != -1) {
             $this->db->limit($_REQUEST['length'], $_REQUEST['start']);
         }
@@ -52,41 +62,32 @@ class Model_perfiles extends CI_Model {
         return $query->result();
     }
 
-    public function count_filtered()
-    {
-        $term = $_REQUEST['search']['value'];
-        $this->_get_perfiles($term);
-        $query = $this->db->get();
-        return $query->num_rows();
-    }
-
     public function count_all()
     {   
         $this->db->select('*');
-        $this->db->from('perfiles');
+        $this->db->from('comentario');
         return $this->db->count_all_results();
     }
 
-    public function crear_perfil($table, $data) {
+    public function crear_comentario($table, $data) {
         $result = $this->db->insert($table, $data);
         return $result;
     }
 
+    public function eliminar_comentario($table, $delteBtnId) {
+        $this->db->where('idComentario', $delteBtnId);
+        $result = $this->db->delete($table);
+        return $result;
+    }
     public function linea_actualizar($table, $editBtnId) {
-        $this->db->where('idperfiles', $editBtnId);
+        $this->db->where('idComentario', $editBtnId);
         $result = $this->db->get($table);
         return $result->result();
     }
 
-    public function actualizar_perfil($table, $data, $updateId) {
-        $this->db->where('idperfiles', $updateId);
+    public function actualizar_comentario($table, $data, $updateId) {
+        $this->db->where('idComentario', $updateId);
         $result = $this->db->update($table, $data);
-        return $result;
-    }
-
-    public function eliminar_edicion($table, $delteBtnId) {
-        $this->db->where('idperfiles', $delteBtnId);
-        $result = $this->db->delete($table);
         return $result;
     }
 

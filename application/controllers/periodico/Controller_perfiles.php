@@ -56,13 +56,13 @@ class Controller_perfiles extends CI_Controller
               <span class='tooltip-css3'>EDITAR</span>
             </b>       
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_perfil' data-crea_perfil='" . $person->idperfiles . "'>backup</i></b></button>
-              <span class='tooltip-css3'>COMENTARIOS</span>
-            </b>       
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_perfil' data-crea_perfil='" . $person->idperfiles . "'>comment</i></b></button>
+              <span class='tooltip-css3'>Comentario</span>
+            </b>                          
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_nota' data-crea_nota='" . $person->idperfiles . "'>assignment_turned_in</i></b></button>
-              <span class='tooltip-css3'>NOTA</span>
-            </b>       
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_nota' data-crea_nota='" . $person->idperfiles . "'>format_color_text</i></b></button>
+              <span class='tooltip-css3'>Comentario</span>
+            </b>                          
             </center>";
             $data[] = $row;
         }
@@ -102,11 +102,20 @@ class Controller_perfiles extends CI_Controller
                     $img = '';
                 }
 
+                $img2 = '';
+                if ($_FILES['banner']['name'] != '') {
+                    $img2 = $this->upload_img($_FILES['banner']);
+                } else {
+                    $img2 = '';
+                }
+
                 $table = 'perfiles';
 
                 $data = array(
                     'nombre' => $_POST['nombre'],
+                    'cargo' => $_POST['cargo'],
                     'url_foto' => $img,
+                    'banner' => $img2,
                     'fecha_crea' => $_POST['fecha_crea'],
                     'estado' => $_POST['estado'],
                 );
@@ -132,11 +141,28 @@ class Controller_perfiles extends CI_Controller
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
 
+                $img = '';
+                if ($_FILES['url_foto']['name'] != '') {
+                    $img = $this->upload_img($_FILES['url_foto']);
+                } else {
+                    $img = '';
+                }
+
+                $img2 = '';
+                if ($_FILES['banner']['name'] != '') {
+                    $img = $this->upload_img($_FILES['banner']);
+                } else {
+                    $img = '';
+                }
+
                 $table = 'perfiles';
                 $updateId = $_POST['updateId'];
 
                 $data = array(
                     'nombre' => $_POST['nombre'],
+                    'cargo' => $_POST['cargo'],
+                    'url_foto' => $img,
+                    'banner' => $img2,
                     'fecha_crea' => $_POST['fecha_crea'],
                     'estado' => $_POST['estado'],
                 );
@@ -157,6 +183,9 @@ class Controller_perfiles extends CI_Controller
             $result = $this->Model_perfiles->linea_actualizar($table, $editBtnId);
             foreach ($result as $value) {
                 $output['nombre'] = $value->nombre;
+                $output['cargo'] = $value->cargo;
+                $output['url_foto'] = $value->url_foto;
+                $output['banner'] = $value->banner;
                 $output['fecha_crea'] = $value->fecha_crea;
                 $output['estado'] = $value->estado;
             }
