@@ -36,6 +36,6 @@ $route['personas'] = 'Controller_web/personas';
 $route['persona'] = 'Controller_web/personasInd';
 
 /***********************************Imagenes**********************************************/
-$route['imagen_prueba']                      = 'periodico/Controller_prueba/upload';
-$route['imagen_borrar']                      = 'periodico/Controller_prueba/delete';
-$route['imagen_obtener']                     = 'periodico/Controller_prueba/obtener_img';
+$route['imagen_subir']                      = 'periodico/Controller_noticia/upload';
+$route['imagen_borrar']                      = 'periodico/Controller_noticia/delete';
+$route['imagen_obtener']                     = 'periodico/Controller_noticia/obtener_img';

@@ -27,7 +27,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid">
+                    <!-- <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='fotoBtnId' data-fotoBtnId='gilberto se la come xD'>add_to_photos</i></b></button>
+                    <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='prueba'>add_to_photos</i></b></button> -->
+                    <!-- <div class="container-fluid">
                         <div class="col-xs-12">
                         <div class="table table-responsive">
                             <table id="tbprueba" class="table" width="100%">
@@ -42,7 +44,7 @@
                             </table>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -50,31 +52,44 @@
 
 
 <script type="text/javascript">
-    $(document).on("ready", main);
+    // $(document).on("click", "#fotoBtnId", function () {
+    //     var foto = $(this).attr("data-fotoBtnId");
+    //     localStorage.setItem("foto",foto);
+    //     swal("Prueba!", foto, "success");
+    // });
 
-    function main() {
-        $.ajax({
-            url: host+"imagen_obtener",
-            type: "POST",
-            dataType: "json",
-            success: function(response) {
-                var i = 0;
-                $.each(response.imagen, function(key, item) {
-                    i++;
-                    filas += '<tr>';
-                    filas += '<td>'+i+'</td>';
-                    filas += '<td>'+item.titulo_foto+'</td>';
-                    filas += '<td>'+item.url+'</td>';
-                    filas += '</tr>';
-                });
-                $("#tbprueba tbody").html(filas);
-            }
-        });
-    }
+    // $(document).on("click", "#prueba", function () {
+    //     var foto = localStorage.getItem("foto");
+    //     swal("Prueba!", foto, "success");
+    // });
+
+    // $(document).on("ready", main);
+
+    // function main() {
+    //     $.ajax({
+    //         url: host+"imagen_obtener",
+    //         type: "POST",
+    //         dataType: "json",
+    //         success: function(response) {
+    //             filas = "";
+    //             var i = 0;
+    //             $.each(response.imagen, function(key, item) {
+    //                 i++;
+    //                 filas += '<tr>';
+    //                 filas += '<td>'+i+'</td>';
+    //                 filas += '<td>'+item.titulo_foto+'</td>';
+    //                 filas += '<td>'+item.url+'</td>';
+    //                 filas += '</tr>';
+    //             });
+    //             $("#tbprueba tbody").html(filas);
+    //         }
+    //     });
+    // }
 
     Dropzone.options.frmFileUpload = {
         url: host+"imagen_prueba",
         paramName: "file",
+        // params: {'param_1':'file','para_2':'notiId'},
         acceptedFiles: 'image/*',
         maxFilesize: 20,
         autoQueue: true,
@@ -87,35 +102,29 @@
         // dictCancelUploadConfirmation:"Desea eliminar esta imagen?",
         // dictCancelUpload:"Eliminar Imagen",
         init: function(){
-            // $.ajax({
-            //     url: host+"imagen_obtener",
-            //     type: "POST",
-            //     dataType: "json",
-            //     success: function(response) {
-            //         $.each(response.imagen, function(key, item) {
-            //             var mockFile = { name: "xd", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
-            //             this.files.push(mockFile);
-            //             this.emit('addedfile', mockFile);
-            //             this.createThumbnailFromUrl(mockFile, mockFile.url);
-            //             this.emit('complete', mockFile);
-            //             this._updateMaxFilesReachedClass();         
-            //         });
-            //     }
-            // });
+            var myDropzone = this;
+            $.ajax({
+                url: host+"imagen_obtener",
+                type: "POST",
+                dataType: "json",
+                success: function(response) {
+                    $.each(response.imagen, function(key, item) {
+                        var mockFile = { name: item.titulo_foto, size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/"+item.url, foto: item.url};
+                        myDropzone.files.push(mockFile);
+                        myDropzone.emit('addedfile', mockFile);
+                        myDropzone.createThumbnailFromUrl(mockFile, mockFile.url);
+                        myDropzone.emit('complete', mockFile);
+                        myDropzone._updateMaxFilesReachedClass(); 
+                    });
+                }
+            });
 
-            // var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
-            // this.files.push(mockFile);
-            // this.emit('addedfile', mockFile);
-            // this.createThumbnailFromUrl(mockFile, mockFile.url);
-            // this.emit('complete', mockFile);
-            // this._updateMaxFilesReachedClass();
-
-            // var mockFile = { name: "prueba.jpg", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
-            // this.files.push(mockFile);
-            // this.emit('addedfile', mockFile);
-            // this.createThumbnailFromUrl(mockFile, mockFile.url);
-            // this.emit('complete', mockFile);
-            // this._updateMaxFilesReachedClass();
+            // var mockFile = { name: "xd", size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/17446365.png" };
+            // myDropzone.files.push(mockFile);
+            // myDropzone.emit('addedfile', mockFile);
+            // myDropzone.createThumbnailFromUrl(mockFile, mockFile.url);
+            // myDropzone.emit('complete', mockFile);
+            // myDropzone._updateMaxFilesReachedClass();
         },
         // accept: function(file, done) {
         //     if (file.name == "prueba.png") {
@@ -140,16 +149,20 @@
                 html: true
             },function (isConfirm) {
                 if (isConfirm) {
-                    var name = file.name;
+                    var action = 'delete';
+                    var name = file.foto;
                     $.ajax({
                         type: 'POST',
                         url: host+"imagen_borrar",
-                        data: {name: name},
+                        data: {
+                                action: action,
+                                name: name
+                        },
+                        beforeSend: function () { },
                         sucess: function(data){
                             console.log('success: ' + data);
                         }
                     });
-
                     var _ref;
                     if (file.previewElement) {
                         if ((_ref = file.previewElement) != null) {

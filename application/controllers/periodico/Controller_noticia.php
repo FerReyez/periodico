@@ -12,6 +12,7 @@ class Controller_noticia extends CI_Controller {
         $this->load->model('Model_categoria');
         $this->load->model('Model_edicion');
         $this->load->model('Model_noticia');
+        $this->load->model('Model_fotos');
     }
 
    
@@ -56,7 +57,7 @@ class Controller_noticia extends CI_Controller {
             </b>
             <b class='tool'>
             <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='fotoBtnId' data-fotoBtnId='" . $person->id_noticia . "'>add_to_photos</i></b></button>
-            <span class='tooltip-css3'>FOTOS</span>
+            <span class='tooltip-css3'>GALERIA</span>
             </b>
             <b class='tool'>
             <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_noticia . "'>build</i></b></button>
@@ -247,6 +248,93 @@ class Controller_noticia extends CI_Controller {
                 $output['Nota'] = $value->Nota;
             }
             echo json_encode($output);
+        }
+    }
+
+    /***************************************Imagen***************************************/
+
+    public function obtener_img(){
+        if($_POST['action'] == 'get'){
+            $notiId = $_POST['notiId'];
+            $data = array(
+                "imagen" => $this->Model_fotos->obtener_imagenes($notiId)
+            );
+            echo json_encode($data);
+        }
+    }
+
+    public function upload() {
+        if (!empty($_FILES)) {
+            $notiId = $_POST['notiId'];
+            // $extention = explode('.', $_FILES['file']['name']);
+            // $newName = rand() . '.' . $extention[1];
+            $tempFile = $_FILES['file']['tmp_name'];
+            $fileName = $_FILES['file']['name'];
+            $targetPath = "./assets/upload/noticias/";
+            $targetFile = $targetPath . $fileName ;
+            move_uploaded_file($tempFile, $targetFile);
+
+            date_default_timezone_set('America/El_Salvador');
+            $fecha_hora = date("Y-m-d H:i:s");
+            $id_u = $_SESSION['idusuario'];
+            $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+            $acciones = array(
+                'fecha_hora' => $fecha_hora,
+                'ip' => $ip,
+                'accion' => "SUBIR",
+                'tabla' => "FOTOGRAFIA",
+                'nombre' => $_SESSION['nombre_completo'],
+                'id_usuario' => $id_u,
+            );
+            $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+            $data_foto = array(
+                'titulo_foto' => $_FILES['file']['name'],
+                'url' => $_FILES['file']['name'],
+                'Fotografo' => 'Patria Masferreriana',
+                'Fecha' => $fecha_hora,
+            );
+
+            $foto_id = $this->Model_noticia->crear_id('fotografia', $data_foto);
+
+            $data_foto_noti = array(
+                'id_noticia' => $notiId,
+                'id_foto' => $foto_id,
+                'principal' => 0,
+            );
+
+            $result = $this->Model_noticia->crear_data('noticia_foto', $data_foto_noti);
+
+            if ($result) {
+                echo 'created';
+            }
+        }
+    }
+
+    public function delete(){
+        if ($_POST['action'] == 'delete') {
+            $targetPath = "./assets/upload/noticias/";
+            $filename = $targetPath.$_POST['name'];  
+            unlink($filename);
+
+            date_default_timezone_set('America/El_Salvador');
+            $fecha_hora = date("Y-m-d H:i:s");
+            $id_u = $_SESSION['idusuario'];
+            $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+            $acciones = array(
+                'fecha_hora' => $fecha_hora,
+                'ip' => $ip,
+                'accion' => "ELIMINAR",
+                'tabla' => "FOTOGRAFIA",
+                'nombre' => $_SESSION['nombre_completo'],
+                'id_usuario' => $id_u,
+            );
+            $this->Model_bitacora->guardar_bitacora($acciones) == true;
+
+            $result = $this->Model_fotos->eliminar_foto($_POST['fotoId']);
+            if ($result) {
+                echo 'deleted';
+            }
         }
     }
 

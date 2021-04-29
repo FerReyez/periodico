@@ -209,39 +209,45 @@
     </div>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('nota', {
-        customConfig: '<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor_nota.js'
-    });
-    CKEDITOR.config.height = 500;
+<div class="modal fade" id="foto_modal" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="foto-title"></h4>
+            </div>
+            <div class="modal-body"> 
+                <div id="carga-foto"></div>
+                <div class="modal-body users-cont">
+                    <div class="row clearfix">
+                        <div class="body">
+                            <form id="frmFileUpload" class="dropzone">
+                                <div class="dz-message" id='xd'>
+                                    <div class="drag-icon-cph">
+                                        <i class="material-icons">add_a_photo</i>
+                                    </div>
+                                    <h3>Arrastra o has click para subir una o mas imagenes.</h3>
+                                    <em>(Solo se permite subir archivos de imagenes con un maximo <strong>20MB</strong> de espacio por imagen.)</em>
+                                </div>
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                </div>
+                                <input id="notiId" name="notiId" type="hidden"/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                            Cerrar
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    $(document).on("click", "#notaBtnId", function (e) {
-        e.preventDefault();
-        var editBtnId = $(this).attr('data-notaBtnId');
-        var action = 'fetchSingleRow';
-        $.ajax({
-            url: "periodico/Controller_noticia/linea_actualizar",
-            method: "POST",
-            data: {
-                editBtnId: editBtnId,
-                action: action
-            },
-            dataType: "json",
-            beforeSend: function () {
-                $("#carga-nota").css("display", "block");
-                $("#nota_modal").modal("show");
-            },
-            success: function (data) {
-                $("#carga-nota").fadeOut("slow");
-                CKEDITOR.instances["nota"].setData(data.Nota)
-                $("#updateIdNota").val(editBtnId);
-                $("#actionNota").val('nota');
-                $("#nota-title").text("Editor de la Nota");
-                $("#btn-nota").text("Guardar");
-            }
-        });
-    });
-</script>
+<script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
+<script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/editor_noticia.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/foto_noticia.js"></script>
