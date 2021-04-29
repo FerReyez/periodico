@@ -1,14 +1,14 @@
 $(document).on("ready", main);
 
 function main() {
-    var table = $('#tb-carr').DataTable()
+    var table = $('#tb-redes').DataTable()
     table.destroy();
-    table = $('#tb-carr').DataTable({
+    table = $('#tb-redes').DataTable({
         "processing": true,
         "serverSide": true,
         "order": [],
         "ajax": {
-            "url": host + "periodico/Controller_carrousel/listar_carrousel",
+            "url": host + "periodico/Controller_redes/listar_redes",
             "type": "POST"
         },
         "columnDefs": [{
@@ -24,7 +24,7 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
-    $("#form-title").text("Agregar Carrousel");
+    $("#form-title").text("Agregar Redes");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
 });
@@ -33,13 +33,16 @@ $(document).on("click", "#add", function () {
 
 $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
-    var titulo = $("#titulo").val();
+    var redes_sociales = $("#redes_sociales").val();
+    var url = $("#url").val();
+    var icono = $("#icono").val();
+    var entidad = $("#entidad").val();
     //var url
     var estado = $("#estado").val();
 
-    if (titulo == '') {
+    if (redes_sociales == '') {
         swal({
-            title: "Campo Titulo requerido",
+            title: "Campo Redes Sociales requerido",
             type: "warning"
         });
     }  else if (estado == '') {
@@ -47,9 +50,20 @@ $(document).on("submit", "#developer_cu_form", function (e) {
             title: "Campo Estado requerido",
             type: "warning"
         });
-    } else {
+    }  else if (url == '') {
+        swal({
+            title: "Campo URL requerido",
+            type: "warning"
+        });
+    } else if (entidad == '') {
+        swal({
+            title: "Campo entidad requerido",
+            type: "warning"
+        });
+    }
+    else {
         $.ajax({
-            url: "periodico/Controller_carrousel/actualizar_crear_carrousel",
+            url: "periodico/Controller_redes/actualizar_crear_redes",
             method: "POST",
             data: new FormData(this),
             contentType: false,
@@ -86,7 +100,7 @@ $(document).on("click", "#editBtnId", function (e) {
     var editBtnId = $(this).attr('data-editBtnId');
     var action = 'fetchSingleRow';
     $.ajax({
-        url: "periodico/Controller_carrousel/linea_actualizar",
+        url: "periodico/Controller_redes/linea_actualizar",
         method: "POST",
         data: {
             editBtnId: editBtnId,
@@ -101,8 +115,11 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#carga").fadeOut("slow");
             $("#estado").val(data.estado);
             $("#estado").change();
-            $("#titulo").val(data.titulo);
-            $("#n_foto").val(data.foto);
+            $("#red_social").val(data.red_social);
+            $("#url").val(data.url);
+            $("#icono").val(data.icono);
+            $("#icono").change();
+            $("#entidad").val(data.entidad);
             $("#form-title").text('Editar edicion');
             $("#action").val('update');
             $("#nombreb").html('Actualizar');
@@ -133,7 +150,7 @@ $(document).on("click", "#delteBtnId", function (e) {
         if (isConfirm) {
             var action = 'delete';
             $.ajax({
-                url: "periodico/Controller_carrousel/eliminar_carrousel",
+                url: "periodico/Controller_redes/eliminar_redes",
                 method: "POST",
                 data: {
                     delteBtnId: delteBtnId,
