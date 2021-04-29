@@ -34,12 +34,17 @@ $(document).on("click", "#add", function () {
 $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
     var titulo = $("#titulo").val();
-    //var url
+    var url = $("#url").val();
     var estado = $("#estado").val();
 
     if (titulo == '') {
         swal({
             title: "Campo Titulo requerido",
+            type: "warning"
+        });
+    }if (url == '') {
+        swal({
+            title: "Campo URL requerido",
             type: "warning"
         });
     }  else if (estado == '') {
@@ -102,6 +107,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#estado").val(data.estado);
             $("#estado").change();
             $("#titulo").val(data.titulo);
+            $("#url").val(data.url);
             $("#n_foto").val(data.foto);
             $("#form-title").text('Editar edicion');
             $("#action").val('update');

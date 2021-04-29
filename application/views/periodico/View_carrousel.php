@@ -28,6 +28,7 @@
                                             <th>TITULO</th>
                                             <th>FOTO</th>
                                             <th>ESTADO</th>
+                                            <th>URL</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -76,7 +77,14 @@
                                 </div>
                                 <input type="hidden" name="n_foto" id="n_foto">
                             </div>
-                            
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">bookmark</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="URL" id="url" name="url">
+                                </div>
+                            </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
