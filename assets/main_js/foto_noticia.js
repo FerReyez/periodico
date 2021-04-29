@@ -10,30 +10,7 @@ Dropzone.options.frmFileUpload = {
     dictFileTooBig:"Archivo muy grande ({{filesize}}MB). Tamaño Maximo: {{maxFilesize}}MB.",
     dictInvalidFileType:"Solo se permite subir imagenes!",
     dictRemoveFile:"Eliminar Imagen",
-    init: function(){
-        // var myDropzone = this;
-        // var action = 'get';
-        // var notiId = localStorage.getItem("notiId");
-        // $.ajax({
-        //     url: host+"imagen_obtener/",
-        //     type: "POST",
-        //     data:{
-        //             action: action,
-        //             notiId: notiId
-        //         },
-        //     dataType: "json",
-        //     success: function(response) {
-        //         $.each(response.imagen, function(key, item) {
-        //             var mockFile = { name: item.titulo_foto, size: 20000000, type: 'image/*', url: host+"assets/upload/noticias/"+item.url };
-        //             myDropzone.files.push(mockFile);
-        //             myDropzone.emit('addedfile', mockFile);
-        //             myDropzone.createThumbnailFromUrl(mockFile, mockFile.url);
-        //             myDropzone.emit('complete', mockFile);
-        //             myDropzone._updateMaxFilesReachedClass(); 
-        //         });
-        //     }
-        // });
-    },
+    init: function(){},
     removedfile: function(file) {
         swal({
             title: "Estas seguro?",
