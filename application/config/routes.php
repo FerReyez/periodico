@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-$route['default_controller']        = "Controller_web/index_web";
+$route['default_controller']        = "cliente/Controller_home/index_web";
 $route['404_override']              = '';
 
 /***********************************Admin**********************************************/
@@ -29,7 +29,7 @@ $route['redes']                          = 'periodico/Controller_redes/vista_red
 $route['image']                              = 'periodico/Controller_prueba/vista_image';
 
 /***********************************Web**********************************************/
-$route['inicio'] = 'Controller_web/index_web';
+$route['inicio'] = 'cliente/Controller_home/index_web';
 $route['noticias'] = 'Controller_web/listaNoticias';
 $route['noticia'] = 'Controller_web/noticias';
 $route['editorial'] = 'Controller_web/editorial';
