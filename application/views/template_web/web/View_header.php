@@ -41,7 +41,7 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 						<!-- logo start -->
-						<div class="logo"> <a href="<?php echo base_url() ?>inicio"><img src="<?php echo base_url() ?>assets/web/logo.png" alt="logo" /></a> </div>
+						<div class="logo"> <a href="<?php echo base_url() ?>inicio"><img src="<?php echo base_url() ?>assets/img/logo.png" alt="logo" /></a> </div>
 						<!-- logo end -->
 					</div>
 					<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">

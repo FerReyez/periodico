@@ -81,7 +81,6 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                
                                 <div>
                                     <select id="icono" name="icono" data-live-search="true">
                                     <option selected="selected">Icono</option>
