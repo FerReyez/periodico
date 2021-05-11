@@ -6,7 +6,8 @@ if (!defined('BASEPATH'))
 class Controller_web extends CI_Controller {
 
     public function index() {
-        
+        parent::__construct();
+        $this->load->model('Model_web');
     }
 
     public function cargar_plantilla_web($vista, $data) {
@@ -15,6 +16,20 @@ class Controller_web extends CI_Controller {
     }
 
     public function index_web(){
+        $categoria = $this->Model_web->listar_categoria();
+        // $tab = "";
+        // foreach ($menu as $m) {
+        //     $tab .= '<tr>';
+        //     $tab .= '<td>'. $m['nc_noticia'] .'</td>';
+        //     $opciones = $this->Model_web->listar_opcion($m['nc_noticia']);
+        //     foreach ($opciones as $o) {
+        //         $tab .= '<td>'. $o['nc_noticia'] .'</td>';
+        //     }
+        //     $tab .= '</tr>';
+
+        // }
+        // $data['prueba'] = $tab;
+        $data['categoria'] = $categoria;
         $data['titulo'] = "Inicio";
         $vista = "web/prueba";
         $this->cargar_plantilla_web($vista, $data);

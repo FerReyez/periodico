@@ -32,7 +32,6 @@ $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
     var categoria = $("#categoria").val();
     var icono = $("#icono").val();
-    var cat_s = $("#cat_s").val();
 
     if (categoria == '') {
         swal({
@@ -42,11 +41,6 @@ $(document).on("submit", "#developer_cu_form", function (e) {
     } else if (icono == '') {
         swal({
             title: "Campo icono requerido",
-            type: "warning"
-        });
-    } else if (cat_s == '') {
-        swal({
-            title: "Selecciona una categoria",
             type: "warning"
         });
     } else {

@@ -34,8 +34,6 @@ class Model_carrousel extends CI_Model{
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
-
-        
     }
 
     public function lista_carrousel()
