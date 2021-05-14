@@ -3,8 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Controller_carrousel extends CI_Controller
-{
+class Controller_carrousel extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
@@ -46,8 +45,10 @@ class Controller_carrousel extends CI_Controller
             $row = array();
             $row[] = $no;
             $row[] = $person->titulo;
-            $row[] = $person->foto;
+            // $row[] = base_url().'/assets/upload/carrousel/'.$person->foto;
+            $row[] = '<img src="'.base_url().'/assets/upload/carrousel/'.$person->foto.'" style="width:200px">';
             $row[] = $xd;
+            $row[] = '<a href="'.$person->url.'" target="_blank">Ir A Ver</a>';
             $row[] = "<center>
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idcarrousel . "'>build</i></b></button>
@@ -101,7 +102,7 @@ class Controller_carrousel extends CI_Controller
                 $data = array(
                     'titulo' => $_POST['titulo'],
                     'foto' => $img,
-                    'url' => '',
+                    'url' => $_POST['url'],
                     'estado' => $_POST['estado'],
                 );
                 $result = $this->Model_carrousel->crear_carrousel($table, $data);
@@ -141,7 +142,7 @@ class Controller_carrousel extends CI_Controller
                 $data = array(
                     'titulo' => $_POST['titulo'],
                     'foto' => $img,
-                    'url' => '',
+                    'url' => $_POST['url'],
                     'estado' => $_POST['estado'],
                 );
                 $result = $this->Model_carrousel->actualizar_carrousel($table, $data, $updateId);
@@ -163,6 +164,7 @@ class Controller_carrousel extends CI_Controller
                 $output['titulo'] = $value->titulo;
                 $output['foto'] = $value->foto;
                 $output['estado'] = $value->estado;
+                $output['url'] = $value->url;
             }
             echo json_encode($output);
         }

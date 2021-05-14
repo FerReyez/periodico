@@ -4,67 +4,48 @@
     <div class="row">      
       <div class="footer_blog">
         <div class="row">
+
           <div class="col-md-5">
             <div class="main-heading left_text">
-              <h2>It Next Theme</h2>
+              <h2>Mision</h2>
             </div>
-            <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>            
+            <p>Ser un medio de difusión objetivo y de promoción que destaque las actividades académicas, científicas, culturales y humanitarias de las diferentes facultades de la Universidad Salvadoreña Alberto Masferrer, mediante un ejercicio periodístico con alto sentido ético.</p>
+            <div class="main-heading left_text">
+              <h2>Vision</h2>
+            </div>
+            <p>Ser un medio de divulgación confiable cuyos contenidos reflejen calidad y responsabilidad ante la comunidad universitaria basado en los valores que rigen a la institución: verdad, justicia, moral, respeto, calidad humana, excelencia académica.</p>
           </div>
+
           <div class="col-md-4">
             <div class="main-heading left_text">
-              <h2>Additional links</h2>
+              <h2>Links Adicionales</h2>
             </div>
             <ul class="footer-menu">
-              <li><a href="it_about.html"><i class="fa fa-angle-right"></i> About us</a></li>
-              <li><a href="it_term_condition.html"><i class="fa fa-angle-right"></i> Terms and conditions</a></li>
-              <li><a href="it_privacy_policy.html"><i class="fa fa-angle-right"></i> Privacy policy</a></li>
-              <li><a href="it_news.html"><i class="fa fa-angle-right"></i> News</a></li>
-              <li><a href="it_contact.html"><i class="fa fa-angle-right"></i> Contact us</a></li>
+              <?php foreach ($redes as $r) { ?>
+                <li><a href="<?php echo $r['url']; ?>" target="_blank"><i class="<?php echo $r['icono']; ?>"></i> <?php echo $r['red_social']; ?></a></li>
+              <?php } ?>
             </ul>
-          </div>      
+          </div>
+
           <div class="col-md-3">
             <div class="main-heading left_text">
-              <h2>Contact us</h2>
+              <h2>Contáctanos</h2>
             </div>
-            <p>123 Second Street Fifth Avenue,<br>
-              Manhattan, New York<br>
-              <span style="font-size:18px;"><a href="tel:+9876543210">+987 654 3210</a></span></p>          
+            <p>
+                19 Av. Nte. entre 3 a Calle Pte.<br>
+                y Alameda Juan Pablo II, San Salvador.<br>
+                <span style="font-size:18px;"><a href="tel:+503">+(503) XXXX XXXX</a></span>
+            </p>          
           </div>
+
         </div>
       </div>
       <div class="center">
-        <p>CBN© Copyrights 2020</p>
+        <p>Universidad Salvadoreña Alberto Masferrer - USAM © | CBN Solutions © Copyrights 2021 <span style="font-size:18px;"><a href="tel:+50372166991">+(503) 7216 6991</a></span></p>
       </div>
     </div>
   </div>
 </footer>
-
-<!-- Modal -->
-<div class="modal fade" id="search_bar" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-8 col-md-8 col-sm-8 offset-lg-2 offset-md-2 offset-sm-2 col-xs-10 col-xs-offset-1">
-            <div class="navbar-search">
-              <form action="#" method="get" id="search-global-form" class="search-global">
-                <input type="text" placeholder="Type to search" autocomplete="off" name="s" id="search" value="" class="search-global__input">
-                <button class="search-global__btn"><i class="fa fa-search"></i></button>
-                <div class="search-global__note">Begin typing your search above and press return to search.</div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Model search bar -->
-
 
 <!-- end footer -->
 <!-- js section -->

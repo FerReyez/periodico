@@ -27,8 +27,9 @@
                                             <th>CORRELATIVO</th>
                                             <th>RED SOCIAL</th>
                                             <th>URL</th>
-                                            <th>ICONO</th>
+                                            <th width="200">ICONO</th>
                                             <th>ENTIDAD</th>
+                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -80,7 +81,6 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                
                                 <div>
                                     <select id="icono" name="icono" data-live-search="true">
                                     <option selected="selected">Icono</option>
@@ -90,8 +90,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                                <div class="input-group">
+                            <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">bookmark</i>
                                 </span>
@@ -99,12 +98,10 @@
                                 <input type="text" class="form-control date" placeholder="Entidad" name="entidad" id="entidad">
                                 </div>
                             </div>
-                            
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                
                                 <div>
                                     <select id="estado" name="estado" data-live-search="true">
                                         <option value="ns">Estado</option>
@@ -114,18 +111,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="updateId" name="updateId">
+                            <input type="hidden" name="action" id="action" value="create">
+                            <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="nombreb"></b></button>
+                            <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">Cancelar</button>
+                        </div>
+                        </form>
+                        </div>
                     </div>
-                    <input type="hidden" id="updateId" name="updateId">
-                    <input type="hidden" name="action" id="action" value="create">
             </div>
-            <div class="modal-footer">
-                <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="nombreb"></b>
-                </button>
-                </form>
-                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
-                    Cancelar
-                </button>
-            </div>
+            
         </div>
 
         <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>

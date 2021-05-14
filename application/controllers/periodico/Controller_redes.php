@@ -46,7 +46,8 @@ class Controller_redes extends CI_Controller
             $row = array();
             $row[] = $no;
             $row[] = $person->red_social;
-            $row[] = $person->icono;
+            $row[] = '<a href="'.$person->url.'" target="_blank">Ir A Ver</a>';
+            $row[] = "<i  class='".$person->icono."'></i>  ".$person->icono."";
             $row[] = $person->entidad;
             $row[] = $xd;
             $row[] = "<center>

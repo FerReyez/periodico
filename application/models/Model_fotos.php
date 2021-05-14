@@ -13,13 +13,6 @@ class Model_fotos extends CI_Model{
         $result = $query->result_array();
         return $result;
     }
-
-    // public function subir_foto($data){
-    //     $this->db->insert('fotografia', $data);
-    //     $resultId = $this->db->insert_id();
-
-    //     return $result;
-    // }
     
     public function eliminar_foto($foto) {
         $this->db->where('id_foto', $foto);
