@@ -5,31 +5,36 @@ if (!defined('BASEPATH'))
 
 class Controller_web extends CI_Controller {
 
-    public function index() {
+    public function __construct() {
         parent::__construct();
         $this->load->model('Model_web');
     }
 
     public function cargar_plantilla_web($vista, $data) {
+        $menus = $this->Model_web->listar_menu();
+        $opciones = $this->Model_web->listar_opcion();
+        $data['menus'] = $menus;
+        $data['opciones'] = $opciones;
         $data['main_content'] = $vista;
         $this->load->view('template_web/web/View_template', $data);
     }
 
     public function index_web(){
-        $categoria = $this->Model_web->listar_categoria();
-        // $tab = "";
-        // foreach ($menu as $m) {
-        //     $tab .= '<tr>';
-        //     $tab .= '<td>'. $m['nc_noticia'] .'</td>';
-        //     $opciones = $this->Model_web->listar_opcion($m['nc_noticia']);
-        //     foreach ($opciones as $o) {
-        //         $tab .= '<td>'. $o['nc_noticia'] .'</td>';
-        //     }
-        //     $tab .= '</tr>';
+        $carrousel = $this->Model_web->listar_carrousel();
+        $last_ed = $this->Model_web->ultima_edicion();
+        $id_ed = 0;
+        foreach ($last_ed as $l) {
+            $id_ed = $l['id_edicion'];
+        }
+        $noticias = $this->Model_web->ultimas_noticias($id_ed);
+        $ediciones = $this->Model_web->ultimas_ediciones();
+        $redes = $this->Model_web->listar_redes();
 
-        // }
-        // $data['prueba'] = $tab;
-        $data['categoria'] = $categoria;
+        $data['carrousel'] = $carrousel;
+        $data['last_ed'] = $last_ed;
+        $data['noticias'] = $noticias;
+        $data['ediciones'] = $ediciones;
+        $data['redes'] = $redes;
         $data['titulo'] = "Inicio";
         $vista = "web/prueba";
         $this->cargar_plantilla_web($vista, $data);

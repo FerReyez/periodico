@@ -49,33 +49,22 @@
 						<div class="menu_side">
 							<div id="navbar_menu">
 								<ul class="first-ul">
-									<li><a href="<?php echo base_url() ?>noticias">Noticias USAM</a></li>
-									<li> <a class="active" href="<?php echo base_url() ?>noticias">Nacionales</a>
-										<ul>
-											<li><a href="<?php echo base_url() ?>noticias">Politica</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Sucesos</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Economia</a></li>
-										</ul>
-									</li>
-									<li><a href="<?php echo base_url() ?>noticias">Deportes</a></li>
-									<li> <a href="<?php echo base_url() ?>noticias">Revista</a>
-										<ul>
-											<li><a href="<?php echo base_url() ?>noticias">Espectaculos</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Arte y Cultura</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Reportajes</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Academico</a></li>
-											<li><a href="<?php echo base_url() ?>noticias">Tecnologia</a></li>
-											<li><a href="<?php echo base_url() ?>personas">Perfiles</a></li>
-										</ul>
-									</li>
-									<li><a href="<?php echo base_url() ?>editorial">Editorial - Opiniones</a></li>
+									<?php foreach ($menus as $m) { ?>
+										<?php if($m['nc_categoria'] == NULL) { ?>
+											<li><a href="<?php echo base_url() ?>noticias"><?php echo $m['nc_noticia']; ?></a>
+												<ul>
+												<?php foreach ($opciones as $o) { ?>
+													<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
+														<li><a href="<?php echo base_url() ?>noticias"><?php echo $o['nc_noticia']; ?></a></li>
+													<?php } ?>
+												<?php } ?>
+												</ul>
+											</li>
+										<?php } ?>
+									<?php } ?>
+									<li><a href="<?php echo base_url() ?>noticias">Perfiles</a></li>
 									<li><a href="<?php echo base_url() ?>noticias">Ediciones</a></li>
 								</ul>
-								</div>
-								<div class="search_icon">
-									<ul>
-										<li><a href="#" data-toggle="modal" data-target="#search_bar"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-									</ul>
 								</div>
 							</div>
 					</div>
