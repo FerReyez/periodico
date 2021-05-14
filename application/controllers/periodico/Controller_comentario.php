@@ -14,40 +14,13 @@ class Controller_comentario  extends CI_Controller {
     }
 
     public function listar_comentarios() {
-
-        $list = $this->Model_comentario->lista_comentarios();
-        $data = array();
-        $no = $_POST['start'];
-        foreach ($list as $person) {
-            $no++;
-            $row = array();
-            $row[] = $no;            
-            $row[] = $person->nc_nombre;
-            $row[] = $person->nc_comentario;
-            $row[] = $person->nc_titulo;
-            $row[] = $person->nc_estado;
-            $row[] = "<img src='".base_url()."assets/upload/perfiles/".$person->foto_comen."' style=heigth: 50px;>";
-            $row[] = "<i  class='".$person->nc_icono."'></i>  ".$person->nc_icono."";
-            $row[] = "<center>
-            <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
-              <span class='tooltip-css3'>EDITAR</span>
-            </b>
-            <b class='tool'>
-              <button id='delteBtnId' class='btn bg-blue-grey waves-effect btn-xs' data-delteBtnId='" . $person->idperfiles . "'><b><i class='material-icons'>delete_forever</i></b></button>
-              <span class='tooltip-css3' >ELIMINAR</span>
-            </b>
-            </center>";
-            $data[] = $row;
+        if($_POST['action'] == 'get'){
+            $perfilId = $_POST['perfilId'];
+            $data = array(
+                "comen" => $this->Model_comentario->listar_comentarios($perfilId)
+            );
+            echo json_encode($data);
         }
-
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->Model_comentario->counwt_all(),
-            "recordsFiltered" => $this->Model_comentario->count_filtered(),
-            "data" => $data,
-        );
-        echo json_encode($output);
     }
 
     public function actualizar_crear_comentario()

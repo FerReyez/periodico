@@ -24,7 +24,7 @@
                                 <table id="tb-perfiles" class="table table-bordered table-striped table-condensed">
                                     <thead class="">
                                         <tr>
-                                            <th>CORRELATIVO</th>
+                                            <th>#</th>
                                             <th>NOMBRE</th>
                                             <th>FECHA</th>
                                             <th>ESTADO</th>
@@ -129,7 +129,7 @@
 </div>
 
 <div class="modal fade" id="modal-perfil" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="comentario-title"></h4>
@@ -142,7 +142,7 @@
                             <table id="tb-comentario" class="table table-bordered table-striped table-condensed">
                                 <thead class="">
                                     <tr>
-                                        <th>CORRELATIVO</th>
+                                        <th >#</th>
                                         <th>NOMBRE</th>
                                         <th>CARGO</th>
                                         <th>COMENTARIO</th>
@@ -151,8 +151,7 @@
                                         <th>ACCIONES</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                         <div class="form-actions">
@@ -203,25 +202,22 @@
                                 <div>
                                     <select id="estado" name="estado" data-live-search="true">
                                         <option value="ns">Estado</option>
-                                        <option value="0">Activo</option>
-                                        <option value="1">Inactivo</option>
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="idperfiles" name="idperfiles">
-                        <input type="hidden" id="updateId" name="updateId">
-                        <input type="hidden" name="action" id="action" value="create">
                         <div class="modal-footer">
-                            <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit">Guardar<b id="nombreb"></b>
+                            <input type="hidden" id="idperfiles" name="idperfiles">
+                            <input type="hidden" id="updateId" name="updateId">
+                            <input type="hidden" name="action" id="action" value="create">
+                            <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit">Guardar<b id="nombreb"></b></button>
+                            <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                                Cancelar
                             </button>
                         </div>
-                </form>
-                <div class="modal-footer">
-                    <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
-                        Cancelar
-                    </button>
-                </div>
+                    </form>
             </div>
         </div>
     </div>

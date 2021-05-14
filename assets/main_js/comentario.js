@@ -1,36 +1,56 @@
-function listar_comentarios(){
-	var comentario = localStorage.getItem("rt");
-	if (comentario !== ''){
-		$.ajax({
-			url: base+"Controller_comentario/listar_comentarios" + comentario,
-			type: "GET",
-			dataType: "json",
-			success: function(response) {
-				table = "";
-				var i = 0;
-				$.each(response.comen, function(key, item) {
-					i++;
-					table += '<tr>';					
-					table += '<td>'+item.nombre+'</td>';										
-					table += '<td>'+item.comentario+'</td>';
-					table += '<td>'+item.titulo+'</td>';
-					table += '<td>'+item.estado+'</td>';
-					table += '<td><img src=" '+ host +' "assets/upload/perfiles/' + item.foto_comen + ' style=heigth: 50px;>"+</td>';
-					table += '<a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#2B77A8;" class="fa fa-pencil"></i></a>';				
-					table += '</td>';
-					table += '</tr>';
-				});
-				if (i == 0){
-					table += '<tr><td colspan="4"><h4 align="center">Sin Comentarioss!</h4></td></tr>';
-				}
-				$("#tb-comentario").html(table);
-			}
-		});
-	}	
+$(document).on("click", "#btnComentario", function () {
+    var idperfiles = $(this).attr("data-btnComentario");
+    $("#idperfiles").val(idperfiles);
+    listar_comentarios(idperfiles);
+    $("#carga-comentario").fadeOut("slow");
+    $(".form-line").removeClass("focused");
+    $("#form-comentario")[0].reset();
+    $("#comentario-title").text("Agregar Comentario");    
+    $("#nombreb").text("Agregar");
+    $("#modal-perfil").modal("show");
+});
+
+function listar_comentarios(perfilId){
+    var action = 'get';
+    $.ajax({
+        url: host+"periodico/Controller_comentario/listar_comentarios",
+        type: "POST",
+        data:{
+            perfilId: perfilId,
+            action: action
+        },
+        dataType: "json",
+        success: function(response) {
+            table = "";
+            var i = 0;
+            $.each(response.comen, function(key, item) {
+                i++;
+                estado = item.estado;
+                table += '<tr>';					
+                table += '<td>'+i+'</td>';
+                table += '<td>'+item.nombre+'</td>';
+                table += '<td>'+item.titulo+'</td>';									
+                table += '<td>'+item.comentario+'</td>';
+                if(estado == 1){
+                    table += "<td><i class='material-icons' style='color:green;'>done</i></td>";
+                } else {
+                    table += "<td><i class='material-icons' style='color:red;'>clear</i></td>";
+                }
+                table += '<td><img src=" '+ host +'assets/upload/perfiles/'+ item.foto_comen + '" width="50"></td>';
+                table += '<td><a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#2B77A8;" class="fa fa-pencil"></i></a></td>';				
+                table += '</td>';
+                table += '</tr>';
+            });
+            if (i == 0){
+                table += '<tr><td colspan="7"><h4 align="center">Sin Comentarioss!</h4></td></tr>';
+            }
+            $("#tb-comentario tbody").html(table);
+        }
+    });
 }
 
 $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
-    
+    var idperfiles = $("#idperfiles").val();
     var nombre = $("#nombreComen").val();    
     var comentario = $("#comentario").val();
 	var titulo = $("titulo").val();
@@ -70,25 +90,19 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
             contentType: false,
             processData: false,
             beforeSend: function () {
-                $("#carga").css("display", "block");
+                $("#carga-comentario").css("display", "block");
             },
             success: function (data) {
-                $("#carga").fadeOut("slow");
+                listar_comentarios(idperfiles);
+                $("#carga-comentario").fadeOut("slow");
                 if (data.trim() == 'created') {
                     showNotification('bg-teal', 'Registro agregado con exito', 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
-                    $("#create_form_modal").modal('hide');
-                    if ($('.modal-backdrop').is(':visible')) {
-                        $('body').removeClass('modal-open');
-                        $('.modal-backdrop').remove();
-                    };
-                    $("#developer_cu_form")[0].reset();
+                    $("#form-comentario")[0].reset();
                 }
-                $("#create_form_modal").modal('hide');
                 if (data.trim() == 'update') {
                     showNotification('bg-teal', 'Registro actualizado con exito', 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
-                    $("#developer_cu_form")[0].reset();
+                    $("#form-comentario")[0].reset();
                 }
-                main();
             }
         });
     }

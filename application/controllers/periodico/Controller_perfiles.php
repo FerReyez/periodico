@@ -40,9 +40,9 @@ class Controller_perfiles extends CI_Controller
             $estado = $person->estado;
             $xd = "";
             if($estado == 'Activo'){
-                $xd = "<i class='material-icons' style='color:green;'>done</i> Activo";
+                $xd = "<i class='material-icons' style='color:green;'>done</i>";
             } else {
-                $xd = "<i class='material-icons' style='color:clear;'>done</i> Inacctivo";
+                $xd = "<i class='material-icons' style='color:red;'>clear</i>";
             }
             $no++;
             $row = array();
@@ -56,7 +56,7 @@ class Controller_perfiles extends CI_Controller
               <span class='tooltip-css3'>EDITAR</span>
             </b>       
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_perfil' data-crea_perfil='" . $person->idperfiles . "'>comment</i></b></button>
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='btnComentario' data-btnComentario='" . $person->idperfiles . "'>comment</i></b></button>
               <span class='tooltip-css3'>Comentario</span>
             </b>                          
             <b class='tool'>

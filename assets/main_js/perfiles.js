@@ -27,33 +27,10 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
-    $("#form-title").text("Agregar Edicion");
+    $("#form-title").text("Agregar Perfil");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
 });
-
-$(document).on("click", "#crea_perfil", function () {
-    var idperfiles = $(this).attr("data-crea_perfil");
-    $("#idperfiles").val(idperfiles);
-    $("#carga-comentario").fadeOut("slow");
-    // $("#action").val("create");
-    $(".form-line").removeClass("focused");
-    $("#form-comentario")[0].reset();
-    $("#comentario-title").text("Agregar Comentario");    
-    $("#nombreb").text("Agregar");
-    $("#modal-perfil").modal("show");
-});
-
-$(document).on("click", "#crea_nota", function () {
-    $("#carga-nota").fadeOut("slow");
-    // $("#action").val("create");
-    $(".form-line").removeClass("focused");
-    $("#form-nota")[0].reset();
-    $("#nota-title").text("Agregar Nota");    
-    $("#nombreb").text("Agregar");
-    $("#modal-nota").modal("show");
-});
-
 
 /////// Crear y actualizar ///////////
 
@@ -154,7 +131,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#cargo").val(data.cargo);
             $("#fecha_crea").val(data.fecha_crea);
             $("#fecha").change();
-            $("#form-title").text('Editar edicion');
+            $("#form-title").text('Editar Perfil');
             $("#action").val('update');
             $("#nombreb").html('Actualizar');
             $("#updateId").val(editBtnId);

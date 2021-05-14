@@ -37,9 +37,9 @@ class Controller_carrousel extends CI_Controller{
             $estado = $person->estado;
             $xd = "";
             if ($estado == 'Activo') {
-                $xd = "<i class='material-icons' style='color:green;'>done</i> Activo";
+                $xd = "<i class='material-icons' style='color:green;'>done</i>";
             } else {
-                $xd = "<i class='material-icons' style='color:clear;'>done</i> Inacctivo";
+                $xd = "<i class='material-icons' style='color:red;'>cleat</i>";
             }
             $no++;
             $row = array();
