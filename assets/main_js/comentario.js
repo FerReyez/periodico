@@ -37,7 +37,7 @@ function listar_comentarios(perfilId){
                     table += "<td><i class='material-icons' style='color:red;'>clear</i></td>";
                 }
                 table += '<td><img src=" '+ host +'assets/upload/perfiles/'+ item.foto_comen + '" width="50"></td>';
-                table += '<td><a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#2B77A8;" class="fa fa-pencil"></i></a></td>';				
+                table += '<td><a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#red;" class="fa fa-pencil"></i></a></td>';				
                 table += '</td>';
                 table += '</tr>';
             });
