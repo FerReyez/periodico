@@ -1,51 +1,32 @@
-// function listar_comentarios(){
-// 	var comentario = localStorage.getItem("rt");
-// 	if (comentario !== ''){
-// 		$.ajax({
-// 			url: base+"Controller_comentario/listar_comentarios" + comentario,
-// 			type: "GET",
-// 			dataType: "json",
-// 			success: function(response) {
-// 				table = "";
-// 				var i = 0;
-// 				$.each(response.comen, function(key, item) {
-// 					i++;
-// 					table += '<tr>';
-// 					table += '<td>'+item.idComentario+'</td>';
-// 					table += '<td>'+item.nombre+'</td>';										
-// 					table += '<td>'+item.comentario+'</td>';
-// 					table += '<td>'+item.titulo+'</td>';
-// 					table += '<td>'+item.estado+'</td>';
-// 					table += '<td><img src=" '+ host +' "assets/upload/perfiles/' + item.foto_comen + ' style=heigth: 50px;>"+</td>';
-// 					table += '<a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#2B77A8;" class="fa fa-pencil"></i></a>';				
-// 					table += '</td>';
-// 					table += '</tr>';
-// 				});
-// 				if (i == 0){
-// 					table += '<tr><td colspan="4"><h4 align="center">Sin Perfiles!</h4></td></tr>';
-// 				}
-// 				$("#tb-comentario").html(table);
-// 			}
-// 		});
-// 	}	
-// }
-
-function main() {
-    var table = $('#tb-categoria').DataTable()
-    table.destroy();
-    table = $('#tb-categoria').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "order": [],
-        "ajax": {
-            "url": host + "periodico/Controller_comentario/listar_comentarios",
-            "type": "POST"
-        },
-        "columnDefs": [{
-            "targets": [-1],
-            "orderable": false,
-        },],
-    });
+function listar_comentarios(){
+	var comentario = localStorage.getItem("rt");
+	if (comentario !== ''){
+		$.ajax({
+			url: base+"Controller_comentario/listar_comentarios" + comentario,
+			type: "GET",
+			dataType: "json",
+			success: function(response) {
+				table = "";
+				var i = 0;
+				$.each(response.comen, function(key, item) {
+					i++;
+					table += '<tr>';					
+					table += '<td>'+item.nombre+'</td>';										
+					table += '<td>'+item.comentario+'</td>';
+					table += '<td>'+item.titulo+'</td>';
+					table += '<td>'+item.estado+'</td>';
+					table += '<td><img src=" '+ host +' "assets/upload/perfiles/' + item.foto_comen + ' style=heigth: 50px;>"+</td>';
+					table += '<a class="btn btn-xs btn-circle" onclick="linea_comentario('+item.idperfiles+');"><i style="color:#2B77A8;" class="fa fa-pencil"></i></a>';				
+					table += '</td>';
+					table += '</tr>';
+				});
+				if (i == 0){
+					table += '<tr><td colspan="4"><h4 align="center">Sin Comentarioss!</h4></td></tr>';
+				}
+				$("#tb-comentario").html(table);
+			}
+		});
+	}	
 }
 
 $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
