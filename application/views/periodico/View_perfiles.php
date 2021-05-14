@@ -136,19 +136,30 @@
             </div>
             <div class="modal-body">
                 <div id="carga-comentario"></div>
-                <div class="flip-scroll">
-                    <table id="tb-comentario" class="table table-bordered table-striped table-condensed flip-content">
-                        <tr>
-                            <thead class="flip-content bordered-palegreen">
-                                <th class="numeric">Nombre</th>
-                                <th class="numeric">Cargo</th>
-                                <th class="numeric">Comentario</th>
-                                <th class="numeric">Foto</th>
-                                <th class="numeric"></th>
-                            </thead>
-                            <tbody></tbody>
-                        </tr>
-                    </table>
+                <div class="container-fluid">
+                    <div class="col-xs-12">
+                        <div class="body table-responsive">
+                            <table id="tb-comentario" class="table table-bordered table-striped table-condensed">
+                                <thead class="">
+                                    <tr>
+                                        <th>CORRELATIVO</th>
+                                        <th>NOMBRE</th>
+                                        <th>CARGO</th>
+                                        <th>COMENTARIO</th>
+                                        <th>ESTADO</th>
+                                        <th>FOTO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-center paginacion">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <form id="form-comentario">
                     <div class="modal-body users-cont">
@@ -199,7 +210,7 @@
                             </div>
                         </div>
                         <input type="hidden" id="idperfiles" name="idperfiles">
-                        <input type="hidden" id="updateId" name="updateId">                        
+                        <input type="hidden" id="updateId" name="updateId">
                         <input type="hidden" name="action" id="action" value="create">
                         <div class="modal-footer">
                             <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit">Guardar<b id="nombreb"></b>

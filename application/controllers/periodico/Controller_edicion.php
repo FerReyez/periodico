@@ -11,7 +11,7 @@ class Controller_edicion extends CI_Controller {
         $this->load->model('Model_bitacora');
         $this->load->model('Model_edicion');
     }
-
+ 
    
     public function cargar_plantilla($vista)
     {

@@ -21,7 +21,7 @@ class Controller_comentario  extends CI_Controller {
         foreach ($list as $person) {
             $no++;
             $row = array();
-            $row[] = $no;
+            $row[] = $no;            
             $row[] = $person->nc_nombre;
             $row[] = $person->nc_comentario;
             $row[] = $person->nc_titulo;
@@ -43,7 +43,7 @@ class Controller_comentario  extends CI_Controller {
 
         $output = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->Model_comentario->count_all(),
+            "recordsTotal" => $this->Model_comentario->counwt_all(),
             "recordsFiltered" => $this->Model_comentario->count_filtered(),
             "data" => $data,
         );
