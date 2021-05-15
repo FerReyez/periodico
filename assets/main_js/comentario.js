@@ -109,36 +109,33 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
 });
 
 
-    // $(document).on("click", "#editBtnId", function (e) {
-    //     e.preventDefault();
-    //     var editBtnId = $(this).attr('data-editBtnId');
-    //     var action = 'fetchSingleRow';
-    //     $.ajax({
-    //         url: "periodico/Controller_comentario/linea_actualizar",
-    //         method: "POST",
-    //         data: {
-    //             editBtnId: editBtnId,
-    //             action: action
-    //         },
-    //         dataType: "json",
-    //         beforeSend: function () {
-    //             $("#carga").css("display", "block");
-    //             $("#create_form_modal").modal('show');
-    //         },
-    //         success: function (data) {
-    //             $("#carga").fadeOut("slow");
-    //             $("#estado").val(data.estado);
-    //             $("#estado").change();
-    //             $("#nombre").val(data.nombre);
-    //             $("#comentario").val(data.comentario);
-    //             $("#titulo").val(data.titulo);
-    //             $("#idperfiles").val(data.idperfiles);
-    //             $("#fecha").change();
-    //             $("#form-title").text('Editar edicion');
-    //             $("#action").val('update');
-    //             $("#nombreb").html('Actualizar');
-    //             $("#updateId").val(editBtnId);
-    //         }
-    //     });
-    // });
+    $(document).on("click", "#btnEditComen", function (e) {
+        e.preventDefault();
+        var btnEditComen = $(this).attr('data-btnEditComen');
+        var action = 'fetchSingleRow';
+        $.ajax({
+            url: "periodico/Controller_comentario/linea_actualizar",
+            method: "POST",
+            data: {
+                btnEditComen: btnEditComen,
+                action: action
+            },
+            dataType: "json",
+            beforeSend: function () {
+                $("#carga-comentario").css("display", "block");                
+            },
+            success: function (data) {
+                $("#carga-comentario").fadeOut("slow");
+                $("#estado").val(data.estado);
+                $("#estado").change();
+                $("#nombreComen").val(data.nombre);
+                $("#comentario").val(data.comentario);
+                $("#titulo").val(data.titulo);
+                $("#idperfiles").val(data.idperfiles);                              
+                $("#action").val('update');
+                // $("#nombreb").html('Actualizar');
+                $("#updateId").val(editBtnId);
+            }
+        });
+    });
     
