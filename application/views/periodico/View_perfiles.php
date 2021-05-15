@@ -218,6 +218,7 @@
                             </button>
                         </div>
                     </form>
+                </div>
             </div>
         </div>
     </div>
@@ -253,9 +254,9 @@
     </div>
 </div>
 
+
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/perfiles.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/comentario.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/notaperfil.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>

@@ -21,11 +21,12 @@ $(document).on("click", "#notaBtnId", function (e) {
         },
         success: function (data) {
             $("#carga-nota").fadeOut("slow");
-            CKEDITOR.instances["nota"].setData(data.Nota)
+            CKEDITOR.instances["nota"].setData(data.info)
             $("#updateIdNota").val(editBtnId);
             $("#actionNota").val('nota');
             $("#nota-title").text("Editor de la Nota");
             $("#btn-nota").text("Guardar");
+            $("#nota_modal").modal("show");
         }
     });
 });
