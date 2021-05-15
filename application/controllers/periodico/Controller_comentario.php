@@ -104,8 +104,8 @@ class Controller_comentario  extends CI_Controller {
     {
         if ($_POST['action'] == 'fetchSingleRow') {
             $output[] = '';
-            $table = 'comentarios';
-            $editBtnId = $_POST['editBtnId'];
+            $table = 'comentario';
+            $editBtnId = $_POST['btnEditComen'];
             $result = $this->Model_comentario->linea_actualizar($table, $editBtnId);
             foreach ($result as $value) {
                 $output['idperfiles'] = $value->idperfiles;
@@ -114,7 +114,6 @@ class Controller_comentario  extends CI_Controller {
                 $output['titulo'] = $value->titulo;
                 $output['estado'] = $value->estado;
                 $output['foto_comen'] = $value->foto_comen;
-                
             }
             echo json_encode($output);
         }
