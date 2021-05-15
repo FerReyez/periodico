@@ -113,6 +113,7 @@ class Controller_perfiles extends CI_Controller
 
                 $data = array(
                     'nombre' => $_POST['nombre'],
+                    'info' => "",
                     'cargo' => $_POST['cargo'],
                     'url_foto' => $img,
                     'banner' => $img2,
@@ -122,6 +123,35 @@ class Controller_perfiles extends CI_Controller
                 $result = $this->Model_perfiles->crear_perfil($table, $data);
                 if ($result) {
                     echo 'created';
+                }
+                if (isset($_POST['actionNota'])) {
+                    if($_POST['actionNota'] == 'nota'){
+                        date_default_timezone_set('America/El_Salvador');
+                        $fecha_hora = date("Y-m-d H:i:s");
+                        $id_u = $_SESSION['idusuario'];
+                        $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                        $acciones = array(
+                            'fecha_hora' => $fecha_hora,
+                            'ip' => $ip,
+                            'accion' => "NOTA",
+                            'tabla' => "NOTICIA",
+                            'nombre' => $_SESSION['nombre_completo'],
+                            'id_usuario' => $id_u,
+                        );
+                        $this->Model_bitacora->guardar_bitacora($acciones) == true;
+            
+                        $updateId = 'id_perfil ='.$_POST['updateIdNota'];
+            
+                        $data = array(
+                            'info' => $_POST['info'],
+                        );
+            
+                        $result = $this->Model_noticia->actualizar_data('perfiles', $data, $updateId);
+            
+                        if ($result) {
+                            echo 'info';
+                        }
+                    }
                 }
             }
 
@@ -159,7 +189,7 @@ class Controller_perfiles extends CI_Controller
                 $updateId = $_POST['updateId'];
 
                 $data = array(
-                    'nombre' => $_POST['nombre'],
+                    'nombre' => $_POST['nombre'],                    
                     'cargo' => $_POST['cargo'],
                     'url_foto' => $img,
                     'banner' => $img2,
