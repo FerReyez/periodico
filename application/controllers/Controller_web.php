@@ -14,6 +14,7 @@ class Controller_web extends CI_Controller {
         $menus = $this->Model_web->listar_menu();
         $opciones = $this->Model_web->listar_opcion();
         $redes = $this->Model_web->listar_redes();
+        
         $data['menus'] = $menus;
         $data['opciones'] = $opciones;
         $data['redes'] = $redes;

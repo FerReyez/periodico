@@ -29,3 +29,35 @@ $(document).on("click", "#notaBtnId", function (e) {
         }
     });
 });
+
+$(document).on("submit", "#nota-form", function (e) {
+    e.preventDefault();
+    var nota = $("#nota").val();
+
+    if (nota == '') {
+        swal({
+            title: "Campo nota requerido!",
+            type: "warning"
+        });
+    } else {
+        $.ajax({
+            url: "periodico/Controller_noticia/actualizar_crear_noticia",
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $("#carga-nota").css("display", "block");
+            },
+            success: function (data) {
+                $("#carga-nota").fadeOut("slow");
+                $("#nota_modal").modal('hide');
+                if (data.trim() == 'nota') {
+                    showNotification('bg-teal', 'Nota actualizada con exito!', 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
+                    $("#nota-form")[0].reset();
+                }
+                main();
+            }
+        });
+    }
+});
