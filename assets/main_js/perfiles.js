@@ -128,6 +128,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#estado").val(data.estado);
             $("#estado").change();
             $("#nombre").val(data.nombre);
+            $("#info").val(data.info);
             $("#cargo").val(data.cargo);
             $("#fecha_crea").val(data.fecha_crea);
             $("#fecha").change();

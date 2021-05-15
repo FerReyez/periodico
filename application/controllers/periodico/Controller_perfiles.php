@@ -50,7 +50,7 @@ class Controller_perfiles extends CI_Controller
             $row[] = $person->nombre;
             $row[] = $person->fecha_crea;
             $row[] = $xd;
-            $row[] = "<center>
+            $row[] = "<center>            
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
               <span class='tooltip-css3'>EDITAR</span>
@@ -58,11 +58,11 @@ class Controller_perfiles extends CI_Controller
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='btnComentario' data-btnComentario='" . $person->idperfiles . "'>comment</i></b></button>
               <span class='tooltip-css3'>Comentario</span>
-            </b>                          
+            </b>       
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='crea_nota' data-crea_nota='" . $person->idperfiles . "'>format_color_text</i></b></button>
-              <span class='tooltip-css3'>Comentario</span>
-            </b>                          
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->idperfiles . "'>build</i></b></button>
+              <span class='tooltip-css3'>COMENTARIO</span>
+            </b>                                     
             </center>";
             $data[] = $row;
         }
@@ -183,6 +183,7 @@ class Controller_perfiles extends CI_Controller
             $result = $this->Model_perfiles->linea_actualizar($table, $editBtnId);
             foreach ($result as $value) {
                 $output['nombre'] = $value->nombre;
+                $output['info'] = $value->info;
                 $output['cargo'] = $value->cargo;
                 $output['url_foto'] = $value->url_foto;
                 $output['banner'] = $value->banner;

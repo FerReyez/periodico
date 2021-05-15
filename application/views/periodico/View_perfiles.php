@@ -223,42 +223,39 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="modal-nota" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+<div class="modal fade" id="nota_modal" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="nota-title"></h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body"> 
                 <div id="carga-nota"></div>
-                <form id="form-nota">
+                <form  id="nota-form">
                     <div class="modal-body users-cont">
                         <div class="row clearfix">
                             <div class="body">
-                                <textarea name="editor" id="editor"></textarea>
+                                <textarea name="nota" id="nota"></textarea>
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="modal-footer">
-                    <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
-                        Cancelar
-                    </button>
-                </div>
+                    <input type="hidden" id="updateIdNota" name="updateIdNota">
+                    <input type="hidden"  name="actionNota" id="actionNota">
             </div>
+            <div class="modal-footer">
+                <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="btn-nota"></b></button>
+                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                    Cancelar
+                </button>
+            </div>
+            </form>
         </div>
     </div>
 </div>
 
-
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/perfiles.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/comentario.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/notaperfil.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('editor', {
-        customConfig: '<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor_nota.js'
-    });
-    CKEDITOR.config.height = 500;
-</script>
