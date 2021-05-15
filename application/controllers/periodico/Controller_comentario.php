@@ -25,8 +25,8 @@ class Controller_comentario  extends CI_Controller {
 
     public function actualizar_crear_comentario()
     {
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] == 'create') {
+        if (isset($_POST['actionComen'])) {
+            if ($_POST['actionComen'] == 'create') {
 
                 date_default_timezone_set('America/El_Salvador');
                 $fecha_hora = date("Y-m-d H:i:s");
@@ -65,7 +65,7 @@ class Controller_comentario  extends CI_Controller {
                 }
             }
 
-            if ($_POST['action'] == 'update') {
+            if ($_POST['actionComen'] == 'update') {
 
                 date_default_timezone_set('America/El_Salvador');
                 $fecha_hora = date("Y-m-d H:i:s");
@@ -81,11 +81,18 @@ class Controller_comentario  extends CI_Controller {
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
 
+                $img = '';
+                if ($_FILES['foto_comen']['name'] != '') {
+                    $img = $this->upload_img($_FILES['foto_comen']);
+                } else {
+                    $img = '';
+                }
+
                 $table = 'comentario';
-                $updateId = $_POST['updateId'];
+                $updateId = $_POST['updateIdComen'];
 
                 $data = array(                    
-                    'nombre' => $_POST['nombre'],
+                    'nombre' => $_POST['nombreComen'],
                     'comentario' => $_POST['comentario'],
                     'titulo' => $_POST['titulo'],
                     'estado' => $_POST['estado'],
@@ -114,6 +121,7 @@ class Controller_comentario  extends CI_Controller {
                 $output['titulo'] = $value->titulo;
                 $output['estado'] = $value->estado;
                 $output['foto_comen'] = $value->foto_comen;
+                $output['idComentario'] = $value->idComentario;
             }
             echo json_encode($output);
         }

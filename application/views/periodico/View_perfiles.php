@@ -210,8 +210,8 @@
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="idperfiles" name="idperfiles">
-                            <input type="hidden" id="updateId" name="updateId">
-                            <input type="hidden" name="action" id="action" value="create">
+                            <input type="hidden" id="updateIdComen" name="updateIdComen">
+                            <input type="hidden" name="actionComen" id="actionComen" value="create">
                             <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit">Guardar<b id="nombreb"></b></button>
                             <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
                                 Cancelar

@@ -100,6 +100,7 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
                     $("#form-comentario")[0].reset();
                 }
                 if (data.trim() == 'update') {
+                    $("#actionComen").val('create');
                     showNotification('bg-teal', 'Registro actualizado con exito', 'top', 'center', 'animated zoomInDown', 'animated zoomOutDown');
                     $("#form-comentario")[0].reset();
                 }
@@ -132,9 +133,9 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
                 $("#comentario").val(data.comentario);
                 $("#titulo").val(data.titulo);
                 $("#idperfiles").val(data.idperfiles);                              
-                $("#action").val('update');
+                $("#actionComen").val('update');
                 // $("#nombreb").html('Actualizar');
-                $("#updateId").val(editBtnId);
+                $("#updateIdComen").val(data.idComentario);
             }
         });
     });
