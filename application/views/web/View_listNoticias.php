@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="full">
                     <div class="main_heading text_align_center">
-                        <h2>Economia</h2>
+                        <h2 id="prueba">Economia</h2>
                     </div>
                 </div>
             </div>
@@ -115,3 +115,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).on("ready",function (e) {
+    	e.preventDefault();
+        var Menu = localStorage.getItem("CatId");
+        swal("Funciona!", Menu, "success");
+    });
+</script>

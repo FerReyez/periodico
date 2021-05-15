@@ -25,6 +25,14 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/settings.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/layers.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/navigation.css" />
+
+	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+	<script>
+		host = "<?php echo base_url(); ?>"
+	</script>
 </head>
 
 	<body id="default_theme" class="it_service">
@@ -51,11 +59,12 @@
 								<ul class="first-ul">
 									<?php foreach ($menus as $m) { ?>
 										<?php if($m['nc_categoria'] == NULL) { ?>
-											<li><a href="<?php echo base_url() ?>noticias"><?php echo $m['nc_noticia']; ?></a>
+											<!-- <li><a href="<?php echo base_url() ?>noticias"><?php echo $m['nc_noticia']; ?></a> -->
+											<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a>
 												<ul>
 												<?php foreach ($opciones as $o) { ?>
 													<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
-														<li><a href="<?php echo base_url() ?>noticias"><?php echo $o['nc_noticia']; ?></a></li>
+														<li><a id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
 													<?php } ?>
 												<?php } ?>
 												</ul>
@@ -112,4 +121,11 @@
 	if (distanceFromTop >= navbarHeight) navbar.classList.add("fixed-top");
 	else navbar.classList.remove("fixed-top");
 	});
+	$(document).on("click", "#btnMenu", function (e) {
+    	e.preventDefault();
+		var btnMenuId = $(this).attr("data-btnMenuId");
+		localStorage.setItem("CatId",btnMenuId);
+		window.location.href = host + "noticias";
+	});
+
 </script>
