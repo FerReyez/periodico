@@ -39,7 +39,7 @@ class Controller_perfiles extends CI_Controller
         foreach ($list as $person) {
             $estado = $person->estado;
             $xd = "";
-            if($estado == 'Activo'){
+            if ($estado == 'Activo') {
                 $xd = "<i class='material-icons' style='color:green;'>done</i>";
             } else {
                 $xd = "<i class='material-icons' style='color:red;'>clear</i>";
@@ -112,46 +112,17 @@ class Controller_perfiles extends CI_Controller
                 $table = 'perfiles';
 
                 $data = array(
-                    'nombre' => $_POST['nombre'],
-                    'info' => "",
+                    'nombre' => $_POST['nombre'],                
                     'cargo' => $_POST['cargo'],
                     'url_foto' => $img,
                     'banner' => $img2,
                     'fecha_crea' => $_POST['fecha_crea'],
                     'estado' => $_POST['estado'],
+                    'info' => "",
                 );
                 $result = $this->Model_perfiles->crear_perfil($table, $data);
                 if ($result) {
                     echo 'created';
-                }
-                if (isset($_POST['actionNota'])) {
-                    if($_POST['actionNota'] == 'nota'){
-                        date_default_timezone_set('America/El_Salvador');
-                        $fecha_hora = date("Y-m-d H:i:s");
-                        $id_u = $_SESSION['idusuario'];
-                        $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-                        $acciones = array(
-                            'fecha_hora' => $fecha_hora,
-                            'ip' => $ip,
-                            'accion' => "NOTA",
-                            'tabla' => "NOTICIA",
-                            'nombre' => $_SESSION['nombre_completo'],
-                            'id_usuario' => $id_u,
-                        );
-                        $this->Model_bitacora->guardar_bitacora($acciones) == true;
-            
-                        $updateId = 'id_perfil ='.$_POST['updateIdNota'];
-            
-                        $data = array(
-                            'info' => $_POST['info'],
-                        );
-            
-                        $result = $this->Model_noticia->actualizar_data('perfiles', $data, $updateId);
-            
-                        if ($result) {
-                            echo 'info';
-                        }
-                    }
                 }
             }
 
@@ -189,7 +160,7 @@ class Controller_perfiles extends CI_Controller
                 $updateId = $_POST['updateId'];
 
                 $data = array(
-                    'nombre' => $_POST['nombre'],                    
+                    'nombre' => $_POST['nombre'],
                     'cargo' => $_POST['cargo'],
                     'url_foto' => $img,
                     'banner' => $img2,
@@ -199,6 +170,36 @@ class Controller_perfiles extends CI_Controller
                 $result = $this->Model_perfiles->actualizar_perfil($table, $data, $updateId);
                 if ($result) {
                     echo 'update';
+                }
+            }
+        }
+        
+        if (isset($_POST['actionNota'])) {
+            if($_POST['actionNota'] == 'info'){
+                date_default_timezone_set('America/El_Salvador');
+                $fecha_hora = date("Y-m-d H:i:s");
+                $id_u = $_SESSION['idusuario'];
+                $ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                $acciones = array(
+                    'fecha_hora' => $fecha_hora,
+                    'ip' => $ip,
+                    'accion' => "INFO",
+                    'tabla' => "PERFILES",
+                    'nombre' => $_SESSION['nombre_completo'],
+                    'id_usuario' => $id_u,
+                );
+                $this->Model_bitacora->guardar_bitacora($acciones) == true;
+    
+                $updateId = 'idperfil ='.$_POST['updateIdNota'];
+    
+                $data = array(
+                    'info' => $_POST['info'],
+                );
+    
+                $result = $this->Model_perfiles->actualizar_data('perfiles', $data, $updateId);
+    
+                if ($result) {
+                    echo 'info';
                 }
             }
         }
@@ -212,13 +213,13 @@ class Controller_perfiles extends CI_Controller
             $editBtnId = $_POST['editBtnId'];
             $result = $this->Model_perfiles->linea_actualizar($table, $editBtnId);
             foreach ($result as $value) {
-                $output['nombre'] = $value->nombre;
-                $output['info'] = $value->info;
+                $output['nombre'] = $value->nombre;            
                 $output['cargo'] = $value->cargo;
                 $output['url_foto'] = $value->url_foto;
                 $output['banner'] = $value->banner;
                 $output['fecha_crea'] = $value->fecha_crea;
                 $output['estado'] = $value->estado;
+                $output['info'] = $value->info;
             }
             echo json_encode($output);
         }
