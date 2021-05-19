@@ -59,16 +59,19 @@
 								<ul class="first-ul">
 									<?php foreach ($menus as $m) { ?>
 										<?php if($m['nc_categoria'] == NULL) { ?>
-											<!-- <li><a href="<?php echo base_url() ?>noticias"><?php echo $m['nc_noticia']; ?></a> -->
-											<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a>
-												<ul>
-												<?php foreach ($opciones as $o) { ?>
-													<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
-														<li><a id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+											<?php if($m['count'] > 0) { ?>
+												<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a>
+													<ul>
+													<?php foreach ($opciones as $o) { ?>
+														<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
+															<li><a id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+														<?php } ?>
 													<?php } ?>
-												<?php } ?>
-												</ul>
-											</li>
+													</ul>
+												</li>
+											<?php } else { ?>
+												<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
+											<?php } ?>
 										<?php } ?>
 									<?php } ?>
 									<li><a href="<?php echo base_url() ?>noticias">Perfiles</a></li>

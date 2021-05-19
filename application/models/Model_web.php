@@ -3,8 +3,19 @@
 class Model_web extends CI_Model{
 
     public function listar_menu() {
-        $this->db->select('*');
-        $this->db->from('cat_noticia');
+        $this->db->select('
+                            cn.id_cat_noticia,
+                            cn.nc_noticia,
+                            cn.nc_icono,
+                            cn.nc_categoria,
+                            (
+                                select count(*) 
+                                from cat_noticia 
+                                where cat_noticia.nc_categoria = cn.id_cat_noticia
+
+                            ) as count
+                        ');
+        $this->db->from('cat_noticia cn');
         $query =  $this->db->get();
         return $query->result_array();
     }
