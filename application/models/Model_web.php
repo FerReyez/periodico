@@ -133,4 +133,42 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
+    public function ultima_categoria($id_categoria){
+        $this->db->where('id_cat_noticia',$id_categoria);
+        $this->db->select('*');
+        $this->db->from('cat_noticia');
+        $this->db->limit(1);
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function listar_noticias($categoria,$buscar,$inicio = FALSE,$cantidad = FALSE) {
+        $this->db->where('cat.id_cat_noticia', $categoria);
+        $this->db->like("noti.Titular", $buscar);
+        $this->db->where('noti_foto.principal', 1);
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('noti.Fecha', 'DESC');
+        $this->db->select('
+                            noti.id_noticia,
+                            noti.Titular,
+                            noti.Subtitulo,
+                            LEFT(noti.Nota,250) AS Nota,
+                            noti.Fecha,
+                            noti.Editor,
+                            noti.Reportero,
+                            noti.Visita,
+                            cat.nc_noticia,
+                            cat.nc_icono,
+                            foto.url,
+                            foto.Fotografo
+        ');
+        $this->db->from('noticias noti');
+        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
 }

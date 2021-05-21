@@ -70,4 +70,29 @@ class Controller_web extends CI_Controller {
         $vista = "web/View_personasInd";
         $this->cargar_plantilla_web($vista, $data);
     }
+
+    function get_categoria(){
+        $menu = $_POST["menu"];
+        $output = array(
+            "categoria" => $this->Model_web->ultima_categoria($menu)
+        );
+        echo json_encode($output);
+    }
+
+    function listar_noticias(){
+        $menu = $_POST["menu"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+
+        $output = array(
+            "noticias" => $this->Model_web->listar_noticias($menu,$buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_noticias($menu,$buscar)),
+            "cantidad" => $cantidad
+        );
+        
+        echo json_encode($output);
+    }
 }

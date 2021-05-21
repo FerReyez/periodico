@@ -5,121 +5,36 @@
             <div class="col-md-12">
                 <div class="full">
                     <div class="main_heading text_align_center">
-                        <h2 id="prueba">Economia</h2>
+                        <div id="titulo"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-01.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Data recovery</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
+            <div class="col-md-9">
+                <p>
+                    <strong>Mostrar por : </strong>
+                    <select name="cantidad" id="cantidad">
+                        <option value="9">9</option>
+                        <option value="12">12</option>
+                        <option value="12">15</option>
+                        <option value="12">18</option>
+                    </select>
+                </p>
+            </div>
+            <div class="col-md-3" >
+                <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar noticia..." />
+                <br>
+            </div>
+            <div class="row" id="tb_noticias"></div>
+            <div class="col-md-12">
+                <div class="center paginacion"></div>
+                <div>
                 </div>
+                <br>
+                <br>
+                <br>
             </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-02.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Computer repair</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-03.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Network solutions</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-04.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Data recovery</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-05.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Computer repair</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-06.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Network solutions</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-07.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Data recovery</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-08.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Computer repair</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 service_blog margin_bottom_50">
-                <div class="full">
-                    <div class="service_img"> <img class="img-responsive" src="assets/web/images/it_service/post-01.jpg" alt="#" /> </div>
-                    <div class="service_cont">
-                        <h3 class="service_head">Network solutions</h3>
-                        <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo base_url() ?>noticia">Leer Mas</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="center">
-                <ul class="pagination style_1">
-                    <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="it_blog_grid.html">2</a></li>
-                    <li><a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).on("ready",function (e) {
-    	e.preventDefault();
-        var Menu = localStorage.getItem("CatId");
-        swal("Funciona!", Menu, "success");
-    });
-</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/lista_noticias.js"></script>

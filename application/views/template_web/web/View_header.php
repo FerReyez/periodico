@@ -60,17 +60,17 @@
 									<?php foreach ($menus as $m) { ?>
 										<?php if($m['nc_categoria'] == NULL) { ?>
 											<?php if($m['count'] > 0) { ?>
-												<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a>
+												<li><a><?php echo $m['nc_noticia']; ?></a>
 													<ul>
 													<?php foreach ($opciones as $o) { ?>
 														<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
-															<li><a id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+															<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
 														<?php } ?>
 													<?php } ?>
 													</ul>
 												</li>
 											<?php } else { ?>
-												<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
+												<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
 											<?php } ?>
 										<?php } ?>
 									<?php } ?>
