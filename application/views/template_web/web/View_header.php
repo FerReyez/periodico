@@ -75,7 +75,7 @@
 										<?php } ?>
 									<?php } ?>
 									<li><a href="<?php echo base_url() ?>personas">Perfiles</a></li>
-									<li><a href="<?php echo base_url() ?>noticias">Ediciones</a></li>
+									<li><a href="<?php echo base_url() ?>editorial">Ediciones</a></li>
 								</ul>
 								</div>
 							</div>
