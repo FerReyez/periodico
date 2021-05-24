@@ -2,6 +2,8 @@
 
 class Model_web extends CI_Model{
 
+    /************************************************Menu****************************************************/
+
     public function listar_menu() {
         $this->db->select('
                             cn.id_cat_noticia,
@@ -27,6 +29,8 @@ class Model_web extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    /************************************************Home****************************************************/
 
     public function listar_carrousel() {
         $this->db->where('estado','Activo');
@@ -125,6 +129,8 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
+    /************************************************Footer****************************************************/
+
     public function listar_redes() {
         $this->db->where('estado','Activo');
         $this->db->select('*');
@@ -132,6 +138,8 @@ class Model_web extends CI_Model{
         $query =  $this->db->get();
         return $query->result_array();
     }
+
+    /************************************************Categorias****************************************************/
 
     public function ultima_categoria($id_categoria){
         $this->db->where('id_cat_noticia',$id_categoria);
@@ -171,4 +179,34 @@ class Model_web extends CI_Model{
         $query =  $this->db->get();
         return $query->result_array();
     }
+
+    /************************************************Ver Noticia***************************************************/
+
+    public function get_noticia($notiId){
+        $this->db->where('noti.id_noticia', $notiId);
+        $this->db->select('
+                noti.id_noticia,
+                noti.Titular,
+                noti.Subtitulo,
+                LEFT(noti.Nota,500) AS Nota,
+                noti.Fecha,
+                noti.Editor,
+                noti.Reportero,
+                noti.Visita,
+                cat.nc_noticia,
+                cat.nc_icono,
+                foto.url,
+                foto.Fotografo
+        ');
+        $this->db->from('noticias noti');
+        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia');
+        $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia');
+        $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
+        $this->db->limit(3);
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
 }

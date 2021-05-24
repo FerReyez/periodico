@@ -74,7 +74,7 @@
 											<?php } ?>
 										<?php } ?>
 									<?php } ?>
-									<li><a href="<?php echo base_url() ?>noticias">Perfiles</a></li>
+									<li><a href="<?php echo base_url() ?>personas">Perfiles</a></li>
 									<li><a href="<?php echo base_url() ?>noticias">Ediciones</a></li>
 								</ul>
 								</div>
@@ -124,6 +124,7 @@
 	if (distanceFromTop >= navbarHeight) navbar.classList.add("fixed-top");
 	else navbar.classList.remove("fixed-top");
 	});
+
 	$(document).on("click", "#btnMenu", function (e) {
     	e.preventDefault();
 		var btnMenuId = $(this).attr("data-btnMenuId");
@@ -131,4 +132,10 @@
 		window.location.href = host + "noticias";
 	});
 
+	$(document).on("click", "#btnNoticia", function (e) {
+    	e.preventDefault();
+		var btnNoticiaId = $(this).attr("data-btnNoticiaId");
+		localStorage.setItem("NotiId",btnNoticiaId);
+		window.location.href = host + "noticia";
+	});
 </script>

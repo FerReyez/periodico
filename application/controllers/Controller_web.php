@@ -95,4 +95,12 @@ class Controller_web extends CI_Controller {
         
         echo json_encode($output);
     }
+
+    function get_noticia(){
+        $noticia = $_POST["noticia"];
+        $output = array(
+            "noticia" => $this->Model_web->ultima_categoria($noticia)
+        );
+        echo json_encode($output);
+    }
 }

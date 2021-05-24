@@ -8,7 +8,7 @@
             <div class="title-holder-cell text-left">
               <h1 class="page-title">Blog Detail</h1>
               <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="<?php echo base_url() ?>">Inicio</a></li>
                 <li class="active">Blog Detail</li>
               </ol>
             </div>
@@ -250,3 +250,25 @@
   </div>
 </div>
 <!-- end section -->
+<script>
+  $(document).on("ready",function (){
+    var noti = localStorage.getItem("NotiId");
+    swal("Funciona", noti, "success");
+
+    // $.ajax({
+    //     url: host+"Controller_web/get_categoria",
+    //     type: "POST",
+    //     data: {
+    //         menu: menu
+    //     },
+    //     dataType: "json",
+    //     success: function(response) {
+    //         filas = "";
+    //         $.each(response.categoria, function(key, item) {
+    //             filas = "<h2>"+item.nc_noticia+"</h2>";
+    //         });
+    //         $("#titulo").html(filas);
+    //     }
+    // });
+  });
+</script>

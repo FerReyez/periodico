@@ -50,7 +50,7 @@
                     </div>
                     <p><?php echo $n['Nota']; ?> .....</p>
                     <div class="bottom_info">
-                      <div class="pull-left"><a class="btn sqaure_bt" href="<?php echo base_url() ?>noticias">Leer Mas<i class="fa fa-angle-right"></i></a></div>
+                      <div class="pull-left"><a class="btn sqaure_bt" id="btnNoticia" data-btnNoticiaId="<?php echo $n['id_noticia']; ?>" href="">Leer Mas<i class="fa fa-angle-right"></i></a></div>
                       <div class="pull-right">
                         <div class="shr">Compartir: </div>
                         <div class="social_icon">

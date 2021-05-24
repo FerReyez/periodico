@@ -70,7 +70,7 @@ function listar_noticias(buscar, pagina, cantidad){
                 filas += '</br>';
 
                 filas += '</div>';
-                filas += '<div class="bt_cont" style="position: absolute; bottom: 0;"><a class="btn sqaure_bt" href="'+host+'">Leer Mas</a></div>';
+                filas += '<div class="bt_cont" style="position: absolute; bottom: 0;"><a class="btn sqaure_bt" id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">Leer Mas</a></div>';
                 filas += '</div>';
                 filas += '</div>';
             });
