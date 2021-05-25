@@ -25,14 +25,14 @@ $route['edicion_admin']                      = 'periodico/Controller_edicion/vis
 $route['categoria_admin']                    = 'periodico/Controller_categoria/vista_categoria';
 $route['perfiles']                           = 'periodico/Controller_perfiles/vista_perfiles';
 $route['carrousel']                          = 'periodico/Controller_carrousel/vista_carrousel';
-$route['redes']                          = 'periodico/Controller_redes/vista_redes';
+$route['redes']                              = 'periodico/Controller_redes/vista_redes';
 $route['image']                              = 'periodico/Controller_prueba/vista_image';
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
 $route['noticias'] = 'Controller_web/listaNoticias';
 $route['noticia'] = 'Controller_web/noticias';
-$route['editorial'] = 'Controller_web/editorial';
+$route['editorial'] = 'periodico/Controller_edicionPrincipal/vista_edicionPrincipal';
 $route['personas'] = 'Controller_web/personas';
 $route['persona'] = 'Controller_web/personasInd';
 
