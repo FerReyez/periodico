@@ -26,7 +26,7 @@ class Controller_edicionPrincipal extends CI_Controller
 
     public function vista_edicionPrincipal()
     {
-        $data['titulo'] = 'ESTO ES UNA PRUEBA';
+        $data['titulo'] = 'ESTO NO ES UNA PRUEBA';
         $vista = "periodico/View_edicionesPrincipal";
         $this->cargar_plantilla($vista, $data);
     }
