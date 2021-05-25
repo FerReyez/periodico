@@ -71,6 +71,8 @@ class Controller_web extends CI_Controller {
         $this->cargar_plantilla_web($vista, $data);
     }
 
+    /******************************Listar Noticias***************************************/
+
     function get_categoria(){
         $menu = $_POST["menu"];
         $output = array(
@@ -96,10 +98,19 @@ class Controller_web extends CI_Controller {
         echo json_encode($output);
     }
 
+    /******************************Vers Noticias***************************************/
+
     function get_noticia(){
         $noticia = $_POST["noticia"];
         $output = array(
-            "noticia" => $this->Model_web->ultima_categoria($noticia)
+            "noticia" => $this->Model_web->get_noticia($noticia)
+        );
+        echo json_encode($output);
+    }
+
+    function get_sugerencias(){
+        $output = array(
+            "sugerencias" => $this->Model_web->sugerencia_noticias()
         );
         echo json_encode($output);
     }

@@ -188,7 +188,7 @@ class Model_web extends CI_Model{
                 noti.id_noticia,
                 noti.Titular,
                 noti.Subtitulo,
-                LEFT(noti.Nota,500) AS Nota,
+                noti.Nota,
                 noti.Fecha,
                 noti.Editor,
                 noti.Reportero,
@@ -199,14 +199,41 @@ class Model_web extends CI_Model{
                 foto.Fotografo
         ');
         $this->db->from('noticias noti');
+        $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia','left');
+        $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia','left');
+        $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion','left');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia','left');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto','left');
+        $this->db->limit(1);
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function sugerencia_noticias() {
+        $this->db->where('noti_foto.principal', 1);
+        $this->db->order_by('noti.id_noticia', 'RANDOM');
+        $this->db->select('
+                            noti.id_noticia,
+                            noti.Titular,
+                            noti.Subtitulo,
+                            LEFT(noti.Nota,250) AS Nota,
+                            noti.Fecha,
+                            noti.Editor,
+                            noti.Reportero,
+                            noti.Visita,
+                            cat.nc_noticia,
+                            cat.nc_icono,
+                            foto.url,
+                            foto.Fotografo
+        ');
+        $this->db->from('noticias noti');
         $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia');
         $this->db->join('edicion_noticia ed_not','ed_not.id_noticia = noti.id_noticia');
         $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion');
         $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
         $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
-        $this->db->limit(3);
+        $this->db->limit(6);
         $query =  $this->db->get();
         return $query->result_array();
     }
-
 }
