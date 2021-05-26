@@ -252,6 +252,18 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
+    public function get_galeria($notiId){
+        $this->db->where('noti.id_noticia', $notiId);
+        $this->db->select('
+                            foto.url,
+        ');
+        $this->db->from('noticias noti');
+        $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
+        $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
     public function sugerencia_noticias() {
         $this->db->where('noti_foto.principal', 1);
         $this->db->order_by('noti.id_noticia', 'RANDOM');

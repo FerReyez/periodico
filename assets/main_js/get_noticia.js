@@ -1,4 +1,5 @@
 $(document).on("ready",get_noticias());
+$(document).on("ready",get_galeria());
 $(document).on("ready",get_sugerencias());
 
 function get_noticias(){
@@ -61,6 +62,29 @@ function get_noticias(){
     });
 }
 
+function get_galeria(){
+    var noti = localStorage.getItem("NotiId");
+    $.ajax({
+        url: host+"Controller_web/get_galeria",
+        type: "POST",
+        data: {
+          noticia: noti
+        },
+        dataType: "json",
+        success: function(response) {
+            filas = '';
+            $.each(response.galeria, function(key, item) {
+                filas += '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">';
+                filas += '<a class="custom-selector" href="http://localhost/template/assets/upload/noticias/1389458111.png">';
+                filas += '<img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />';
+                filas += '</a>';
+                filas += '</div>';
+            });
+            $("#galeria").html(filas);
+        }
+    });
+}
+
 function get_sugerencias(){
     $.ajax({
         url: host+"Controller_web/get_sugerencias",
@@ -74,7 +98,7 @@ function get_sugerencias(){
                 i++;
                 c++;
                 if(i == 1){
-                    filas += '<div class="col-lg-4 col-md-6 col-sm-9 col-xs-9">';
+                    filas += '<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">';
                     filas += '<div class="full">';
                 }
                 filas += '<div class="blog_section">';
@@ -120,3 +144,4 @@ function get_sugerencias(){
         }
     });
 }
+

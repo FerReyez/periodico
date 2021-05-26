@@ -108,6 +108,14 @@ class Controller_web extends CI_Controller {
         echo json_encode($output);
     }
 
+    function get_galeria(){
+        $noticia = $_POST["noticia"];
+        $output = array(
+            "galeria" => $this->Model_web->get_galeria($noticia)
+        );
+        echo json_encode($output);
+    }
+
     function get_sugerencias(){
         $output = array(
             "sugerencias" => $this->Model_web->sugerencia_noticias()

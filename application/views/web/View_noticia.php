@@ -22,85 +22,24 @@
         <div class="full">
           <div class="blog_section margin_bottom_0" >
             <div id="noticia"></div>
+            <div class="list-unstyled row clearfix" id="lightgallery">
+              <!-- <div id="galeria"> -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                  <a class="custom-selector" href="http://localhost/template/assets/upload/noticias/1389458111.png">
+                      <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
+                  </a>
+                </div>
+              <!-- </div> -->
+            </div>
           </div>
-          <!-- <div id="lightgallery" class="list-unstyled row clearfix">
-              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                  <a href="http://localhost/template/assets/upload/noticias/1389458111.png" data-sub-html="Demo Description">
-                      <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                  </a>
-              </div>
-              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                  <a href="http://localhost/template/assets/upload/noticias/1389458111.png" data-sub-html="Demo Description">
-                      <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                  </a>
-              </div>
-              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                  <a href="http://localhost/template/assets/upload/noticias/1389458111.png" data-sub-html="Demo Description">
-                      <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                  </a>
-              </div>
-              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                  <a href="http://localhost/template/assets/upload/noticias/1389458111.png" data-sub-html="Demo Description">
-                      <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                  </a>
-              </div>
-          </div> -->
-          <!-- <div class="list-unstyled row clearfix">
-            <ul class="small-block-grid-2 medium-block-grid-3" id="lightgallery">
-              <li data-src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <a href><img src="http://localhost/template/assets/upload/noticias/1389458111.png"></a>
-              </li>
-              <li data-src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <a href><img src="http://localhost/template/assets/upload/noticias/1389458111.png"></a>
-              </li>
-              <li data-src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <a href><img src="http://localhost/template/assets/upload/noticias/1389458111.png"></a>
-              </li>
-              <li data-src="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <a href><img src="http://localhost/template/assets/upload/noticias/1389458111.png"></a>
-              </li>
-            </ul>
-          </div> -->
-          <div class="list-unstyled row clearfix" id="lightgallery">
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            <a class="col-lg-3 col-md-4 col-sm-6 col-xs-12" href="http://localhost/template/assets/upload/noticias/1389458111.png">
-                <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
-            </a>
-            
-        </div>
-
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-<!-- section -->
-<div class="section padding_layout_1 blog_grid">
+    <div class="section padding_layout_1 blog_grid">
   <div class="container">
     <div class="row" id="sugerencias"></div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -109,8 +48,9 @@
 <script src="<?php echo base_url(); ?>assets/plugins/light-gallery/js/lightgallery-all.js"></script>
 <script>
   $("#lightgallery").lightGallery({
-    // Change transition mode (optional)
+    // speed: 1000,
     // mode: 'lg-fade',
+    selector: '.custom-selector',
     download: false,
     share: false,
   });
