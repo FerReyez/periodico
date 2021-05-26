@@ -62,6 +62,6 @@ $(document).on("click", "#btnEdicion", function(e){
     e.preventDefault();
     var btnEdicionId = $(this).attr("data-btnEdicionId");
     localStorage.setItem("EdicionId", btnEdicionId);
-    window.location.href = host + "edicion";
+    window.location.href = host + "noticias_lista";
 });
 </script>

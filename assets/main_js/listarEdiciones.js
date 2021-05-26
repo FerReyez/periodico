@@ -57,7 +57,7 @@ function listar_ediciones(buscar, pagina, cantidad){
                     filas += '</div>';
                     filas += '<div class="bottom_info">';
                     filas += '<br/>';
-                    filas += '<div class="pull-left"><a class="btn sqaure_bt" id="btnEdicion" data-btnEdicionId="'+item.id_edicion+'" href="'+host+'noticias_lista">Leer Mas<i class="fa fa-angle-right"></i></a></div>';
+                    filas += '<div class="pull-left"><a class="btn sqaure_bt" id="btnEdicion" data-btnEdicionId="'+item.id_edicion+'" href="">Leer Mas<i class="fa fa-angle-right"></i></a></div>';
                     filas += '<div class="pull-right">';
                     filas += '<div class="shr">Share: </div>';
                     filas += '<div class="social_icon">';
