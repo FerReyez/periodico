@@ -51,4 +51,20 @@ class Controller_edicionPrincipal extends CI_Controller
 
         echo json_encode($output);
     }
+
+    function obtener_noticias(){
+        $edicion = $_POST["edicion"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+        $output = array(
+            "noticias" => $this->Model_web->obtener_noticias($edicion,$buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->obtener_noticias($buscar)),
+            "cantidad" => $cantidad
+        );
+
+        echo json_encode($output);
+    }
 }
