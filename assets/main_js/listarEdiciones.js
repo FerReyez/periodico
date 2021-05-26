@@ -36,15 +36,8 @@ function listar_ediciones(buscar, pagina, cantidad){
         success: function(response) {
             filas = "";
             $.each(response.ediciones, function(key, item) {
-                
-                    filas += '<div class="section blog_list">';
-                    filas += '<div class="container">';
-                    filas += '<div class="row">';
-                    filas += '<div class="col-md-2"></div>';
-                    filas += '<div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 pull-right">';
-                    filas += '<div class="full">';
-                    filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" height="350" alt="#"/></center></div><br>';
                     filas += '<div class="blog_section">';
+                    filas += '<div class="blog_feature_img"><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" height="350" alt="#"/></div><br>';
                     filas += '<div class="blog_feature_cantant">';
                     filas += '<hr>';
                     filas += '<p class="blog_head">Edicion N° - '+item.num_edicion+'</p><br>';
@@ -66,11 +59,6 @@ function listar_ediciones(buscar, pagina, cantidad){
                     filas += '<li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>';
                     filas += '<li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>';
                     filas += '</ul>';
-                    filas += '</div>';
-                    filas += '</div>';
-                    filas += '</div>';
-                    filas += '</div>';
-                    filas += '</div>';
                     filas += '</div>';
                     filas += '</div>';
                     filas += '</div>';
