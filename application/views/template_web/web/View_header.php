@@ -7,10 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>">
 
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
 	<!-- site icons -->
 	<link rel="icon" href="<?php echo base_url() ?>assets/web/images/fevicon/fevicon.png" type="image/gif" />
-	<!-- bootstrap css -->
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/bootstrap.min.css" />
+	<!-- Bootstrap Core Css -->
+	<link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<!-- Site css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/style.css" />
 	<!-- responsive css -->
@@ -25,6 +28,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/settings.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/layers.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/navigation.css" />
+
+	<link href="<?php echo base_url(); ?>assets/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
 
 	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
