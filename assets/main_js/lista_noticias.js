@@ -61,14 +61,14 @@ function listar_noticias(buscar, pagina, cantidad){
             $.each(response.noticias, function(key, item) {
                 filas += '<div class="col-md-4 service_blog margin_bottom_50">';
                 filas += '<div class="full">';
-                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" height="350" alt="#"/></center></div>';
+                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="height:350px;" alt="#"/></center></div>';
                 filas += '<div class="service_cont" style="position: relative;">';
-                filas += '<h3 class="service_head">'+item.Titular+'</h3>';
-                filas += '<p>'+item.Nota+'</p>';
+                filas += '<h3 class="service_head" style="height:75px;">'+item.Titular+'</h3>';
+                filas += '<p >'+item.Nota+'......</p>';
                 filas += '</br>';
                 filas += '</br>';
                 filas += '</br>';
-
+                filas += '</br>';
                 filas += '</div>';
                 filas += '<div class="bt_cont" style="position: absolute; bottom: 0;"><a class="btn sqaure_bt" id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">Leer Mas</a></div>';
                 filas += '</div>';

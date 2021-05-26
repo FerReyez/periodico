@@ -68,17 +68,18 @@ function get_sugerencias(){
         dataType: "json",
         success: function(response) {
             i = 0;
+            c = 0;
             filas = '';
             $.each(response.sugerencias, function(key, item) {
                 i++;
-                
-                if(i % 2 != 0){
+                c++;
+                if(i == 1){
                     filas += '<div class="col-lg-4 col-md-6 col-sm-9 col-xs-9">';
                     filas += '<div class="full">';
                 }
                 filas += '<div class="blog_section">';
                 filas += '<div class="blog_feature_img"><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" alt="#"></div>';
-                if(i % 2 == 0){
+                if(c % 2 == 0){
                     filas += '<div class="blog_feature_cantant">';
                 } else {
                     filas += '<div class="blog_feature_cantant theme_color_bg white_fonts"">';
@@ -108,7 +109,8 @@ function get_sugerencias(){
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
-                if(i % 2 == 0){
+                if(c % 3 == 0){
+                    i = 0;
                     filas += '</div>';
                     filas += '</div>';
                 }

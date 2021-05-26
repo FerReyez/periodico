@@ -205,7 +205,7 @@ class Model_web extends CI_Model{
                             noti.id_noticia,
                             noti.Titular,
                             noti.Subtitulo,
-                            LEFT(noti.Nota,250) AS Nota,
+                            LEFT(noti.Nota,150) AS Nota,
                             noti.Fecha,
                             noti.Editor,
                             noti.Reportero,
@@ -275,7 +275,7 @@ class Model_web extends CI_Model{
         $this->db->join('edicion edi','edi.id_edicion = ed_not.id_edicion');
         $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
         $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
-        $this->db->limit(6);
+        $this->db->limit(9);
         $query =  $this->db->get();
         return $query->result_array();
     }
