@@ -57,3 +57,11 @@
 </div>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/listarEdiciones.js"></script>
+<script>
+$(document).on("click", "#btnEdicion", function(e){
+    e.preventDefault();
+    var btnEdicionId = $(this).attr("data-btnEdicionId");
+    localStorage.setItem("EdicionId", btnEdicionId);
+    window.location.href = host + "edicion";
+});
+</script>
