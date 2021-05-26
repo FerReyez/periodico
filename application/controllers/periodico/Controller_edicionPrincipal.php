@@ -62,7 +62,7 @@ class Controller_edicionPrincipal extends CI_Controller
         $inicio = ($numeropagina - 1) * $cantidad;
         $output = array(
             "noticias" => $this->Model_web->obtener_noticias($edicion,$buscar, $inicio, $cantidad),
-            "totalregistros" => count($this->Model_web->obtener_noticias($buscar)),
+            "totalregistros" => count($this->Model_web->obtener_noticias($edicion, $buscar)),
             "cantidad" => $cantidad
         );
 
