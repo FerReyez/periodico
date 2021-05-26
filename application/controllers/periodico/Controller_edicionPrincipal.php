@@ -31,6 +31,11 @@ class Controller_edicionPrincipal extends CI_Controller
         $this->cargar_plantilla($vista, $data);
     }
 
+    public function vista_noticias(){
+        $data['titulo'] = "Noticias Masferrerianas";
+        $vista = "";
+    }
+
     function listar_editoriales(){
         //$menu = $_POST["menu"];
         $buscar = $_POST["buscar"];
