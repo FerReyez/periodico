@@ -217,8 +217,14 @@ class Model_web extends CI_Model{
                                     order by noti.id_noticia desc
                                     limit 1
         
-                                ) as url  '
-                        );
+                                ) as url,
+                                (
+                                    select count(noti.id_noticia) as num from noticias noti
+                                    inner join edicion_noticia en on en.id_noticia = noti.id_noticia
+                                    where en.id_edicion = '.$idEdicion.'
+                                    ) as numero 
+                                  
+                        ');
         $this->db->from('noticias noti');
         $this->db->join('edicion_noticia en', 'en.id_noticia = noti.id_noticia');
         $query =  $this->db->get();

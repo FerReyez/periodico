@@ -37,7 +37,11 @@ function listar_noticias(buscar, pagina, cantidad){
         dataType: "json",
         success: function(response) {
             filas = "";
+            if(response.totalregistros < 1){
+                filas += '<div class="text-center"><h3 class="text-success">La Edición N° - '+edicion+' no tiene noticias.</h3></div>';
+            }
             $.each(response.noticias, function(key, item) {
+                
                 filas += '<div class="col-md-4 service_blog margin_bottom_50">';
                 filas += '<div class="full">';
                 filas += '<div class="blog_section">';
@@ -68,6 +72,8 @@ function listar_noticias(buscar, pagina, cantidad){
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
+
+                
             });
             $("#tb_noticias").html(filas);
 
