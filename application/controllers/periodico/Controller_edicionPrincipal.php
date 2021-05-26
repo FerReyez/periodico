@@ -31,6 +31,12 @@ class Controller_edicionPrincipal extends CI_Controller
         $this->cargar_plantilla($vista, $data);
     }
 
+    public function vista_noticias(){
+        $data['titulo'] = "Noticias Masferrerianas";
+        $vista = "web/View_Noticias_Ediciones";
+        $this->cargar_plantilla($vista, $data);
+    }
+
     function listar_editoriales(){
         //$menu = $_POST["menu"];
         $buscar = $_POST["buscar"];
@@ -41,6 +47,22 @@ class Controller_edicionPrincipal extends CI_Controller
         $output = array(
             "ediciones" => $this->Model_web->listar_editoriales($buscar, $inicio, $cantidad),
             "totalregistros" => count($this->Model_web->listar_editoriales($buscar)),
+            "cantidad" => $cantidad
+        );
+
+        echo json_encode($output);
+    }
+
+    function obtener_noticias(){
+        $edicion = $_POST["edicion"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+        $output = array(
+            "noticias" => $this->Model_web->obtener_noticias($edicion,$buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->obtener_noticias($edicion, $buscar)),
             "cantidad" => $cantidad
         );
 

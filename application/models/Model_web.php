@@ -161,6 +161,7 @@ class Model_web extends CI_Model{
         $this->db->select('
                         substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
                         edi.num_edicion,
+                        edi.id_edicion,
                         edi.estado,
                         (
                             select foto.url from noticias noti
@@ -189,6 +190,38 @@ class Model_web extends CI_Model{
                         ) as nota
         ');
         $this->db->from('edicion edi');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function obtener_noticias($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
+        $this->db->where('en.id_edicion', $idEdicion);
+        $this->db->like("noti.Titular", $buscar);
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('noti.Fecha', 'DESC');
+        $this->db->select(' noti.id_noticia, 
+                            noti.Titular, 
+                            noti.Subtitulo, 
+                            noti.Fecha, 
+                            noti.Editor, 
+                            noti.Reportero, 
+                                (
+                                    select foto.url from noticias noti
+                                    inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                                    inner join noticia_foto noti_foto on noti_foto.id_noticia = noti.id_noticia
+                                    inner join fotografia foto on foto.id_foto = noti_foto.id_foto
+                                    inner join edicion edt on edi_noti.id_edicion = edt.id_edicion
+                                    where edt.num_edicion = '.$idEdicion.'
+                                    order by noti.id_noticia desc
+                                    limit 1
+        
+                                ) as url
+                                  
+                        ');
+        $this->db->from('noticias noti');
+        $this->db->join('edicion_noticia en', 'en.id_noticia = noti.id_noticia');
         $query =  $this->db->get();
         return $query->result_array();
     }

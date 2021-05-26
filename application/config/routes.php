@@ -33,6 +33,7 @@ $route['inicio'] = 'Controller_web/index_web';
 $route['noticias'] = 'Controller_web/listaNoticias';
 $route['noticia'] = 'Controller_web/noticias';
 $route['editorial'] = 'periodico/Controller_edicionPrincipal/vista_edicionPrincipal';
+$route['noticias_lista'] = 'periodico/Controller_edicionPrincipal/vista_noticias';
 $route['personas'] = 'Controller_web/personas';
 $route['persona'] = 'Controller_web/personasInd';
 
