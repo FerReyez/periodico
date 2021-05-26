@@ -33,7 +33,8 @@ class Controller_edicionPrincipal extends CI_Controller
 
     public function vista_noticias(){
         $data['titulo'] = "Noticias Masferrerianas";
-        $vista = "";
+        $vista = "web/View_Noticias_Ediciones";
+        $this->cargar_plantilla($vista, $data);
     }
 
     function listar_editoriales(){
