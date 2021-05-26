@@ -1,4 +1,3 @@
-<!-- section -->
 <div class="section main_slider">
     <div class="container">
         <div class="row">
@@ -37,4 +36,4 @@
     </div>
 </div>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/lista_noticias.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/ediciones_noticias.js"></script>

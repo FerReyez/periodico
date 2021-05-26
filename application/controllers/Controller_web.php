@@ -70,4 +70,56 @@ class Controller_web extends CI_Controller {
         $vista = "web/View_personasInd";
         $this->cargar_plantilla_web($vista, $data);
     }
+
+    /******************************Listar Noticias***************************************/
+
+    function get_categoria(){
+        $menu = $_POST["menu"];
+        $output = array(
+            "categoria" => $this->Model_web->ultima_categoria($menu)
+        );
+        echo json_encode($output);
+    }
+
+    function listar_noticias(){
+        $menu = $_POST["menu"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+
+        $output = array(
+            "noticias" => $this->Model_web->listar_noticias($menu,$buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_noticias($menu,$buscar)),
+            "cantidad" => $cantidad
+        );
+        
+        echo json_encode($output);
+    }
+
+    /******************************Vers Noticias***************************************/
+
+    function get_noticia(){
+        $noticia = $_POST["noticia"];
+        $output = array(
+            "noticia" => $this->Model_web->get_noticia($noticia)
+        );
+        echo json_encode($output);
+    }
+
+    function get_galeria(){
+        $noticia = $_POST["noticia"];
+        $output = array(
+            "galeria" => $this->Model_web->get_galeria($noticia)
+        );
+        echo json_encode($output);
+    }
+
+    function get_sugerencias(){
+        $output = array(
+            "sugerencias" => $this->Model_web->sugerencia_noticias()
+        );
+        echo json_encode($output);
+    }
 }

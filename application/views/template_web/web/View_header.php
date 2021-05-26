@@ -7,10 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>">
 
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
 	<!-- site icons -->
 	<link rel="icon" href="<?php echo base_url() ?>assets/web/images/fevicon/fevicon.png" type="image/gif" />
-	<!-- bootstrap css -->
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/bootstrap.min.css" />
+	<!-- Bootstrap Core Css -->
+	<link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<!-- Site css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/style.css" />
 	<!-- responsive css -->
@@ -25,6 +28,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/settings.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/layers.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/navigation.css" />
+
+	<link href="<?php echo base_url(); ?>assets/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
 
 	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -59,20 +64,23 @@
 								<ul class="first-ul">
 									<?php foreach ($menus as $m) { ?>
 										<?php if($m['nc_categoria'] == NULL) { ?>
-											<!-- <li><a href="<?php echo base_url() ?>noticias"><?php echo $m['nc_noticia']; ?></a> -->
-											<li><a id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a>
-												<ul>
-												<?php foreach ($opciones as $o) { ?>
-													<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
-														<li><a id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+											<?php if($m['count'] > 0) { ?>
+												<li><a><?php echo $m['nc_noticia']; ?></a>
+													<ul>
+													<?php foreach ($opciones as $o) { ?>
+														<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
+															<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+														<?php } ?>
 													<?php } ?>
-												<?php } ?>
-												</ul>
-											</li>
+													</ul>
+												</li>
+											<?php } else { ?>
+												<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
+											<?php } ?>
 										<?php } ?>
 									<?php } ?>
-									<li><a href="<?php echo base_url() ?>noticias">Perfiles</a></li>
-									<li><a href="<?php echo base_url() ?>noticias">Ediciones</a></li>
+									<li><a href="<?php echo base_url() ?>personas">Perfiles</a></li>
+									<li><a href="<?php echo base_url() ?>editorial">Ediciones</a></li>
 								</ul>
 								</div>
 							</div>
@@ -121,6 +129,7 @@
 	if (distanceFromTop >= navbarHeight) navbar.classList.add("fixed-top");
 	else navbar.classList.remove("fixed-top");
 	});
+
 	$(document).on("click", "#btnMenu", function (e) {
     	e.preventDefault();
 		var btnMenuId = $(this).attr("data-btnMenuId");
@@ -128,4 +137,10 @@
 		window.location.href = host + "noticias";
 	});
 
+	$(document).on("click", "#btnNoticia", function (e) {
+    	e.preventDefault();
+		var btnNoticiaId = $(this).attr("data-btnNoticiaId");
+		localStorage.setItem("NotiId",btnNoticiaId);
+		window.location.href = host + "noticia";
+	});
 </script>
