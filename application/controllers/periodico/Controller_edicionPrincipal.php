@@ -26,8 +26,24 @@ class Controller_edicionPrincipal extends CI_Controller
 
     public function vista_edicionPrincipal()
     {
-        $data['titulo'] = 'ESTO NO ES UNA PRUEBA';
+        $data['titulo'] = 'Editoriales Masferrerianas';
         $vista = "periodico/View_edicionesPrincipal";
         $this->cargar_plantilla($vista, $data);
+    }
+
+    function listar_editoriales(){
+        //$menu = $_POST["menu"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+        $output = array(
+            "ediciones" => $this->Model_web->listar_editoriales($buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_editoriales($buscar)),
+            "cantidad" => $cantidad
+        );
+
+        echo json_encode($output);
     }
 }

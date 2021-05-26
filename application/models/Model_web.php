@@ -150,6 +150,49 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
+    public function listar_editoriales($buscar, $inicio = FALSE, $cantidad = FALSE){
+        $estado = 'Activo';
+        $this->db->where('edi.estado', $estado);
+        $this->db->like('edi.num_edicion', $buscar);
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('edi.fecha_publicacion', 'DESC');
+        $this->db->select('
+                        substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
+                        edi.num_edicion,
+                        edi.estado,
+                        (
+                            select foto.url from noticias noti
+                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                            inner join noticia_foto noti_foto on noti_foto.id_noticia = noti.id_noticia
+                            inner join fotografia foto on foto.id_foto = noti_foto.id_foto
+                            inner join edicion edt on edi_noti.id_edicion = edt.id_edicion
+                            where edt.num_edicion = edi.num_edicion
+                            order by noti.id_noticia desc
+                            limit 1
+
+                        ) as url,
+                        (
+                            select Titular from noticias noti
+                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                            where edi_noti.id_edicion = edi.id_edicion
+                            order by noti.id_noticia desc
+                            limit 1
+                        ) as titular,
+                        (
+                            select substring(noti.Nota, 1, locate(".", noti.Nota)) from noticias noti
+                                inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                                where edi_noti.id_edicion = edi.id_edicion
+                                order by noti.id_noticia desc
+                                limit 1
+                        ) as nota
+        ');
+        $this->db->from('edicion edi');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
     public function listar_noticias($categoria,$buscar,$inicio = FALSE,$cantidad = FALSE) {
         $this->db->where('cat.id_cat_noticia', $categoria);
         $this->db->like("noti.Titular", $buscar);
