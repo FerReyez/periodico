@@ -161,6 +161,7 @@ class Model_web extends CI_Model{
         $this->db->select('
                         substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
                         edi.num_edicion,
+                        edi.id_edicion,
                         edi.estado,
                         (
                             select foto.url from noticias noti
