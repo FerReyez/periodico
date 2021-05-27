@@ -46,7 +46,7 @@
           <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar perfil..." />
           <br>
       </div>
-      <div class="tb_perfiles"></div>
+      <div class="col-md-12" id="tb_perfiles"></div>
       <div class="col-md-12">
         <div class="center paginacion"></div>
         <div>
