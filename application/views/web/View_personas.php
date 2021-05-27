@@ -24,15 +24,42 @@
 <div class="section padding_layout_1 light_silver">
   <div class="container">
     <div class="row">
-    </div>
-    <div class="row">
-    <div class="tb_perfiles">
+      <div class="col-md-12">
+          <div class="full">
+              <div class="main_heading text_align_center">
+                  <h1>Perfiles</h1>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-9">
+          <p>
+              <strong>Mostrar por : </strong>
+              <select name="cantidad" id="cantidad">
+                  <option value="9">9</option>
+                  <option value="12">12</option>
+                  <option value="12">15</option>
+                  <option value="12">18</option>
+              </select>
+          </p>
+      </div>
+      <div class="col-md-3">
+          <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar perfil..." />
+          <br>
+      </div>
+      <div class="tb_perfiles"></div>
+      <div class="col-md-12">
+        <div class="center paginacion"></div>
+        <div>
+        </div>
+        <br>
+        <br>
+        <br>
     </div>
       <!-- <div class="col-md-3 col-sm-6">
         <div class="full team_blog_colum">
           <div class="it_team_img"> <img class="img-responsive" src="assets/web/images/it_service/team-member-1.jpg" alt="#"> </div>
           <div class="team_feature_head">
-            <h4><a href="<?php echo base_url() ?>persona">Dean Michael</a></h4>
+            <h4><a href="persona">Dean Michael</a></h4>
           </div>       
         </div>
       </div> -->

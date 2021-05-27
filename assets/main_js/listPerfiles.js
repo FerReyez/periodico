@@ -45,7 +45,6 @@ function listar_perfiles(buscar, pagina, cantidad){
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
-                
             });
             $("#tb_perfiles").html(filas);
 
