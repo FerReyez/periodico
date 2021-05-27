@@ -45,7 +45,7 @@
                 <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar editorial..." />
                 <br>
             </div>
-            <div class="row">
+            <div class="full">
                 <div class="col-lg-2 col-md-2"></div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="tb_ediciones"></div>
             </div>

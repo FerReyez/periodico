@@ -23,11 +23,11 @@
                 <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar noticia..." />
                 <br>
             </div>
-            <div class="row" id="tb_noticias"></div>
+            <div class="full">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tb_noticias"></div>
+            </div>
             <div class="col-md-12">
                 <div class="center paginacion"></div>
-                <div>
-                </div>
                 <br>
                 <br>
                 <br>
