@@ -39,9 +39,9 @@ function listar_perfiles(buscar, pagina, cantidad){
             $.each(response.perfiles, function(key, item) {
                 filas += '<div class="col-md-3 col-sm-6">';
                 filas += '<div class="full team_blog_colum">';
-                filas += ' <div class="it_team_img"> <img class="img-responsive" src="assets/web/images/it_service/team-member-1.jpg" alt="#"> </div>';
+                filas += ' <div class="it_team_img"> <img class="img-responsive" src="'+host+'assets/upload/perfiles/'+item.url_foto+'" alt="#"> </div>';
                 filas += '<div class="team_feature_head">';
-                filas += '<h4><a href="'+ host +'persona">Dean Michael</a></h4>';
+                filas += '<h4><a href="'+ host +'persona">'+item.nombre+'</a></h4>';
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
