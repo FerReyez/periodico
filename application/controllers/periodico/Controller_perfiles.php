@@ -233,4 +233,23 @@ class Controller_perfiles extends CI_Controller
         move_uploaded_file($file['tmp_name'], $destination);
         return $newName;
     }
+
+    /**************************Lista perfiles*********************************/
+
+    function listar_perfil(){        
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+
+        $output = array(
+            "perfiles" => $this->Model_perfiles->listar_perfiles($buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_perfiles->listar_perfiles($buscar)),
+            "cantidad" => $cantidad
+        );
+        
+        echo json_encode($output);
+    }
+
 }

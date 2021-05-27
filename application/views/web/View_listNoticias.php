@@ -20,7 +20,7 @@
                     </select>
                 </p>
             </div>
-            <div class="col-md-3" >
+            <div class="col-md-3">
                 <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar noticia..." />
                 <br>
             </div>
