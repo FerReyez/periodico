@@ -23,13 +23,13 @@
           <div class="blog_section margin_bottom_0" >
             <div id="noticia"></div>
             <div class="list-unstyled row clearfix" id="lightgallery">
-              <div id="galeria">
-                <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"> -->
-                  <!-- <a class="custom-selector" href="http://localhost/template/assets/upload/noticias/1389458111.png">
+              <!-- <div id="galeria"> -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                  <a class="custom-selector" href="http://localhost/template/assets/upload/noticias/1389458111.png">
                       <img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />
                   </a>
-                </div> -->
-              </div>
+                </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>

@@ -150,82 +150,6 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
-    public function listar_editoriales($buscar, $inicio = FALSE, $cantidad = FALSE){
-        $estado = 'Activo';
-        $this->db->where('edi.estado', $estado);
-        $this->db->like('edi.num_edicion', $buscar);
-        if ($inicio !== FALSE && $cantidad !== FALSE) {
-            $this->db->limit($cantidad, $inicio);
-        }
-        $this->db->order_by('edi.fecha_publicacion', 'DESC');
-        $this->db->select('
-                        substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
-                        edi.num_edicion,
-                        edi.id_edicion,
-                        edi.estado,
-                        (
-                            select foto.url from noticias noti
-                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
-                            inner join noticia_foto noti_foto on noti_foto.id_noticia = noti.id_noticia
-                            inner join fotografia foto on foto.id_foto = noti_foto.id_foto
-                            inner join edicion edt on edi_noti.id_edicion = edt.id_edicion
-                            where edt.num_edicion = edi.num_edicion
-                            order by noti.id_noticia desc
-                            limit 1
-
-                        ) as url,
-                        (
-                            select Titular from noticias noti
-                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
-                            where edi_noti.id_edicion = edi.id_edicion
-                            order by noti.id_noticia desc
-                            limit 1
-                        ) as titular,
-                        (
-                            select substring(noti.Nota, 1, locate(".", noti.Nota)) from noticias noti
-                                inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
-                                where edi_noti.id_edicion = edi.id_edicion
-                                order by noti.id_noticia desc
-                                limit 1
-                        ) as nota
-        ');
-        $this->db->from('edicion edi');
-        $query =  $this->db->get();
-        return $query->result_array();
-    }
-
-    public function obtener_noticias($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
-        $this->db->where('en.id_edicion', $idEdicion);
-        $this->db->like("noti.Titular", $buscar);
-        if ($inicio !== FALSE && $cantidad !== FALSE) {
-            $this->db->limit($cantidad, $inicio);
-        }
-        $this->db->order_by('noti.Fecha', 'DESC');
-        $this->db->select(' noti.id_noticia, 
-                            noti.Titular, 
-                            noti.Subtitulo, 
-                            noti.Fecha, 
-                            noti.Editor, 
-                            noti.Reportero, 
-                                (
-                                    select foto.url from noticias noti
-                                    inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
-                                    inner join noticia_foto noti_foto on noti_foto.id_noticia = noti.id_noticia
-                                    inner join fotografia foto on foto.id_foto = noti_foto.id_foto
-                                    inner join edicion edt on edi_noti.id_edicion = edt.id_edicion
-                                    where edt.num_edicion = '.$idEdicion.'
-                                    order by noti.id_noticia desc
-                                    limit 1
-        
-                                ) as url
-                                  
-                        ');
-        $this->db->from('noticias noti');
-        $this->db->join('edicion_noticia en', 'en.id_noticia = noti.id_noticia');
-        $query =  $this->db->get();
-        return $query->result_array();
-    }
-
     public function listar_noticias($categoria,$buscar,$inicio = FALSE,$cantidad = FALSE) {
         $this->db->where('cat.id_cat_noticia', $categoria);
         $this->db->like("noti.Titular", $buscar);
@@ -252,6 +176,82 @@ class Model_web extends CI_Model{
         $this->db->join('cat_noticia cat','cat.id_cat_noticia = noti.id_cat_noticia');
         $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
         $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    /***************************************************************************************/
+
+    public function listar_editoriales($buscar, $inicio = FALSE, $cantidad = FALSE){
+        $estado = 'Activo';
+        $this->db->where('edi.estado', $estado);
+        $this->db->like('edi.num_edicion', $buscar);
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('edi.fecha_publicacion', 'DESC');
+        $this->db->select('
+                        substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
+                        edi.num_edicion,
+                        edi.id_edicion,
+                        edi.estado,
+                        (
+                            select foto.url from noticias noti
+                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                            inner join noticia_foto noti_foto on noti_foto.id_noticia = noti.id_noticia
+                            inner join fotografia foto on foto.id_foto = noti_foto.id_foto
+                            inner join edicion edt on edi_noti.id_edicion = edt.id_edicion
+                            where edt.num_edicion = edi.num_edicion and noti_foto.principal = 1 and noti.id_cat_nivel = 1
+                            order by noti.id_noticia desc
+                            limit 1
+
+                        ) as url,
+                        (
+                            select Titular from noticias noti
+                            inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                            where edi_noti.id_edicion = edi.id_edicion and noti.id_cat_nivel = 1
+                            order by noti.id_noticia desc
+                            limit 1
+                        ) as titular,
+                        (
+                            select substring(noti.Nota, 1, locate(".", noti.Nota)) from noticias noti
+                                inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                                where edi_noti.id_edicion = edi.id_edicion and noti.id_cat_nivel = 1
+                                order by noti.id_noticia desc
+                                limit 1
+                        ) as nota
+        ');
+        $this->db->from('edicion edi');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function obtener_noticias($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
+        $this->db->where('en.id_edicion', $idEdicion);
+        $this->db->like("noti.Titular", $buscar);
+
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('noti.id_noticia', 'DESC');
+        $this->db->select(' noti.id_noticia, 
+                            noti.Titular, 
+                            noti.Subtitulo,
+                            LEFT(noti.Nota,150) AS Nota,
+                            noti.Fecha, 
+                            noti.Editor, 
+                            noti.Reportero, 
+                                (
+                                    select foto.url from fotografia foto
+                                    inner join noticia_foto noti_foto on foto.id_foto = noti_foto.id_foto
+                                    where noti_foto.id_noticia = noti.id_noticia and noti_foto.principal = 1
+                                    limit 1
+        
+                                ) as url
+                                  
+                        ');
+        $this->db->from('noticias noti');
+        $this->db->join('edicion_noticia en', 'en.id_noticia = noti.id_noticia');
         $query =  $this->db->get();
         return $query->result_array();
     }
