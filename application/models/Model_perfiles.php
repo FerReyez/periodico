@@ -1,14 +1,15 @@
 <?php
 
-class Model_perfiles extends CI_Model {
+class Model_perfiles extends CI_Model
+{
 
     public $column = array(
         'idperfiles',
         'nombre',
-        'info',        
+        'info',
         'url_foto',
         'cargo',
-        'fecha_crea',    
+        'fecha_crea',
         'banner',
         'estado',
     );
@@ -37,7 +38,6 @@ class Model_perfiles extends CI_Model {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
-
     }
 
     public function lista_perfiles()
@@ -61,33 +61,54 @@ class Model_perfiles extends CI_Model {
     }
 
     public function count_all()
-    {   
+    {
         $this->db->select('*');
         $this->db->from('perfiles');
         return $this->db->count_all_results();
     }
 
-    public function crear_perfil($table, $data) {
+    public function crear_perfil($table, $data)
+    {
         $result = $this->db->insert($table, $data);
         return $result;
     }
 
-    public function linea_actualizar($table, $editBtnId) {
+    public function linea_actualizar($table, $editBtnId)
+    {
         $this->db->where('idperfiles', $editBtnId);
         $result = $this->db->get($table);
         return $result->result();
     }
 
-    public function actualizar_perfil($table, $data, $updateId) {
+    public function actualizar_perfil($table, $data, $updateId)
+    {
         $this->db->where('idperfiles', $updateId);
         $result = $this->db->update($table, $data);
         return $result;
     }
 
-    public function eliminar_edicion($table, $delteBtnId) {
+    public function eliminar_edicion($table, $delteBtnId)
+    {
         $this->db->where('idperfiles', $delteBtnId);
         $result = $this->db->delete($table);
         return $result;
     }
 
+    /************************Ver perfiles*********************************/
+    public function listar_perfiles($buscar, $inicio = FALSE, $cantidad = FALSE)
+    {        
+        $this->db->like("perf.nombre", $buscar);
+        $this->db->where('perf.estado', 'Activo');
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('perf.idperfiles', 'DESC');
+        $this->db->select('
+                        perf.nombre,
+                        perf.url_foto                        
+    ');
+        $this->db->from('perfiles perf');        
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
 }
