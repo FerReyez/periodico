@@ -46,7 +46,7 @@ function listar_noticias(buscar, pagina, cantidad){
                 filas += '<div class="full">';
                 filas += '<div class="blog_section">';
                 // filas += '<div class="service_img" "><center><img class-"img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="width: auto; height: auto; max-width: 100%; max-height: 100%;" alt="#"/></center></div>';
-                filas += '<div class="service_img"><center><img class-"img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="width:100%; height: 230px;  flex-shrink: 0;" alt="#"/></center></div>';
+                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="height:350px;" alt="#"/></center></div>';
                 filas += '<div class="blog_feature_cantant">';
                 filas += '<div class="post_info">';
                 filas += '<ul>';
@@ -60,7 +60,7 @@ function listar_noticias(buscar, pagina, cantidad){
                 filas += '<h3 class="service_head" style="height:75px;">'+item.Titular+'</h3>';
                 //filas += '<p >'+item.Nota+'......</p>';
                 filas += '<div style="padding-top: 15px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px;">';
-                filas += '<p>'+item.Subtitulo+'</p>';
+                filas += '<p>'+item.Nota+'</p>';
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</br>';
