@@ -37,37 +37,50 @@ class Controller_web extends CI_Controller {
         $data['noticias'] = $noticias;
         $data['ediciones'] = $ediciones;
         $data['titulo'] = "Inicio";
-        $vista = "web/prueba";
+        $vista = "web/View_inicio";
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    function listaNoticias() {
+    function vista_noticias() {
         $data['titulo'] = "Noticias";
-        $vista = "web/View_listNoticias";
+        $vista = "web/View_noticias";
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    function noticias() {
+    function vista_noticia() {
         $data['titulo'] = "Noticia";
         $vista = "web/View_noticia";
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    function editorial() {
-        $data['titulo'] = "Editorial";
-        $vista = "web/editorial";
+    // function vista_editorial() {
+    //     $data['titulo'] = "Editorial";
+    //     $vista = "web/editorial";
+    //     $this->cargar_plantilla_web($vista, $data);
+    // }
+
+    function vista_perfiles() {
+        $data['titulo'] = "Perfiles";
+        $vista = "web/View_perfiles";
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    function personas() {
-        $data['titulo'] = "Personas";
-        $vista = "web/View_personas";
+    function vista_perfil() {
+        $data['titulo'] = "Perfil";
+        $vista = "web/View_perfil";
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    function personasInd() {
-        $data['titulo'] = "Personas";
-        $vista = "web/View_personasInd";
+    public function vista_ediciones()
+    {
+        $data['titulo'] = 'Ediciones';
+        $vista = "web/View_ediciones";
+        $this->cargar_plantilla_web($vista, $data);
+    }
+
+    public function vista_noticias_edicion(){
+        $data['titulo'] = "Edicion";
+        $vista = "web/View_noticias_ed";
         $this->cargar_plantilla_web($vista, $data);
     }
 
@@ -98,7 +111,7 @@ class Controller_web extends CI_Controller {
         echo json_encode($output);
     }
 
-    /******************************Vers Noticias***************************************/
+    /******************************Ver Noticias***************************************/
 
     function get_noticia(){
         $noticia = $_POST["noticia"];
@@ -120,6 +133,38 @@ class Controller_web extends CI_Controller {
         $output = array(
             "sugerencias" => $this->Model_web->sugerencia_noticias()
         );
+        echo json_encode($output);
+    }
+
+    /*******************************Ver Ediciones***********************************/
+    function listar_ediciones(){
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+        $output = array(
+            "ediciones" => $this->Model_web->listar_ediciones($buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_ediciones($buscar)),
+            "cantidad" => $cantidad
+        );
+
+        echo json_encode($output);
+    }
+
+    function listar_edicion(){
+        $edicion = $_POST["edicion"];
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+        $output = array(
+            "noticias" => $this->Model_web->listar_edicion($edicion,$buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_edicion($edicion, $buscar)),
+            "cantidad" => $cantidad
+        );
+
         echo json_encode($output);
     }
 }

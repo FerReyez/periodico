@@ -1,13 +1,26 @@
-<div class="section main_slider">
+<div id="inner_banner" class="section inner_banner_section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="full">
-                    <div class="main_heading text_align_center">
-                        <div id="titulo"></div>
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <h1 class="page-title"><?= $titulo ?></h1>
+                            <ol class="breadcrumb">
+                                <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
+                                <li class="active"><?= $titulo ?></li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="section padding_layout_1 light_silver">
+    <div class="container">
+        <div class="row">
             <div class="col-md-9">
                 <p>
                     <strong>Mostrar por : </strong>
@@ -28,9 +41,6 @@
             </div>
             <div class="col-md-12">
                 <div class="center paginacion"></div>
-                <br>
-                <br>
-                <br>
             </div>
         </div>
     </div>

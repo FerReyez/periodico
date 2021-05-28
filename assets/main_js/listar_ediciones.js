@@ -1,34 +1,40 @@
 $(document).on("ready",main);
 
 function main(){
-    listar_perfiles("",1,9);
+    listar_ediciones("",1,9);
 }
 
 $(document).on("keyup", "#busqueda", function () {
     var busqueda = $("#busqueda").val();
     var cantidad = $("#cantidad").val();
-    listar_perfiles(busqueda,1,cantidad);
+    listar_ediciones(busqueda,1,cantidad);
 });
 
 $(document).on("change", "#cantidad", function () {
     var busqueda = $("#busqueda").val();
     var cantidad = $("#cantidad").val();
-    listar_perfiles(busqueda,1,cantidad);
+    listar_ediciones(busqueda,1,cantidad);
 });
 
 $("body").on("click", ".pagination li", function () {
     var busqueda = $("#busqueda").val();
     var cantidad = $("#cantidad").val();
     indice = $(this).data("id");
-    listar_perfiles(busqueda,indice,cantidad);
+    listar_ediciones(busqueda,indice,cantidad);
 });
 
+$(document).on("click", "#btnEdicion", function(e){
+    e.preventDefault();
+    var btnEdicionId = $(this).attr("data-btnEdicionId");
+    localStorage.setItem("EdicionId", btnEdicionId);
+    window.location.href = host + "noticias_edicion";
+});
 
-function listar_perfiles(buscar, pagina, cantidad){    
+function listar_ediciones(buscar, pagina, cantidad){
     $.ajax({
-        url: host+"periodico/Controller_perfiles/listar_perfil",
+        url: host+"Controller_web/listar_ediciones",
         type: "POST",
-        data: {            
+        data: {
             buscar: buscar,
             numeropagina: pagina,
             cantidad: cantidad
@@ -36,17 +42,38 @@ function listar_perfiles(buscar, pagina, cantidad){
         dataType: "json",
         success: function(response) {
             filas = "";
-            $.each(response.perfiles, function(key, item) {
-                filas += '<div class="col-md-3 col-sm-6">';
-                filas += '<div class="full team_blog_colum">';
-                filas += ' <div class="it_team_img"> <img class="img-responsive" src="'+host+'assets/upload/perfiles/'+item.url_foto+'" alt="#"> </div>';
-                filas += '<div class="team_feature_head">';
-                filas += '<h4><a href="'+ host +'persona">'+item.nombre+'</a></h4>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
+            $.each(response.ediciones, function(key, item) {
+                    filas += '<div class="blog_section">';
+                    filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" alt="#"/></center></div>';
+                    filas += '<div class="blog_feature_cantant">';
+                    filas += '<p class="blog_head">Edicion N° - '+item.num_edicion+'</p><br>';
+                    filas += '<div class="text-primary"><strong>Ultima Noticia - '+item.titular+'</strong></div><br>';
+                    filas += '<p>'+item.nota+'</p>';
+                    filas += '<div class="post_info">';
+                    filas += '<ul>';
+                    filas += '<li><i class="fa fa-calendar" aria-hidden="true"></i>'+item.fecha_publicacion+'</li>';
+                    filas += '</ul>';
+                    filas += '</div>';
+                    filas += '<div class="bottom_info">';
+                    filas += '<br/>';
+                    filas += '<div class="pull-left"><a class="btn sqaure_bt" id="btnEdicion" data-btnEdicionId="'+item.id_edicion+'" href="">Leer Mas<i class="fa fa-angle-right"></i></a></div>';
+                    filas += '<div class="pull-right">';
+                    filas += '<div class="shr">Share: </div>';
+                    filas += '<div class="social_icon">';
+                    filas += '<ul>';
+                    filas += '<li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>';
+                    filas += '<li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>';
+                    filas += '<li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>';
+                    filas += '</ul>';
+                    filas += '</div>';
+                    filas += '</div>';
+                    filas += '</div>';
+                    filas += '</div>';
+                    filas += '</div>';
+                
+                
             });
-            $("#tb_perfiles").html(filas);
+            $("#tb_ediciones").html(filas);
 
             linkseleccionado = Number(pagina);
             //total registros

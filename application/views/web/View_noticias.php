@@ -1,22 +1,32 @@
-<!-- section -->
-<div class="section main_slider">
+<div id="inner_banner" class="section inner_banner_section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="full">
-                    <div class="main_heading text_align_center">
-                        <div id="titulo"></div>
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <div id="titulo"></div>
+                            <ol class="breadcrumb">
+                                <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
+                                <li class="active"><?= $titulo ?></li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="section padding_layout_1 light_silver">
+    <div class="container">
+        <div class="row">
             <div class="col-md-9">
                 <p>
                     <strong>Mostrar por : </strong>
                     <select name="cantidad" id="cantidad">
                         <option value="9">9</option>
                         <option value="12">12</option>
-                        <option value="12">15</option>
-                        <option value="12">18</option>
                     </select>
                 </p>
             </div>
@@ -36,5 +46,6 @@
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/lista_noticias.js"></script>

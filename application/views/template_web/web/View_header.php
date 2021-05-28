@@ -14,6 +14,8 @@
 	<link rel="icon" href="<?php echo base_url() ?>assets/web/images/fevicon/fevicon.png" type="image/gif" />
 	<!-- Bootstrap Core Css -->
 	<link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.min.css" />
 	<!-- Site css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/style.css" />
 	<!-- responsive css -->
@@ -79,8 +81,8 @@
 											<?php } ?>
 										<?php } ?>
 									<?php } ?>
-									<li><a href="<?php echo base_url() ?>personas">Perfiles</a></li>
-									<li><a href="<?php echo base_url() ?>editorial">Ediciones</a></li>
+									<li><a href="<?php echo base_url() ?>perfiles">Perfiles</a></li>
+									<li><a href="<?php echo base_url() ?>ediciones">Ediciones</a></li>
 								</ul>
 								</div>
 							</div>

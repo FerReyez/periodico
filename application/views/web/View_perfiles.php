@@ -70,4 +70,4 @@
 </div>
 <!-- end section -->
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/listPerfiles.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/lista_perfiles.js"></script>

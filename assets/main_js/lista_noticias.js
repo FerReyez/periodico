@@ -37,7 +37,7 @@ function obtener_categoria(){
         success: function(response) {
             filas = "";
             $.each(response.categoria, function(key, item) {
-                filas = "<h2>"+item.nc_noticia+"</h2>";
+                filas = "<h1 class='page-title'>"+item.nc_noticia+"</h1>";
             });
             $("#titulo").html(filas);
         }
@@ -60,17 +60,21 @@ function listar_noticias(buscar, pagina, cantidad){
             filas = "";
             $.each(response.noticias, function(key, item) {
                 filas += '<div class="col-md-4 service_blog margin_bottom_50">';
-                filas += '<div class="full">';
-                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="height:350px;" alt="#"/></center></div>';
-                filas += '<div class="service_cont" style="position: relative;">';
-                filas += '<h3 class="service_head" style="height:75px;">'+item.Titular+'</h3>';
+                filas += '<div class="full" style="height:500px;">';
+                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="width:100%; height: 250px; object-fit: cover !important; object-position: 100% 0;" alt="#"/></center></div>';
+                filas += '<div class="blog_feature_cantant">';
+                filas += '<ul>';
+                filas += '<li><i class="fa fa-user" aria-hidden="true"></i> '+item.Editor+'</li>';
+                filas += '<li><i class="fa fa-comment" aria-hidden="true"></i> '+item.Reportero+'</li>';
+                filas += '<li><i class="fa fa-calendar" aria-hidden="true"></i> '+item.Fecha+'</li>';
+                filas += '</ul>';
+                filas += '<div class="post_info">';
+                filas += '<br>';
+                filas += '<br>';
+                filas += '<h3 class="service_head"><a id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">'+item.Titular+'</a></h3>';
                 filas += '<p >'+item.Nota+'......</p>';
-                filas += '</br>';
-                filas += '</br>';
-                filas += '</br>';
-                filas += '</br>';
                 filas += '</div>';
-                filas += '<div class="bt_cont" style="position: absolute; bottom: 0;"><a class="btn sqaure_bt" id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">Leer Mas</a></div>';
+                filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
             });

@@ -30,12 +30,12 @@ $route['image']                              = 'periodico/Controller_prueba/vist
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
-$route['noticias'] = 'Controller_web/listaNoticias';
-$route['noticia'] = 'Controller_web/noticias';
-$route['editorial'] = 'periodico/Controller_edicionPrincipal/vista_edicionPrincipal';
-$route['noticias_lista'] = 'periodico/Controller_edicionPrincipal/vista_noticias';
-$route['personas'] = 'Controller_web/personas';
-$route['persona'] = 'Controller_web/personasInd';
+$route['noticias'] = 'Controller_web/vista_noticias';
+$route['noticia'] = 'Controller_web/vista_noticia';
+$route['perfiles'] = 'Controller_web/vista_perfiles';
+$route['perfil'] = 'Controller_web/vista_perfil';
+$route['ediciones'] = 'Controller_web/vista_ediciones';
+$route['noticias_edicion'] = 'Controller_web/vista_noticias_edicion';
 
 /***********************************Imagenes**********************************************/
 $route['imagen_subir']                      = 'periodico/Controller_noticia/upload';

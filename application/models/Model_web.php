@@ -58,7 +58,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,500) AS Nota,
-                            noti.Fecha,
+                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -91,6 +91,13 @@ class Model_web extends CI_Model{
                                 order by RAND()
                                 limit 1
                             ) as Noticia,
+                            (
+                                select noti.id_noticia from noticias noti
+                                inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
+                                where edi_noti.id_edicion = edi.id_edicion
+                                order by noti.id_noticia
+                                limit 1
+                            ) as id_noticia,
                             (
                                 select Titular from noticias noti
                                 inner join edicion_noticia edi_noti on noti.id_noticia = edi_noti.id_noticia
@@ -163,7 +170,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            noti.Fecha,
+                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -182,7 +189,7 @@ class Model_web extends CI_Model{
 
     /***************************************************************************************/
 
-    public function listar_editoriales($buscar, $inicio = FALSE, $cantidad = FALSE){
+    public function listar_ediciones($buscar, $inicio = FALSE, $cantidad = FALSE){
         $estado = 'Activo';
         $this->db->where('edi.estado', $estado);
         $this->db->like('edi.num_edicion', $buscar);
@@ -226,7 +233,7 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
-    public function obtener_noticias($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
+    public function listar_edicion($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
         $this->db->where('en.id_edicion', $idEdicion);
         $this->db->like("noti.Titular", $buscar);
 
@@ -238,7 +245,7 @@ class Model_web extends CI_Model{
                             noti.Titular, 
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            noti.Fecha, 
+                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
                             noti.Editor, 
                             noti.Reportero, 
                                 (
@@ -265,7 +272,7 @@ class Model_web extends CI_Model{
                 noti.Titular,
                 noti.Subtitulo,
                 noti.Nota,
-                noti.Fecha,
+                DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
                 noti.Editor,
                 noti.Reportero,
                 noti.Visita,
@@ -305,7 +312,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,250) AS Nota,
-                            noti.Fecha,
+                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,

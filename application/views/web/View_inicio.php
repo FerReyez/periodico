@@ -84,7 +84,7 @@
                   <p><i class="fa fa-clock-o"></i> <?php echo strftime("%A, %d de %B de %Y", strtotime($e['Fecha'])); ?></p>
                 </div>
                 <div class="blog_feature_head">
-                  <h4><?php echo $e['Titular']; ?></h4>
+                  <h4><a id="btnNoticia" data-btnNoticiaId="<?php echo $e['id_noticia']; ?>" href=""><?php echo $e['Titular']; ?></a></h4>
                 </div>
                 <div class="blog_feature_cont">
                   <p><?php echo $e['Nota']; ?> ...</p>

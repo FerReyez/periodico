@@ -8,8 +8,8 @@
                         <div class="title-holder-cell text-left">
                             <h1 class="page-title"><?= $titulo ?></h1>
                             <ol class="breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Blog Detail</li>
+                                <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
+                                <li class="active"><?= $titulo ?></li>
                             </ol>
                         </div>
                     </div>
@@ -20,13 +20,12 @@
 </div>
 
 <!-- section -->
-<div class="section main_slider">
+<div class="section padding_layout_1 light_silver">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="full">
                     <div class="main_heading text_align_center">
-                    <br>
                         <div id="titulo"><h2><?= $titulo ?></h2></div>
                     </div>
                 </div>
@@ -51,18 +50,9 @@
             </div>
             <div class="col-md-12">
                 <div class="center paginacion"></div>
-                <br><br><br>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/listarEdiciones.js"></script>
-<script>
-$(document).on("click", "#btnEdicion", function(e){
-    e.preventDefault();
-    var btnEdicionId = $(this).attr("data-btnEdicionId");
-    localStorage.setItem("EdicionId", btnEdicionId);
-    window.location.href = host + "noticias_lista";
-});
-</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/listar_ediciones.js"></script>

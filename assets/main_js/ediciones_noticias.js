@@ -26,7 +26,7 @@ $("body").on("click", ".pagination li", function () {
 function listar_noticias(buscar, pagina, cantidad){
     var edicion = localStorage.getItem("EdicionId");
     $.ajax({
-        url:host+"periodico/Controller_edicionPrincipal/obtener_noticias",
+        url: host+"Controller_web/listar_edicion",
         type: "POST",
         data: {
             edicion: edicion,
@@ -43,10 +43,11 @@ function listar_noticias(buscar, pagina, cantidad){
             $.each(response.noticias, function(key, item) {
                 
                 filas += '<div class="col-md-4 service_blog margin_bottom_50">';
-                filas += '<div class="full">';
+                filas += '<div class="full" style="height:500px;">';
                 filas += '<div class="blog_section">';
-                // filas += '<div class="service_img" "><center><img class-"img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="width: auto; height: auto; max-width: 100%; max-height: 100%;" alt="#"/></center></div>';
-                filas += '<div class="service_img"><center><img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="height:350px;" alt="#"/></center></div>';
+                filas += '<div class="service_img"><center>';
+                filas += '<img class="img-responsive" src="'+host+'assets/upload/noticias/'+item.url+'" style="width:100%; height: 200px; object-fit: cover !important; object-position: 100% 0;" alt="#"/>';
+                filas += '</center></div>';
                 filas += '<div class="blog_feature_cantant">';
                 filas += '<div class="post_info">';
                 filas += '<ul>';
@@ -57,14 +58,9 @@ function listar_noticias(buscar, pagina, cantidad){
                 filas += '</div>';
                 filas += '<div class="service_cont">';
                 filas += '<hr>';
-                filas += '<h3 class="service_head" style="height:75px;">'+item.Titular+'</h3>';
-                //filas += '<p >'+item.Nota+'......</p>';
-                filas += '<div style="padding-top: 15px; padding-right: 0px; padding-bottom: 80px; padding-left: 0px;">';
+                filas += '<h3 class="service_head"><a id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">'+item.Titular+'</a></h3>';
                 filas += '<p>'+item.Nota+'</p>';
                 filas += '</div>';
-                filas += '</div>';
-                filas += '</br>';
-                filas += '<div class="bt_cont"><a class="btn sqaure_bt" id="btnNoticia" data-btnNoticiaId="'+item.id_noticia+'" href="">Leer Mas</a></div>';
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';
