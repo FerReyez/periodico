@@ -167,4 +167,21 @@ class Controller_web extends CI_Controller {
 
         echo json_encode($output);
     }
+
+    /*******************************Ver Perfiles***********************************/
+    function listar_perfil(){        
+        $buscar = $_POST["buscar"];
+        $numeropagina = $_POST["numeropagina"];
+        $cantidad = $_POST["cantidad"];
+
+        $inicio = ($numeropagina - 1) * $cantidad;
+
+        $output = array(
+            "perfiles" => $this->Model_web->listar_perfiles($buscar, $inicio, $cantidad),
+            "totalregistros" => count($this->Model_web->listar_perfiles($buscar)),
+            "cantidad" => $cantidad
+        );
+        
+        echo json_encode($output);
+    }
 }

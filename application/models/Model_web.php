@@ -294,6 +294,7 @@ class Model_web extends CI_Model{
 
     public function get_galeria($notiId){
         $this->db->where('noti.id_noticia', $notiId);
+        $this->db->where('noti_foto.principal',0);
         $this->db->select('
                             foto.url,
         ');
@@ -328,6 +329,40 @@ class Model_web extends CI_Model{
         $this->db->join('noticia_foto noti_foto','noti_foto.id_noticia = noti.id_noticia');
         $this->db->join('fotografia foto','foto.id_foto = noti_foto.id_foto');
         $this->db->limit(9);
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    /************************Ver perfiles*********************************/
+    public function listar_perfiles($buscar, $inicio = FALSE, $cantidad = FALSE) {        
+        $this->db->like("perf.nombre", $buscar);
+        $this->db->where('perf.estado', 'Activo');
+        if ($inicio !== FALSE && $cantidad !== FALSE) {
+            $this->db->limit($cantidad, $inicio);
+        }
+        $this->db->order_by('perf.idperfiles', 'DESC');
+        $this->db->select('
+                        perf.idperfiles,
+                        perf.nombre,
+                        perf.url_foto                        
+        ');
+        $this->db->from('perfiles perf');        
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_comentarios($perfilId){
+        $this->db->where('comen.idperfiles', $perfilId);
+        $this->db->where('comen.estado',1);
+        $this->db->select('
+                            comen.idComentario,
+                            comen.nombre,
+                            comen.comentario,
+                            comen.titulo,
+                            comen.estado,
+                            comen.foto_comen
+        ');
+        $this->db->from('comentario comen');
         $query =  $this->db->get();
         return $query->result_array();
     }

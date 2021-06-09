@@ -26,7 +26,7 @@ $("body").on("click", ".pagination li", function () {
 
 function listar_perfiles(buscar, pagina, cantidad){    
     $.ajax({
-        url: host+"periodico/Controller_perfiles/listar_perfil",
+        url: host+"Controller_web/listar_perfil",
         type: "POST",
         data: {            
             buscar: buscar,
@@ -41,7 +41,7 @@ function listar_perfiles(buscar, pagina, cantidad){
                 filas += '<div class="full team_blog_colum">';
                 filas += ' <div class="it_team_img"><img class="img-responsive" src="'+host+'assets/upload/perfiles/'+item.url_foto+'" style="width:100%; height: 250px; object-fit: cover !important; object-position: 100% 0;" alt="#"> </div>';
                 filas += '<div class="team_feature_head">';
-                filas += '<h4><a href="'+ host +'perfil">'+item.nombre+'</a></h4>';
+                filas += '<h4><a id="btnPerfil" data-btnPerfilId="'+item.idperfiles+'" href="">'+item.nombre+'</a></h4>';
                 filas += '</div>';
                 filas += '</div>';
                 filas += '</div>';

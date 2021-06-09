@@ -93,22 +93,4 @@ class Model_perfiles extends CI_Model
         $result = $this->db->delete($table);
         return $result;
     }
-
-    /************************Ver perfiles*********************************/
-    public function listar_perfiles($buscar, $inicio = FALSE, $cantidad = FALSE)
-    {        
-        $this->db->like("perf.nombre", $buscar);
-        $this->db->where('perf.estado', 'Activo');
-        if ($inicio !== FALSE && $cantidad !== FALSE) {
-            $this->db->limit($cantidad, $inicio);
-        }
-        $this->db->order_by('perf.idperfiles', 'DESC');
-        $this->db->select('
-                        perf.nombre,
-                        perf.url_foto                        
-    ');
-        $this->db->from('perfiles perf');        
-        $query =  $this->db->get();
-        return $query->result_array();
-    }
 }

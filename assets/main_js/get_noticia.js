@@ -74,16 +74,17 @@ function get_galeria(){
         success: function(response) {
             filas = '';
             $.each(response.galeria, function(key, item) {
-                filas += '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">';
-                filas += '<a class="custom-selector" href="http://localhost/template/assets/upload/noticias/1389458111.png">';
-                filas += '<img class="img-responsive thumbnail" src="http://localhost/template/assets/upload/noticias/1389458111.png" />';
+                filas += '<a class="custom-selector col-lg-4 col-md-4 col-sm-6 col-xs-6" data-fancybox="gallery" href="'+host+'assets/upload/noticias/'+item.url+'">';
+                filas += '<img class="img-responsive thumbnail" style="width:100%; height: 150px; object-fit: cover !important; object-position: 100% 0;" src="'+host+'assets/upload/noticias/'+item.url+'">';
                 filas += '</a>';
-                filas += '</div>';
+                
             });
             $("#galeria").html(filas);
         }
     });
 }
+
+
 
 function get_sugerencias(){
     $.ajax({

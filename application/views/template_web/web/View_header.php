@@ -10,32 +10,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-	<!-- site icons -->
-	<link rel="icon" href="<?php echo base_url() ?>assets/web/images/fevicon/fevicon.png" type="image/gif" />
 	<!-- Bootstrap Core Css -->
 	<link href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.min.css" />
-	<!-- Site css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/style.css" />
-	<!-- responsive css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/responsive.css" />
-	<!-- colors css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/colors1.css" />
-	<!-- custom css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/custom.css" />
-	<!-- wow Animation css -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/animate.css" />
 	<!-- revolution slider css -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/settings.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/layers.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/navigation.css" />
 
-	<link href="<?php echo base_url(); ?>assets/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
-
+	<!-- JQuery -->
 	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+	<!-- Galeria -->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/fancybox-master/dist/jquery.fancybox.min.css" />
+	<script src="<?php echo base_url(); ?>assets/plugins/fancybox-master/dist/jquery.fancybox.min.js"></script>
 
 	<script>
 		host = "<?php echo base_url(); ?>"
@@ -144,5 +139,13 @@
 		var btnNoticiaId = $(this).attr("data-btnNoticiaId");
 		localStorage.setItem("NotiId",btnNoticiaId);
 		window.location.href = host + "noticia";
+	});
+
+	
+	$(document).on("click", "#btnPerfil", function (e) {
+		e.preventDefault();
+		var btnPerfilId = $(this).attr("data-btnPerfilId");
+		localStorage.setItem("PerfilId",btnPerfilId);
+		window.location.href = host + "perfil";
 	});
 </script>

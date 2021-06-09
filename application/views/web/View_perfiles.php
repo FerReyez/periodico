@@ -55,16 +55,7 @@
         <br>
         <br>
         <br>
-    </div>
-      <!-- <div class="col-md-3 col-sm-6">
-        <div class="full team_blog_colum">
-          <div class="it_team_img"> <img class="img-responsive" src="assets/web/images/it_service/team-member-1.jpg" alt="#"> </div>
-          <div class="team_feature_head">
-            <h4><a href="persona">Dean Michael</a></h4>
-          </div>       
-        </div>
-      </div> -->
-
+      </div>
     </div>
   </div>
 </div>

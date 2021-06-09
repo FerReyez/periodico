@@ -38,7 +38,7 @@
                 
                     <?php echo form_open(base_url() . 'Controller_home/login'); ?>
                     <span class="login100-form-title p-b-43">
-                        <img src="<?php echo base_url(); ?>assets/img/intesal.png" width="150" style="border-radius: 100%;">
+                        <img src="<?php echo base_url(); ?>assets/login/images/logo-patria.jpeg" width="150" style="border-radius: 100%;">
                        
                     </span>
 
@@ -83,12 +83,12 @@
                     <?php echo form_close(); ?>
                 </div>
 
-                <div class="login100-more" style="background: url(<?php echo base_url(); ?>assets/login/images/fondo.jpg) no-repeat fixed center;
+                <div class="login100-more" style="background: url(<?php echo base_url(); ?>assets/login/images/fondo-patria.jpeg) no-repeat fixed center;
                                                                                                                            -webkit-background-size: cover;
                                                                                                                            -moz-background-size: cover;
                                                                                                                            -o-background-size: cover;
                                                                                                                            background-size: cover;">
-                    <!--video class="video_background" src="<?php echo base_url(); ?>assets/login/images/intro_forest.mp4" loop autoplay preload muted>Video</video-->
+                    <!-- <video class="video_background" src="<?php echo base_url(); ?>assets/login/images/intro_forest.mp4" loop autoplay preload muted>Video</video> -->
                 </div>
             </div>
         </div>

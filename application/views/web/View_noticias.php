@@ -34,7 +34,7 @@
                 <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar noticia..." />
                 <br>
             </div>
-            <div class="row" id="tb_noticias"></div>
+            <div class="container-fluid" id="tb_noticias"></div>
             <div class="col-md-12">
                 <div class="center paginacion"></div>
                 <div>
