@@ -42,6 +42,7 @@ class Model_web extends CI_Model{
 
     public function ultima_edicion() {
         $this->db->order_by('id_edicion', 'DESC');
+        $this->db->where('estado','Activo');
         $this->db->select('*');
         $this->db->from('edicion');
         $this->db->limit(1);
@@ -58,7 +59,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,500) AS Nota,
-                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -80,6 +81,7 @@ class Model_web extends CI_Model{
 
     public function ultimas_ediciones(){
         $this->db->order_by('edi.id_edicion', 'DESC');
+        $this->db->where('edi.estado','Activo');
         $this->db->select('
                             edi.id_edicion,
                             edi.fecha_publicacion,
@@ -170,7 +172,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -245,7 +247,7 @@ class Model_web extends CI_Model{
                             noti.Titular, 
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
                             noti.Editor, 
                             noti.Reportero, 
                                 (
@@ -272,7 +274,7 @@ class Model_web extends CI_Model{
                 noti.Titular,
                 noti.Subtitulo,
                 noti.Nota,
-                DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
+                DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
                 noti.Editor,
                 noti.Reportero,
                 noti.Visita,
@@ -313,7 +315,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,250) AS Nota,
-                            DATE_FORMAT(NOW(), "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -351,6 +353,8 @@ class Model_web extends CI_Model{
         return $query->result_array();
     }
 
+    /**************************Ver Perfil**********************************/
+
     public function get_comentarios($perfilId){
         $this->db->where('comen.idperfiles', $perfilId);
         $this->db->where('comen.estado',1);
@@ -363,6 +367,23 @@ class Model_web extends CI_Model{
                             comen.foto_comen
         ');
         $this->db->from('comentario comen');
+        $query =  $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_perfil($perfilId){
+        $this->db->where('perf.idperfiles', $perfilId);
+        $this->db->select('
+                            perf.idperfiles,
+                            perf.nombre,
+                            perf.info,
+                            perf.estado,
+                            perf.url_foto,
+                            perf.cargo,
+                            perf.banner,
+                            DATE_FORMAT(perf.fecha_crea, "%d/%M/%y")  as fecha_crea
+        ');
+        $this->db->from('perfiles perf');
         $query =  $this->db->get();
         return $query->result_array();
     }

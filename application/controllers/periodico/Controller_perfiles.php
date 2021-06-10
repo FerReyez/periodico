@@ -52,17 +52,17 @@ class Controller_perfiles extends CI_Controller
             $row[] = $xd;
             $row[] = "<center>            
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
-              <span class='tooltip-css3'>EDITAR</span>
-            </b>       
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->idperfiles . "'>description</i></b></button>
+              <span class='tooltip-css3'>NOTA</span>
+            </b>
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='btnComentario' data-btnComentario='" . $person->idperfiles . "'>comment</i></b></button>
-              <span class='tooltip-css3'>Comentario</span>
-            </b>       
+              <span class='tooltip-css3'>COMENTARIOS</span>
+            </b>
             <b class='tool'>
-              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->idperfiles . "'>build</i></b></button>
-              <span class='tooltip-css3'>COMENTARIO</span>
-            </b>                                     
+              <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
+              <span class='tooltip-css3'>EDITAR</span>
+            </b>
             </center>";
             $data[] = $row;
         }

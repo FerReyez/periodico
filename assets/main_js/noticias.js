@@ -54,6 +54,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#url").change();
             $("#fotografo").val(data.Fotografo);
             $("#fotografo").change();
+            // $('#fecha').datepicker().datepicker('setDate', data.Fecha);
             $("#fecha").val(data.Fecha);
             $("#fecha").change();
             $("#editor").val(data.Editor);
