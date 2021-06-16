@@ -55,10 +55,13 @@
                         <div class="shr">Compartir: </div>
                         <div class="social_icon">
                           <ul>
-                            <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            <li class="fb"><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li class="fb"><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="twi">
+                              <a id="shareBtn" data-title="<?php echo $n['Titular']; ?>" data-img="<?php echo base_url() ?>assets/upload/noticias/<?php echo $n['url']; ?>" target="_blank" href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                              </a>
+                            </li>
                           </ul>
                         </div>
                       </div>

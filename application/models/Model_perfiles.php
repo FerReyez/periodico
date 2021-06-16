@@ -16,8 +16,8 @@ class Model_perfiles extends CI_Model
 
     public $order = array('idperfiles' => 'desc');
 
-    private function _get_perfiles($term = '')
-    {
+    private function _get_perfiles($term = ''){
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $column = array(
             'id_edicion',
             'fecha_publicacion',
@@ -25,7 +25,16 @@ class Model_perfiles extends CI_Model
             'estado',
         );
 
-        $this->db->select('*');
+        $this->db->select('
+                        idperfiles,
+                        nombre,
+                        info,
+                        url_foto,
+                        cargo,
+                        DATE_FORMAT(fecha_crea, "%d / %M / %y") as fecha_crea,
+                        banner,
+                        estado
+                        ');
         $this->db->from('perfiles');
         $this->db->group_start();
         $this->db->like('nombre', $term);
@@ -76,6 +85,16 @@ class Model_perfiles extends CI_Model
     public function linea_actualizar($table, $editBtnId)
     {
         $this->db->where('idperfiles', $editBtnId);
+        $this->db->select('
+                        idperfiles,
+                        nombre,
+                        info,
+                        url_foto,
+                        cargo,
+                        DATE(fecha_crea) as fecha_crea,
+                        banner,
+                        estado
+                        ');
         $result = $this->db->get($table);
         return $result->result();
     }
@@ -87,10 +106,8 @@ class Model_perfiles extends CI_Model
         return $result;
     }
 
-    public function eliminar_edicion($table, $delteBtnId)
-    {
-        $this->db->where('idperfiles', $delteBtnId);
-        $result = $this->db->delete($table);
+    public function actualizar_data($table, $data, $updateId) {
+        $result = $this->db->update($table, $data, $updateId);
         return $result;
     }
 }

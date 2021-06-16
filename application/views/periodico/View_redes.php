@@ -83,7 +83,7 @@
                                 </span>
                                 <div>
                                     <select id="icono" name="icono" data-live-search="true">
-                                    <option selected="selected">Icono</option>
+                                    <option value="" selected="selected">*Seleccione Icono*</option>
                                         <option value="fa fa-facebook" data-icon="fa fa-facebook">Facebook</option>
                                         <option value="fa fa-twitter" data-icon="fa fa-twitter">Twitter</option>
                                         <option value="fa fa-instagram"data-icon="fa fa-instagram">Instagram</option>
@@ -104,7 +104,7 @@
                                 </span>
                                 <div>
                                     <select id="estado" name="estado" data-live-search="true">
-                                        <option value="ns">Estado</option>
+                                        <option value="">*Seleccione Estado*</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
                                     </select>

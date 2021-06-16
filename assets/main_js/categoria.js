@@ -23,6 +23,10 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
+    $("#icono").val("");
+    $("#icono").change();
+    $("#cat_s").val("NULL");
+    $("#cat_s").change();
     $("#form-title").text("Agregar Categoria");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
@@ -138,7 +142,6 @@ $(document).on("click", "#editBtnId", function (e) {
         success: function (data) {
             $("#carga").fadeOut("slow");
             $("#categoria").val(data.nc_noticia);
-            $("#categoria").change();
             $("#icono").val(data.nc_icono);
             $("#icono").change();
             $("#cat_s").val(data.nc_categoria);

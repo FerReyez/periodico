@@ -79,9 +79,9 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                <div >
+                                <div>
                                     <select  id="estado" name="estado"  data-live-search="true">
-                                        <option value="ns">Estado</option>
+                                        <option value="">* Seleccion Estado*</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
                                     </select>

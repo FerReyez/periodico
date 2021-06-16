@@ -24,7 +24,11 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
-    $("#form-title").text("Agregar Redes");
+    $("#icono").val("");
+    $("#icono").change();
+    $("#estado").val("");
+    $("#estado").change();
+    $("#form-title").text("Agregar Red");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
 });
@@ -120,7 +124,7 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#icono").val(data.icono);
             $("#icono").change();
             $("#entidad").val(data.entidad);
-            $("#form-title").text('Editar edicion');
+            $("#form-title").text('Editar Red');
             $("#action").val('update');
             $("#nombreb").html('Actualizar');
             $("#updateId").val(editBtnId);

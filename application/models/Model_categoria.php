@@ -91,6 +91,12 @@ class Model_categoria extends CI_Model {
     }
     public function linea_actualizar($table, $editBtnId) {
         $this->db->where('id_cat_noticia', $editBtnId);
+        $this->db->select('
+                            id_cat_noticia,
+                            nc_noticia,
+                            nc_icono,
+                            IFNULL(nc_categoria,"") as nc_categoria
+        ');
         $result = $this->db->get($table);
         return $result->result();
     }

@@ -6,8 +6,7 @@ if (!defined('BASEPATH'))
 class Controller_perfiles extends CI_Controller
 {
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->load->model('Usuarios');
         $this->load->model('Model_bitacora');
@@ -40,9 +39,9 @@ class Controller_perfiles extends CI_Controller
             $estado = $person->estado;
             $xd = "";
             if ($estado == 'Activo') {
-                $xd = "<i class='material-icons' style='color:green;'>done</i>";
+                $xd = "<i class='material-icons' style='color:green;'>done</i> Activo";
             } else {
-                $xd = "<i class='material-icons' style='color:red;'>clear</i>";
+                $xd = "<i class='material-icons' style='color:red;'>clear</i> Inactivo";
             }
             $no++;
             $row = array();
@@ -146,14 +145,14 @@ class Controller_perfiles extends CI_Controller
                 if ($_FILES['url_foto']['name'] != '') {
                     $img = $this->upload_img($_FILES['url_foto']);
                 } else {
-                    $img = '';
+                    $img = $_POST['url_hidden'];
                 }
 
                 $img2 = '';
                 if ($_FILES['banner']['name'] != '') {
-                    $img = $this->upload_img($_FILES['banner']);
+                    $img2 = $this->upload_img($_FILES['banner']);
                 } else {
-                    $img = '';
+                    $img2 = $_POST['ban_hidden'];
                 }
 
                 $table = 'perfiles';
@@ -175,7 +174,7 @@ class Controller_perfiles extends CI_Controller
         }
         
         if (isset($_POST['actionNota'])) {
-            if($_POST['actionNota'] == 'info'){
+            if($_POST['actionNota'] == 'nota'){
                 date_default_timezone_set('America/El_Salvador');
                 $fecha_hora = date("Y-m-d H:i:s");
                 $id_u = $_SESSION['idusuario'];
@@ -190,16 +189,16 @@ class Controller_perfiles extends CI_Controller
                 );
                 $this->Model_bitacora->guardar_bitacora($acciones) == true;
     
-                $updateId = 'idperfil ='.$_POST['updateIdNota'];
+                $updateId = 'idperfiles ='.$_POST['updateIdNota'];
     
                 $data = array(
-                    'info' => $_POST['info'],
+                    'info' => $_POST['nota'],
                 );
     
                 $result = $this->Model_perfiles->actualizar_data('perfiles', $data, $updateId);
     
                 if ($result) {
-                    echo 'info';
+                    echo 'Updated';
                 }
             }
         }

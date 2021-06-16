@@ -23,6 +23,8 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
+    $("#estado").val("");
+    $("#estado").change();
     $("#form-title").text("Agregar Edicion");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");

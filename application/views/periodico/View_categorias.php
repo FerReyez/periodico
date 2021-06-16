@@ -71,9 +71,9 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">fast_forward</i>
                                 </span>
-                                <div class="form-line">
-                                    <select name="icono" id="icono"  class="form-control date se" data-live-search="true" style="width: 100%;">
-                                        <option selected="selected">Icono</option>
+                                <div>
+                                    <select name="icono" id="icono"  data-live-search="true" style="width: 100%;">
+                                        <option value="" selected="selected">*Seleccione Icono*</option>
                                         <option value="fa fa-facebook" data-icon="fa fa-facebook">Facebook</option>
                                         <option value="fa fa-twitter" data-icon="fa fa-twitter">Twitter</option>
                                         <option value="fa fa-instagram"data-icon="fa fa-instagram">Instagram</option>
@@ -519,8 +519,8 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
-                                <div >
-                                    <select class="form-control" id="cat_s" name="cat_s"  data-live-search="true">
+                                <div>
+                                    <select id="cat_s" name="cat_s"  data-live-search="true">
                                         <option value="NULL">*Seleccione Categoria*</option>
                                         <?php foreach ($categorias as $c) { ?>
                                             <option value="<?php echo $c["id_cat_noticia"]; ?>" data-icon="<?php echo $c["nc_icono"]; ?>">

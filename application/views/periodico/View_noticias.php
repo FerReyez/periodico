@@ -123,8 +123,8 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">content_paste</i>
                                 </span>
-                                <div class="form-line">
-                                    <select name="categoria" id="categoria"  class="form-control date se" data-live-search="true" style="width: 100%;">
+                                <div>
+                                    <select name="categoria" id="categoria" data-live-search="true" style="width: 100%;">
                                         <option selected="selected" value="">*Seleccione una Categoria*</option>
                                         <?php foreach ($categorias as $c) { ?>
                                             <option value="<?php echo $c["id_cat_noticia"]; ?>" data-icon="<?php echo $c["nc_icono"]; ?>">
@@ -138,8 +138,8 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">attach_file</i>
                                 </span>
-                                <div class="form-line">
-                                    <select name="edicion" id="edicion"  class="form-control date se" data-live-search="true" style="width: 100%;">
+                                <div>
+                                    <select name="edicion" id="edicion" data-live-search="true" style="width: 100%;">
                                         <option selected="selected" value="">*Seleccione una Edicion*</option>
                                         <?php foreach ($ediciones as $e) { ?>
                                             <option value="<?php echo $e["id_edicion"]; ?>">
@@ -153,8 +153,8 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">bookmark</i>
                                 </span>
-                                <div class="form-line">
-                                    <select name="nivel" id="nivel"  class="form-control date se" style="width: 100%;">
+                                <div>
+                                    <select name="nivel" id="nivel"style="width: 100%;">
                                         <option selected="selected" value="">*Seleccione Nivel*</option>
                                         <option value="1" data-icon="fa fa-check-circle">Principal</option>
                                         <option value="2" data-icon="fa fa-times-circle">Secundaria</option>
@@ -246,8 +246,9 @@
     </div>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>                    
-<script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
+<link href="<?php echo base_url(); ?>assets/select2/css/select2.min.css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>          
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/noticias.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/editor_noticia.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/main_js/foto_noticia.js"></script>

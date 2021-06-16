@@ -85,7 +85,7 @@ class Controller_comentario  extends CI_Controller {
                 if ($_FILES['foto_comen']['name'] != '') {
                     $img = $this->upload_img($_FILES['foto_comen']);
                 } else {
-                    $img = '';
+                    $img = $_POST['com_hidden'];
                 }
 
                 $table = 'comentario';
@@ -95,7 +95,7 @@ class Controller_comentario  extends CI_Controller {
                     'nombre' => $_POST['nombreComen'],
                     'comentario' => $_POST['comentario'],
                     'titulo' => $_POST['titulo'],
-                    'estado' => $_POST['estado'],
+                    'estado' => $_POST['estado_comen'],
                     'foto_comen' => $img, 
                     'idperfiles' => $_POST['idperfiles'],
                 );

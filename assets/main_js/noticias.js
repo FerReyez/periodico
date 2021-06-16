@@ -23,6 +23,12 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
+    $("#categoria").val("");
+    $("#categoria").change();
+    $("#edicion").val("");
+    $("#edicion").change();
+    $("#nivel").val("");
+    $("#nivel").change();
     $("#form-title").text("Agregar Noticia");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
@@ -47,20 +53,12 @@ $(document).on("click", "#editBtnId", function (e) {
         success: function (data) {
             $("#carga").fadeOut("slow");
             $("#titulo").val(data.Titular);
-            $("#titulo").change();
             $("#subtitulo").val(data.Subtitulo);
-            $("#subtitulo").change();
             $("#url").val(data.url);
-            $("#url").change();
             $("#fotografo").val(data.Fotografo);
-            $("#fotografo").change();
-            // $('#fecha').datepicker().datepicker('setDate', data.Fecha);
             $("#fecha").val(data.Fecha);
-            $("#fecha").change();
             $("#editor").val(data.Editor);
-            $("#editor").change();
             $("#reportero").val(data.Reportero);
-            $("#reportero").change();
             $("#categoria").val(data.id_cat_noticia);
             $("#categoria").change();
             $("#edicion").val(data.id_edicion);

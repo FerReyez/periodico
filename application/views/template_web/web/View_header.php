@@ -4,7 +4,6 @@
 <head>
 	<title>Periodico Digital | <?php echo $titulo ?></title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -147,5 +146,11 @@
 		var btnPerfilId = $(this).attr("data-btnPerfilId");
 		localStorage.setItem("PerfilId",btnPerfilId);
 		window.location.href = host + "perfil";
+	});
+
+	$(document).on("click", "#shareBtn", function (e) {
+		var img = $(this).attr("data-img");
+		var title = $(this).attr("data-title");
+		window.open("http://twitter.com/intent/tweet?url="+host+"&title="+title);
 	});
 </script>

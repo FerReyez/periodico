@@ -54,8 +54,9 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
     var nombre = $("#nombreComen").val();    
     var comentario = $("#comentario").val();
 	var titulo = $("titulo").val();
-	var estado = $("estado").val();
+	var estado = $("estado_comen").val();
 	var foto_comen = $("#foto_comen").val();
+    var foto_hidden = $("#com_hidden").val();
 
     if (nombre == '') {
         swal({
@@ -72,7 +73,7 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
             title: "Campo titulo requerido",
             type: "warning"
         }); 
-	} else if (foto_comen == '') {
+	} else if (foto_comen && foto_hidden == '') {
 		swal({
 			title: "Fotografia requerida",
 			type: "warning"
@@ -93,6 +94,8 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
                 $("#carga-comentario").css("display", "block");
             },
             success: function (data) {
+                $("#estado_comen").val("");
+                $("#estado_comen").change();
                 listar_comentarios(idperfiles);
                 $("#carga-comentario").fadeOut("slow");
                 if (data.trim() == 'created') {
@@ -127,12 +130,13 @@ $(document).on("submit", "#form-comentario", function (e) {e.preventDefault();
             },
             success: function (data) {
                 $("#carga-comentario").fadeOut("slow");
-                $("#estado").val(data.estado);
-                $("#estado").change();
+                $("#estado_comen").val(data.estado);
+                $("#estado_comen").change();
                 $("#nombreComen").val(data.nombre);
                 $("#comentario").val(data.comentario);
                 $("#titulo").val(data.titulo);
                 $("#idperfiles").val(data.idperfiles);                              
+                $("#com_hidden").val(data.foto_comen);
                 $("#actionComen").val('update');
                 // $("#nombreb").html('Actualizar');
                 $("#updateIdComen").val(data.idComentario);

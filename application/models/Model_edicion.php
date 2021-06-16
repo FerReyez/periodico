@@ -84,6 +84,12 @@ class Model_edicion extends CI_Model {
 
     public function linea_actualizar($table, $editBtnId) {
         $this->db->where('id_edicion', $editBtnId);
+        $this->db->select('
+                            id_edicion,
+                            DATE(fecha_publicacion) as fecha_publicacion,
+                            num_edicion,
+                            estado
+                            ');
         $result = $this->db->get($table);
         return $result->result();
     }

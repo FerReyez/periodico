@@ -78,17 +78,21 @@
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">add_a_photo</i>
+                                    Perfil
                                 </span>
                                 <div class="form-line">
-                                    <input type="file" class="form-control date" placeholder="Portada" name="url_foto" id="url_foto">
+                                    <input type="file" class="form-control date" name="url_foto" id="url_foto">
+                                    <input type="hidden" id="url_hidden" name="url_hidden">
                                 </div>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">add_a_photo</i>
+                                    Banner
                                 </span>
                                 <div class="form-line">
-                                    <input type="file" class="form-control date" placeholder="Banner" name="banner" id="banner">
+                                    <input type="file" class="form-control date" name="banner" id="banner">
+                                    <input type="hidden" id="ban_hidden" name="ban_hidden">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -105,7 +109,7 @@
                                 </span>
                                 <div>
                                     <select id="estado" name="estado" data-live-search="true">
-                                        <option value="ns">Estado</option>
+                                        <option value="">*Seleccione Estado*</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
                                     </select>
@@ -193,6 +197,7 @@
                                 </span>
                                 <div class="form-line">
                                     <input type="file" class="form-control date" placeholder="Perfil" name="foto_comen" id="foto_comen">
+                                    <input type="hidden" name="com_hidden" id="com_hidden">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -200,7 +205,7 @@
                                     <i class="material-icons">insert_emoticon</i>
                                 </span>
                                 <div>
-                                    <select id="estado" name="estado" data-live-search="true">
+                                    <select id="estado_comen" name="estado_comen" data-live-search="true">
                                         <option value="">Estado</option>
                                         <option value="1">Activo</option>
                                         <option value="0">Inactivo</option>

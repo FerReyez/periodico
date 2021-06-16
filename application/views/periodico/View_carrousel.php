@@ -91,7 +91,7 @@
                                 </span>
                                 <div>
                                     <select id="estado" name="estado" data-live-search="true">
-                                        <option value="ns">Estado</option>
+                                        <option value="">*Seleccione Estado*</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
                                     </select>

@@ -27,6 +27,8 @@ $(document).on("click", "#add", function () {
     $("#action").val("create");
     $(".form-line").removeClass("focused");
     $("#developer_cu_form")[0].reset();
+    $("#estado").val("");
+    $("#estado").change();
     $("#form-title").text("Agregar Perfil");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
@@ -132,6 +134,8 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#cargo").val(data.cargo);
             $("#fecha_crea").val(data.fecha_crea);
             $("#fecha").change();
+            $("#url_hidden").val(data.url_foto);
+            $("#ban_hidden").val(data.banner);
             $("#form-title").text('Editar Perfil');
             $("#action").val('update');
             $("#nombreb").html('Actualizar');

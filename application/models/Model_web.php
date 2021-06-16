@@ -51,6 +51,7 @@ class Model_web extends CI_Model{
     }
 
     public function ultimas_noticias($edicion) {
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('edi.id_edicion', $edicion);
         $this->db->where('noti_foto.principal', 1);
         $this->db->order_by('noti.id_noticia', 'RANDOM');
@@ -59,7 +60,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,500) AS Nota,
-                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d de %M del %Y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -80,6 +81,7 @@ class Model_web extends CI_Model{
     }
 
     public function ultimas_ediciones(){
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->order_by('edi.id_edicion', 'DESC');
         $this->db->where('edi.estado','Activo');
         $this->db->select('
@@ -160,6 +162,7 @@ class Model_web extends CI_Model{
     }
 
     public function listar_noticias($categoria,$buscar,$inicio = FALSE,$cantidad = FALSE) {
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('cat.id_cat_noticia', $categoria);
         $this->db->like("noti.Titular", $buscar);
         $this->db->where('noti_foto.principal', 1);
@@ -172,7 +175,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d / %M / %Y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,
                             noti.Visita,
@@ -200,7 +203,7 @@ class Model_web extends CI_Model{
         }
         $this->db->order_by('edi.fecha_publicacion', 'DESC');
         $this->db->select('
-                        substring(edi.fecha_publicacion, 1, 10) as fecha_publicacion,
+                        DATE_FORMAT(edi.fecha_publicacion, "%d de %M del %Y")  as fecha_publicacion,
                         edi.num_edicion,
                         edi.id_edicion,
                         edi.estado,
@@ -236,6 +239,7 @@ class Model_web extends CI_Model{
     }
 
     public function listar_edicion($idEdicion,$buscar,$inicio = FALSE,$cantidad = FALSE){
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('en.id_edicion', $idEdicion);
         $this->db->like("noti.Titular", $buscar);
 
@@ -247,7 +251,7 @@ class Model_web extends CI_Model{
                             noti.Titular, 
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
-                            DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
+                            DATE_FORMAT(noti.Fecha, "%d/%M/%Y")  as Fecha,
                             noti.Editor, 
                             noti.Reportero, 
                                 (
@@ -268,13 +272,14 @@ class Model_web extends CI_Model{
     /************************************************Ver Noticia***************************************************/
 
     public function get_noticia($notiId){
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('noti.id_noticia', $notiId);
         $this->db->select('
                 noti.id_noticia,
                 noti.Titular,
                 noti.Subtitulo,
                 noti.Nota,
-                DATE_FORMAT(noti.Fecha, "%d/%M/%y")  as Fecha,
+                DATE_FORMAT(noti.Fecha, "%d de %M del %Y")  as Fecha,
                 noti.Editor,
                 noti.Reportero,
                 noti.Visita,
@@ -308,6 +313,7 @@ class Model_web extends CI_Model{
     }
 
     public function sugerencia_noticias() {
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('noti_foto.principal', 1);
         $this->db->order_by('noti.id_noticia', 'RANDOM');
         $this->db->select('
@@ -372,6 +378,7 @@ class Model_web extends CI_Model{
     }
 
     public function get_perfil($perfilId){
+        $this->db->query("SET lc_time_names = 'es_ES'");
         $this->db->where('perf.idperfiles', $perfilId);
         $this->db->select('
                             perf.idperfiles,
@@ -381,7 +388,7 @@ class Model_web extends CI_Model{
                             perf.url_foto,
                             perf.cargo,
                             perf.banner,
-                            DATE_FORMAT(perf.fecha_crea, "%d/%M/%y")  as fecha_crea
+                            DATE_FORMAT(perf.fecha_crea, "%d de %M del %Y")  as fecha_crea
         ');
         $this->db->from('perfiles perf');
         $query =  $this->db->get();
