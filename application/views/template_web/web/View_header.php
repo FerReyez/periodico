@@ -17,14 +17,15 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/colors1.css" />
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/custom.css" />
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/web/css/animate.css" />
+	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 	<!-- revolution slider css -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/settings.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/layers.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/web/revolution/css/navigation.css" />
 
 	<!-- JQuery -->
-	<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/web/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Galeria -->
@@ -92,7 +93,7 @@
 		/* default colors + transition */
 		background-color: white;
 		color: black;
-		transition: all 0.3s ease-out;
+		transition: all 0.5s ease-out;
 	}
 
 	/* scrolling state */

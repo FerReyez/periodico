@@ -186,18 +186,19 @@ class Controller_web extends CI_Controller {
     }
 
     /*********************************Perfil******************************************/
-    function get_comentarios(){
-        $perfil = $_POST["perfil"];
-        $output = array(
-            "comentarios" => $this->Model_web->get_comentarios($perfil)
-        );
-        echo json_encode($output);
-    }
+    // function get_comentarios(){
+    //     $perfil = $_POST["perfil"];
+    //     $output = array(
+    //         "comentarios" => $this->Model_web->get_comentarios($perfil)
+    //     );
+    //     echo json_encode($output);
+    // }
 
     function get_perfil(){
         $perfil = $_POST["perfil"];
         $output = array(
-            "perfil" => $this->Model_web->get_perfil($perfil)
+            "perfil" => $this->Model_web->get_perfil($perfil),
+            "comentarios" => $this->Model_web->get_comentarios($perfil)
         );
         echo json_encode($output);
     }

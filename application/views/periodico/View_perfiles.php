@@ -177,7 +177,7 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">person</i>
+                                    <i class="material-icons">business</i>
                                 </span>
                                 <div class="form-line">
                                     <input type="text" class="form-control date" placeholder="Cargo" id="titulo" name="titulo">
@@ -185,7 +185,7 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="material-icons">person</i>
+                                    <i class="material-icons">chat_bubble</i>
                                 </span>
                                 <div class="form-line">
                                     <input type="text" class="form-control date" placeholder="Comentario" id="comentario" name="comentario">

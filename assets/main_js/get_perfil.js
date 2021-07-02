@@ -7,7 +7,8 @@ $(document).on("ready",get_perfil());
 function get_perfil(){
     var perfil = localStorage.getItem("PerfilId");
     filas = '';
-    var banner = '';
+    banner = '';
+    var foto = '';
     var nombre = '';
 
     $.ajax({
@@ -19,10 +20,77 @@ function get_perfil(){
         dataType: "json",
         success: function(response) {
             filas = '';
+            banner = '';
             $.each(response.perfil, function(key, item) {
                 nombre = item.nombre;
-                banner = item.banner;
+                foto = item.banner;
                 
+                if(foto !== ''){
+                    banner += '<div id="preload" class="section padding_layout_1 testmonial_section white_fonts" style="background-image: url('+host+'assets/upload/perfiles/'+item.banner+');">';
+                    banner += '<div class="container">';
+                    banner += '<div class="row">';
+                    banner += '<div class="col-md-12">';
+                    banner += '<div class="full">';
+                    banner += '<div class="main_heading text_align_left">';
+                    banner += '<h2 style="text-transform: none;">Que opinan sobre '+nombre+'?</h2>';
+                    banner += '<p class="large">Aqui tenemos algunas opiniones.</p>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '<div class="row">';
+                    banner += '<div class="col-sm-7">';
+                    banner += '<div class="full">';
+                    $.each(response.comentarios, function(key, item) {
+                        banner += '<div id="testimonial_slider" class="carousel slide" data-ride="carousel" style="height:175px;">';
+                        banner += '<div class="carousel-inner">';
+                        banner += '<div class="carousel-item active">';
+                        banner += '<div class="testimonial-container">';
+                        banner += '<div class="testimonial-content">'+item.comentario+'</div>';
+                        banner += '<div class="testimonial-photo"> <img src="'+host+'assets/upload/perfiles/'+item.foto_comen+'" class="img-responsive" alt="#" width="150" height="150"> </div>';
+                        banner += '<div class="testimonial-meta">';
+                        banner += '<h4>'+item.nombre+'</h4>';
+                        banner += '<span class="testimonial-position">'+item.titulo+'</span>';
+                        banner += '</div>';
+                        banner += '</div>';
+                        banner += '<br>';
+                        banner += '<br>';
+                        banner += '</div>';
+                        banner += '</div>';
+                        banner += '</div>';
+                    });
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '<div class="col-sm-5">';
+                    banner += '<div class="full"> </div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                } else {
+                    banner += '<div id="inner_banner" class="section inner_banner_section">';
+                    banner += '<div class="container">';
+                    banner += '<div class="row">';
+                    banner += '<div class="col-md-12">';
+                    banner += '<div class="full">';
+                    banner += '<div class="title-holder">';
+                    banner += '<div class="title-holder-cell text-left">';
+                    banner += '<h1 class="page-title">'+nombre+'</h1>';
+                    banner += '<ol class="breadcrumb">';
+                    banner += '<li><a href="'+host+'">Inicio</a></li>';
+                    banner += '<li class="active"> Perfil </li>';
+                    banner += '</ol>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                    banner += '</div>';
+                }
+
+                filas = '';
                 filas += '<div class="blog_feature_cantant">';
                 filas += '<p class="blog_head">'+nombre+'</p>';
                 filas += '<div class="post_info">';
@@ -47,84 +115,8 @@ function get_perfil(){
                 filas += '</div>';
                 filas += '</div>';
             });
+            $("#banner").html(banner);
             $("#perfil").html(filas);
-        }
-    });
-
-    $.ajax({
-        url: host+"Controller_web/get_comentarios",
-        type: "POST",
-        data: {
-            perfil: perfil
-        },
-        dataType: "json",
-        success: function(response) {
-            filas = '';
-            if(banner !== ''){
-                filas += '<div id="preload" class="section padding_layout_1 testmonial_section white_fonts" style="background-image: url('+host+'assets/upload/perfiles/'+banner+');">';
-                filas += '<div class="container">';
-                filas += '<div class="row">';
-                filas += '<div class="col-md-12">';
-                filas += '<div class="full">';
-                filas += '<div class="main_heading text_align_left">';
-                filas += '<h2 style="text-transform: none;">Que opinan sobre '+nombre+'?</h2>';
-                filas += '<p class="large">Aqui tenemos algunas opiniones.</p>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '<div class="row">';
-                filas += '<div class="col-sm-7">';
-                filas += '<div class="full">';
-                $.each(response.comentarios, function(key, item) {
-                    filas += '<div id="testimonial_slider" class="carousel slide" data-ride="carousel" style="height:175px;">';
-                    filas += '<div class="carousel-inner">';
-                    filas += '<div class="carousel-item active">';
-                    filas += '<div class="testimonial-container">';
-                    filas += '<div class="testimonial-content">'+item.comentario+'</div>';
-                    filas += '<div class="testimonial-photo"> <img src="'+host+'assets/upload/perfiles/'+item.foto_comen+'" class="img-responsive" alt="#" width="150" height="150"> </div>';
-                    filas += '<div class="testimonial-meta">';
-                    filas += '<h4>'+item.nombre+'</h4>';
-                    filas += '<span class="testimonial-position">'+item.titulo+'</span>';
-                    filas += '</div>';
-                    filas += '</div>';
-                    filas += '<br>';
-                    filas += '<br>';
-                    filas += '</div>';
-                    filas += '</div>';
-                    filas += '</div>';
-                });
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '<div class="col-sm-5">';
-                filas += '<div class="full"> </div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-            } else {
-                filas += '<div id="inner_banner" class="section inner_banner_section">';
-                filas += '<div class="container">';
-                filas += '<div class="row">';
-                filas += '<div class="col-md-12">';
-                filas += '<div class="full">';
-                filas += '<div class="title-holder">';
-                filas += '<div class="title-holder-cell text-left">';
-                filas += '<h1 class="page-title">'+nombre+'</h1>';
-                filas += '<ol class="breadcrumb">';
-                filas += '<li><a href="'+host+'">Inicio</a></li>';
-                filas += '<li class="active"> Perfil </li>';
-                filas += '</ol>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-                filas += '</div>';
-            }
-            $("#banner").html(filas);
         }
     });
 }

@@ -48,9 +48,6 @@
 </footer>
 
 <!-- end footer -->
-<!-- js section -->
-<script src="<?php echo base_url() ?>assets/web/js/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/web/js/bootstrap.min.js"></script>
 <!-- menu js -->
 <script src="<?php echo base_url() ?>assets/web/js/menumaker.js"></script>
 <!-- wow animation -->
