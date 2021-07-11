@@ -26,12 +26,36 @@
                                         <tr>
                                             <th>#</th>
                                             <th>NOMBRE</th>
+                                            <th>EMPRESA</th>
                                             <th>FECHA</th>
                                             <th>ESTADO</th>
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <th>Petronilo Bonifacio Martines</th>
+                                            <td>CBN</td>
+                                            <td>14/06/2020</td>
+                                            <td>Activo</td>
+                                            <td>
+                                                <center>
+                                                    <b class='tool'>
+                                                        <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='notaBtnId' data-notaBtnId='" . $person->idperfiles . "'>description</i></b></button>
+                                                        <span class='tooltip-css3'>NOTA</span>
+                                                    </b>
+                                                    <b class='tool'>
+                                                        <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='btnComentario' data-btnComentario='" . $person->idperfiles . "'>photo_library</i></b></button>
+                                                        <span class='tooltip-css3'>Galeria</span>
+                                                    </b>
+                                                    <b class='tool'>
+                                                        <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->idperfiles . "'>build</i></b></button>
+                                                        <span class='tooltip-css3'>EDITAR</span>
+                                                    </b>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -139,8 +163,37 @@
     </div>
 </div>
 <!-- end Modal -->
-
-
+<!-- Modal nota -->
+<div class="modal fade" id="nota_modal" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="nota-title"></h4>
+            </div>
+            <div class="modal-body"> 
+                <div id="carga-nota"></div>
+                <form  id="nota-form">
+                    <div class="modal-body users-cont">
+                        <div class="row clearfix">
+                            <div class="body">
+                                <textarea name="nota" id="nota"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="updateIdNota" name="updateIdNota">
+                    <input type="hidden"  name="actionNota" id="actionNota">
+            </div>
+            <div class="modal-footer">
+                <button class="btn bg-<?php echo $tema; ?> waves-effect" type="submit" name="submit" id="submit"><b id="btn-nota"></b></button>
+                <button class="btn btn-link waves-effect" data-dismiss="modal" type="button">
+                    Cancelar
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
 
 
 <script src="<?php echo base_url(); ?>assets/select2/js/select2.js"></script>

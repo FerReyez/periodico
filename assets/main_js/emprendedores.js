@@ -1,3 +1,4 @@
+// modal 1
 $(document).on("click", "#add", function () {
     $("#carga").fadeOut("slow");
     $("#action").val("create");
@@ -9,3 +10,5 @@ $(document).on("click", "#add", function () {
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
 });
+// modal 2
+
