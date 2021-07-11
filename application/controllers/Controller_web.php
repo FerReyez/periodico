@@ -84,6 +84,18 @@ class Controller_web extends CI_Controller {
         $this->cargar_plantilla_web($vista, $data);
     }
 
+    public function vista_emprendedores(){
+        $data['titulo'] = "Emprendedores";
+        $vista = "web/View_emprendedores";
+        $this->cargar_plantilla_web($vista, $data);
+    }
+
+    public function vista_emprendedor(){
+        $data['titulo'] = "Emprendedor";
+        $vista = "web/View_emprendedor";
+        $this->cargar_plantilla_web($vista, $data);
+    }
+
     /******************************Listar Noticias***************************************/
 
     function get_categoria(){

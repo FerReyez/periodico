@@ -23,10 +23,11 @@ $route['tema']                      = 'Controller_tema/vista_tema';
 $route['noticia_admin']                      = 'periodico/Controller_noticia/vista_noticia';
 $route['edicion_admin']                      = 'periodico/Controller_edicion/vista_edicion';
 $route['categoria_admin']                    = 'periodico/Controller_categoria/vista_categoria';
-$route['perfiles_admin']                           = 'periodico/Controller_perfiles/vista_perfiles';
+$route['perfiles_admin']                     = 'periodico/Controller_perfiles/vista_perfiles';
 $route['carrousel']                          = 'periodico/Controller_carrousel/vista_carrousel';
 $route['redes']                              = 'periodico/Controller_redes/vista_redes';
 $route['image']                              = 'periodico/Controller_prueba/vista_image';
+$route['emprendedor']                        = 'periodico/Controller_emprende/vista_emprende';
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
@@ -36,6 +37,8 @@ $route['perfiles'] = 'Controller_web/vista_perfiles';
 $route['perfil'] = 'Controller_web/vista_perfil';
 $route['ediciones'] = 'Controller_web/vista_ediciones';
 $route['noticias_edicion'] = 'Controller_web/vista_noticias_edicion';
+$route['emprendedores'] = 'Controller_web/vista_emprendedores';
+$route['emprendedor'] = 'Controller_web/vista_emprendedor';
 
 /***********************************Imagenes**********************************************/
 $route['imagen_subir']                      = 'periodico/Controller_noticia/upload';
