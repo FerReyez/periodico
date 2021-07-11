@@ -27,7 +27,7 @@ $route['perfiles_admin']                     = 'periodico/Controller_perfiles/vi
 $route['carrousel']                          = 'periodico/Controller_carrousel/vista_carrousel';
 $route['redes']                              = 'periodico/Controller_redes/vista_redes';
 $route['image']                              = 'periodico/Controller_prueba/vista_image';
-$route['emprendedor']                        = 'periodico/Controller_emprende/vista_emprende';
+$route['emprende']                        = 'periodico/Controller_emprende/vista_emprende';
 
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
