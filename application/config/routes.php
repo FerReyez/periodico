@@ -32,6 +32,7 @@ $route['emprende']                        = 'periodico/Controller_emprende/vista
 /***********************************Web**********************************************/
 $route['inicio'] = 'Controller_web/index_web';
 $route['noticias'] = 'Controller_web/vista_noticias';
+$route['editorial'] = 'Controller_web/vista_editorial';
 $route['noticia'] = 'Controller_web/vista_noticia';
 $route['perfiles'] = 'Controller_web/vista_perfiles';
 $route['perfil'] = 'Controller_web/vista_perfil';

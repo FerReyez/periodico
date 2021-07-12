@@ -27,6 +27,8 @@ $(document).on("click", "#add", function () {
     $("#icono").change();
     $("#cat_s").val("NULL");
     $("#cat_s").change();
+    $("#url").val("");
+    $("#url").change();
     $("#form-title").text("Agregar Categoria");
     $("#nombreb").text("Agregar");
     $("#create_form_modal").modal("show");
@@ -36,6 +38,7 @@ $(document).on("submit", "#developer_cu_form", function (e) {
     e.preventDefault();
     var categoria = $("#categoria").val();
     var icono = $("#icono").val();
+    var url = $("#url").val();
 
     if (categoria == '') {
         swal({
@@ -45,6 +48,11 @@ $(document).on("submit", "#developer_cu_form", function (e) {
     } else if (icono == '') {
         swal({
             title: "Campo icono requerido",
+            type: "warning"
+        });
+    } else if (url == '') {
+        swal({
+            title: "Campo url requerido",
             type: "warning"
         });
     } else {
@@ -146,6 +154,8 @@ $(document).on("click", "#editBtnId", function (e) {
             $("#icono").change();
             $("#cat_s").val(data.nc_categoria);
             $("#cat_s").change();
+            $("#url").val(data.nc_url);
+            $("#url").change();
             $("#form-title").text('Editar categoria');
             $("#action").val('update');
             $("#nombreb").html('Actualizar');

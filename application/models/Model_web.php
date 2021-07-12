@@ -10,6 +10,7 @@ class Model_web extends CI_Model{
                             cn.nc_noticia,
                             cn.nc_icono,
                             cn.nc_categoria,
+                            cn.nc_url,
                             (
                                 select count(*) 
                                 from cat_noticia 
@@ -175,6 +176,7 @@ class Model_web extends CI_Model{
                             noti.Titular,
                             noti.Subtitulo,
                             LEFT(noti.Nota,150) AS Nota,
+                            LEFT(noti.Nota,500) AS Editorial,
                             DATE_FORMAT(noti.Fecha, "%d / %M / %Y")  as Fecha,
                             noti.Editor,
                             noti.Reportero,

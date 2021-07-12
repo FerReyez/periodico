@@ -66,17 +66,18 @@
 													<ul>
 													<?php foreach ($opciones as $o) { ?>
 														<?php if($m['id_cat_noticia'] == $o['nc_categoria']) { ?>
-															<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
+															<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $o['id_cat_noticia']; ?>" data-btnUrl="<?php echo $o['nc_url']; ?>"><?php echo $o['nc_noticia']; ?></a></li>
 														<?php } ?>
 													<?php } ?>
 													</ul>
 												</li>
 											<?php } else { ?>
-												<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
+												<li><a href="" id="btnMenu" data-btnMenuId="<?php echo $m['id_cat_noticia']; ?>" data-btnUrl="<?php echo $m['nc_url']; ?>"><?php echo $m['nc_noticia']; ?></a></li>
 											<?php } ?>
 										<?php } ?>
 									<?php } ?>
-									<li><a href="<?php echo base_url() ?>perfiles">Perfiles</a></li>
+									<!-- <li><a href="<?php echo base_url() ?>perfiles">Perfiles</a></li>
+									<li><a href="<?php echo base_url() ?>emprendedores">Emprendedor</a></li> -->
 									<li><a href="<?php echo base_url() ?>ediciones">Ediciones</a></li>
 								</ul>
 								</div>
@@ -130,8 +131,9 @@
 	$(document).on("click", "#btnMenu", function (e) {
     	e.preventDefault();
 		var btnMenuId = $(this).attr("data-btnMenuId");
+		var btnUrl = $(this).attr("data-btnUrl");
 		localStorage.setItem("CatId",btnMenuId);
-		window.location.href = host + "noticias";
+		window.location.href = host + btnUrl;
 	});
 
 	$(document).on("click", "#btnNoticia", function (e) {

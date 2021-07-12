@@ -529,7 +529,15 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                            </div> 
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">public</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control date" placeholder="Url" id="url" name="url">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <input type="hidden" id="updateId" name="updateId">

@@ -40,7 +40,7 @@ class Controller_categoria extends CI_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $person->nc_noticia;
-            $row[] = "<i  class='".$person->nc_icono."'></i>  ".$person->nc_icono."";
+            $row[] = "<i  class='".$person->nc_icono."'></i>  ".$person->nc_icono.""; 
             $row[] = "<center>
             <b class='tool'>
               <button class='btn bg-teal waves-effect btn-xs'><b><i class='material-icons' id='editBtnId' data-editBtnId='" . $person->id_cat_noticia . "'>build</i></b></button>
@@ -88,6 +88,7 @@ class Controller_categoria extends CI_Controller {
                     'nc_noticia' => $_POST['categoria'],
                     'nc_icono' => $_POST['icono'],
                     'nc_categoria' => $_POST['cat_s'],
+                    'nc_url' => $_POST['url'],
                 );
                 $result = $this->Model_categoria->crear_categoria($table, $data);
                 if ($result) {
@@ -118,6 +119,7 @@ class Controller_categoria extends CI_Controller {
                     'nc_noticia' => $_POST['categoria'],
                     'nc_icono' => $_POST['icono'],
                     'nc_categoria' => $_POST['cat_s'],
+                    'nc_url' => $_POST['url'],
                 );
                 $result = $this->Model_categoria->actualizar_categoria($table, $data, $updateId);
                 if ($result) {
@@ -163,6 +165,7 @@ class Controller_categoria extends CI_Controller {
                 $output['nc_noticia'] = $value->nc_noticia;
                 $output['nc_icono'] = $value->nc_icono;
                 $output['nc_categoria'] = $value->nc_categoria;
+                $output['nc_url'] = $value->nc_url;
             }
             echo json_encode($output);
         }

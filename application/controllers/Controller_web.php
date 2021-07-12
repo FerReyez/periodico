@@ -53,11 +53,11 @@ class Controller_web extends CI_Controller {
         $this->cargar_plantilla_web($vista, $data);
     }
 
-    // function vista_editorial() {
-    //     $data['titulo'] = "Editorial";
-    //     $vista = "web/editorial";
-    //     $this->cargar_plantilla_web($vista, $data);
-    // }
+    function vista_editorial() {
+        $data['titulo'] = "Editorial";
+        $vista = "web/View_editorial";
+        $this->cargar_plantilla_web($vista, $data);
+    }
 
     function vista_perfiles() {
         $data['titulo'] = "Perfiles";

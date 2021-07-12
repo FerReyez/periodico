@@ -95,7 +95,8 @@ class Model_categoria extends CI_Model {
                             id_cat_noticia,
                             nc_noticia,
                             nc_icono,
-                            IFNULL(nc_categoria,"") as nc_categoria
+                            IFNULL(nc_categoria,"") as nc_categoria,
+                            nc_url
         ');
         $result = $this->db->get($table);
         return $result->result();
