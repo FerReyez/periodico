@@ -57,13 +57,6 @@ class Controller_home extends CI_Controller
                 $id_usuario = $resp['id_usuario'];
                 $esta = $this->uri->segment(3);
                 $id_rol = $resp['id_rol'];
-                $emp = $resp['id_empleado'];
-                $foto = '';
-                if ($resp['vchar_ruta_foto'] == '') {
-                    $foto = 'intesal.png';
-                } else {
-                    $foto = $resp['vchar_ruta_foto'];
-                }
 
                 $this->session->set_userdata('usuario', $user);
                 $this->session->set_userdata($esta);
